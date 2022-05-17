@@ -19,13 +19,12 @@ services:
     container_name: postgres
     image: postgres:14.2
     ports:
-     - 5433:5432
+      - 5433:5432
     env_file:
       - .dockerpsql.env
     healthcheck:
-      test: psql -U #POSTGRES_USER #POSTGRES_DB || exit 1
+      test: psql -U igo agency_db || exit 1
       interval: 5s
       timeout: 5s
       retries: 10
       start_period: 5s
-  
