@@ -32,7 +32,7 @@ export class Realtor {
   @ManyToOne((type) => Agency, (agency) => agency.realtors)
   agency: Agency
 
-  @OneToMany((type) => Clients, (clients) => clients.realtor, { eager: true })
+  @OneToMany((type) => Clients, (clients) => clients.realtor)
   clients: Clients[]
 
   @OneToMany((type) => Property, (property) => property.realtor_creator, {
