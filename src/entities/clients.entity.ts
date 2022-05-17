@@ -20,7 +20,7 @@ export class Clients {
   @Column({ type: 'varchar', width: 11, nullable: false })
   phone_number: string
 
-  @Column({ type: 'varchar', width: 256, nullable: false })
+  @Column({ type: 'varchar', width: 256, nullable: false , unique:true})
   email: string
 
   @Column({ type: 'varchar', width: 256, nullable: false })
