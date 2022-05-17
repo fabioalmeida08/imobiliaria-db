@@ -2,12 +2,13 @@ import { Router } from "express";
 import ClientController from "../../controllers/client.controller";
 import { expressYupMiddleware } from "express-yup-middleware";
 import clientValidator from "../../validations/clients/clientValidation";
+import verifyClientEmailMiddleware from "../../middlewares/clients/verifyEmail.middleware";
 const clientRoute = Router()
 
 clientRoute
   .route('/')
-  .get(expressYupMiddleware({schemaValidator:clientValidator}) ,ClientController.index)
-  .post(ClientController.store)
+  .get(ClientController.index)
+  .post(expressYupMiddleware({schemaValidator:clientValidator}),verifyClientEmailMiddleware,ClientController.store)
 
 clientRoute
   .route('/:id')
