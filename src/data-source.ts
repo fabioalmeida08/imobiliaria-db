@@ -34,7 +34,7 @@ export const AppDataSource =
   process.env.NODE_ENV === 'test'
     ? new DataSource({
         type: 'postgres',
-        url: 'postgres://igo:1234@db:5432/test',
+        url: process.env.DATABASE_URL,
         entities: ['src/entities/*.*'],
         migrations: ['src/migrations/*.ts'],
         synchronize: true,
