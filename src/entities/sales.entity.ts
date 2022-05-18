@@ -1,5 +1,6 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   JoinTable,
@@ -7,6 +8,7 @@ import {
   ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm'
 import { Clients } from './clients.entity'
 import { Property } from './property.entity'
@@ -25,6 +27,20 @@ export class Sales {
 
   @Column({ type: 'varchar', width: 1500, nullable: false })
   description: string
+
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
+  createdAt: Date
+
+  @UpdateDateColumn({
+    name: 'updated_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
+  updatedAt: Date
 
   @ManyToMany((type) => Realtor, (realtor) => realtor.sales, {
     cascade: true,

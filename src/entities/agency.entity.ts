@@ -1,11 +1,12 @@
+import { networkInterfaces } from 'os'
 import {
   Entity,
   Column,
-  PrimaryColumn,
   PrimaryGeneratedColumn,
   OneToMany,
-  JoinColumn,
   JoinTable,
+  CreateDateColumn,
+  UpdateDateColumn,
 } from 'typeorm'
 import { Realtor } from './realtor.entity'
 
@@ -25,6 +26,20 @@ export class Agency {
 
   @Column({ type: 'varchar', width: 256, nullable: false })
   password: string
+
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
+  createdAt: Date
+
+  @UpdateDateColumn({
+    name: 'updated_at',
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+  })
+  updatedAt: Date
 
   @OneToMany((type) => Realtor, (realtor) => realtor.agency, { eager: true })
   @JoinTable()
