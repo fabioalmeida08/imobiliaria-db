@@ -12,9 +12,7 @@ const clientValidator = {
         intention: yup
           .string()
           .required('intention is required'),
-        password: yup
-          .string()
-          .required('password is required'),
+
       }),
       validateOptions: {
         abortEarly: false,
