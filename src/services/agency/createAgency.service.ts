@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../data-source";
-//import bcryptjs from "bcryptjs";
+import bcryptjs from "bcryptjs";
 import { IAgency } from "../../interfaces/agency";
 import AppError from "../../errors/appError";
 import { Agency } from "../../entities/agency.entity";
@@ -16,8 +16,8 @@ export default class CreateAgencyService {
       throw new AppError("Agency already is registered", 401);
     }
 
-    //const hash = await bcryptjs.hash(password, 10);
-    //data.password = hash;
+    const hash = await bcryptjs.hash(password, 10);
+    data.password = hash;
 
     const newAgency = agencyRepo.create(data);
     await agencyRepo.save(newAgency);
