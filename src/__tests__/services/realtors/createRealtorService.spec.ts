@@ -10,14 +10,13 @@ import ListOneRealtorService from "../../../services/realtors/listOneRealtor.ser
 import ListRealtorService from "../../../services/realtors/listRealtor.service";
 import LoginRealtorService from "../../../services/realtors/loginRealtor.service";
 
+beforeAll(async () => {
+  await AppDataSource.initialize().catch((err) => console.log(err));
+});
+afterAll(async () => {
+  await AppDataSource.destroy().catch((err) => console.log(err));
+});
 describe("Realtors Services", () => {
-  beforeAll(async () => {
-    await AppDataSource.initialize().catch((err) => console.log(err));
-  });
-  afterAll(async () => {
-    await AppDataSource.dropDatabase()
-    await AppDataSource.destroy().catch((err) => console.log(err));
-  });
   const realtor: IRealtors = {
     name: "Gorimar",
     email: "gorimar@mail.com",
