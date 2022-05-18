@@ -15,6 +15,7 @@ describe("Realtors Services", () => {
     await AppDataSource.initialize().catch((err) => console.log(err));
   });
   afterAll(async () => {
+    await AppDataSource.dropDatabase()
     await AppDataSource.destroy().catch((err) => console.log(err));
   });
   const realtor: IRealtors = {
