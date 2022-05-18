@@ -11,8 +11,9 @@ import {
 
 beforeAll(async () => {
   await AppDataSource.initialize().catch((err) =>
-    console.log(err)
+  console.log(err)
   )
+
 })
 afterAll(async () => {
   await AppDataSource.destroy().catch((err) =>

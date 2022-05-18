@@ -5,7 +5,7 @@ import { ICreateClient,IClient, IUpdatedClient } from '../../../../interfaces/cl
 
 beforeAll(async () => {
   await AppDataSource.initialize().catch((err) =>
-    console.log(err)
+  console.log(err)
   )
 })
 afterAll(async () => {
@@ -61,6 +61,7 @@ describe('Succes Routes', () => {
     const response = await request(app).patch(`/clients/${id}`).send(updatedClient)
 
     expect(response.status).toBe(200)
+    expect(response.body.id).toEqual(id)
     expect(response.body.name).toBe('Goro')
     expect(response.body.email).toBe('goro@mail.com')
     expect(response.body.intention).toBe('comprar')

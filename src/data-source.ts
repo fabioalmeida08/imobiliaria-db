@@ -8,8 +8,8 @@ export const AppDataSource =
         url: process.env.DATABASE_URL,
         entities: ['src/entities/*.*'],
         migrations: ['src/migrations/*.ts'],
-        synchronize: false,
-        logging:false,
+        synchronize: true,
+        logging:['error'],
         
         
       })
