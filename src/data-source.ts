@@ -37,7 +37,7 @@ export const AppDataSource =
         url: process.env.DATABASE_URL,
         entities: ['src/entities/*.*'],
         migrations: ['src/migrations/*.*'],
-        // synchronize: true,
+        synchronize: true,
       })
     : new DataSource({
         type: 'postgres',
