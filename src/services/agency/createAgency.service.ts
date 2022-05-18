@@ -1,11 +1,11 @@
 import { AppDataSource } from "../../data-source";
 //import bcryptjs from "bcryptjs";
-import { ICreateAgency } from "../../interfaces/agency";
+import { IAgency } from "../../interfaces/agency";
 import AppError from "../../errors/appError";
 import { Agency } from "../../entities/agency.entity";
 
 export default class CreateAgencyService {
-  public static async execute(data: ICreateAgency): Promise<Agency> {
+  public static async execute(data: IAgency): Promise<Agency> {
     const { password, email } = data;
 
     const agencyRepo = AppDataSource.getRepository(Agency);
