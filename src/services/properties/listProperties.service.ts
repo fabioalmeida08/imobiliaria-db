@@ -1,7 +1,10 @@
 import { AppDataSource } from "../../data-source";
+import { Agency } from "../../entities/agency.entity";
+import { Property } from "../../entities/property.entity";
+import { Realtor } from "../../entities/realtor.entity";
 
 export default class ListPropertiesService {
-  public static async execute(id?: string): Promise<Property[]> {
+  public static async execute(id?: string) {
     const propertyRepository = AppDataSource.getRepository(Property);
     const agencyRepository = AppDataSource.getRepository(Agency);
     const realtorRepository = AppDataSource.getRepository(Realtor);
@@ -19,28 +22,38 @@ export default class ListPropertiesService {
     });
 
     if (!agency && !realtor) {
-      //   const properties = await propertyRepository.find({
-      //     where: { availability: true },
-      //   });
-      //   const availableProperties = properties.map(
-      //     ({
-      //       country,
-      //       state,
-      //       city,
-      //       type,
-      //       area,
-      //       complement,
-      //       acquisition_type,
-      //       price,
-      //     }) => {
-      //       country, state, city, type, area, complement, acquisition_type, price;
-      //     }
-      //   );
-      //   return availableProperties;
+      const properties = await propertyRepository.find();
+      const availableProperties = properties.map(
+        ({
+          country,
+          state,
+          city,
+          type,
+          area,
+          complement,
+          acquisition_type,
+          price,
+          description,
+          availability,
+        }) => {
+          if (availability) {
+            return {
+              country,
+              state,
+              city,
+              type,
+              area,
+              complement,
+              acquisition_type,
+              price,
+              description,
+            };
+          }
+        }
+      );
+      return availableProperties;
     }
 
-    const properties = await propertyRepository.find();
-
-    return properties;
+    return propertyRepository.find();
   }
 }
