@@ -4,3 +4,7 @@ export interface IAgency {
     phone_number:string
     password:string
   }
+
+export interface IAgencyExtId extends IAgency{
+  id:string
+}
