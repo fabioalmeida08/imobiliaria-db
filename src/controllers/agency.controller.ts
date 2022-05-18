@@ -1,4 +1,5 @@
 import { Request, Response } from "express";
+import LoginAgencyService from "../services/agency/agencyLogin.service";
 import CreateAgencyService from "../services/agency/createAgency.service";
 import ListAllAgencyService from "../services/agency/listAllAgency.service";
 import ListOneAgencyService from "../services/agency/listOneAgency.service";
@@ -33,6 +34,10 @@ export default class AgencyController {
       return res.status(200).json(updateAgency)
     }
   
-
+    public static async login(req: Request, res: Response) {
+      const data = req.body;
+      const loginAgency = await LoginAgencyService.execute(data);
+      return res.status(201).json(loginAgency);
+    }
     
   }
