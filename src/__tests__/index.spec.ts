@@ -1,5 +1,4 @@
 import { AppDataSource } from "../data-source";
-import { describe, beforeAll, afterAll, it, expect } from "@jest/globals";
 
 describe("test file", () => {
   beforeAll(async () => {

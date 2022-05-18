@@ -3,7 +3,6 @@ import CreateClientService from "../../../services/clients/createClient.service"
 import ListAllClients from "../../../services/clients/listAllClient.service";
 import ListClient from "../../../services/clients/listClient.service";
 import { ICreateClient, IClient } from "../../../interfaces/client";
-import { describe, beforeAll, afterAll, it, expect } from "@jest/globals";
 
 describe("Client Services", () => {
   beforeAll(async () => {
