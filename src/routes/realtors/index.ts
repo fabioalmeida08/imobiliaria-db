@@ -1,22 +1,27 @@
 import express from "express";
-import RealtorsController from "../../controllers/realtors/realtors.controller";
 import { expressYupMiddleware } from "express-yup-middleware";
-import realtorCreateValidator from "../../validations/realtors";
+import RealtorsController from "../../controllers/realtors.controller";
+import {
+  realtorCreateValidator,
+  realtorLoginValidator,
+} from "../../validations/realtors";
 
 const realtorRoute = express.Router();
 
 realtorRoute
   .route("/")
-  .get(
-    expressYupMiddleware({ schemaValidator: realtorCreateValidator }),
-    RealtorsController.index
-  )
+  .get(RealtorsController.index)
   .post(
     expressYupMiddleware({ schemaValidator: realtorCreateValidator }),
     RealtorsController.store
   );
 
-realtorRoute.route("/login").post(RealtorsController.login);
+realtorRoute
+  .route("/login")
+  .post(
+    expressYupMiddleware({ schemaValidator: realtorLoginValidator }),
+    RealtorsController.login
+  );
 
 realtorRoute
   .route("/:id")
