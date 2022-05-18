@@ -23,7 +23,7 @@ services:
     env_file:
       - .dockerpsql.env
     healthcheck:
-      test: psql -U igo agency_db || exit 1
+      test: psql -U admin test || exit 1
       interval: 5s
       timeout: 5s
       retries: 10
