@@ -17,7 +17,7 @@ export default class ClientController {
     return res.status(200).json(allClients)
   }
   public static async show(req: Request, res: Response) {
-    const {id} = req.body
+    const {id} = req.params
     const client = await ListClient.execute(id)
     return res.status(200).json(client)
   }

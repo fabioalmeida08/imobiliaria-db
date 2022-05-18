@@ -9,7 +9,8 @@ export const AppDataSource =
         entities: ['src/entities/*.*'],
         migrations: ['src/migrations/*.ts'],
         synchronize: false,
-        logging:false
+        logging:false,
+        
         
       })
     : new DataSource({
