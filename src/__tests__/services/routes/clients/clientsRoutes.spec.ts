@@ -23,7 +23,7 @@ describe('Succes Routes', () => {
     phone_number: '1234567890122',
     intention: 'comprar',
   }
-  it('Should create a new user', async () => {
+  it('Should create a new client', async () => {
 
     const response = await request(app).post('/clients').send(client)
 
@@ -34,7 +34,7 @@ describe('Succes Routes', () => {
     expect(response.body).toHaveProperty('createdAt')
   })
 
-  it('Should list users', async () => {
+  it('Should list client', async () => {
     const response = await request(app).get('/clients')
 
     
