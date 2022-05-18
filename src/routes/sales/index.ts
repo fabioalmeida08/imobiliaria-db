@@ -1,8 +1,8 @@
 import { Router } from "express";
 import SalesController from "../../controllers/sales.controller";
 
-const salesRouter = Router();
+const salesRoute = Router();
 
-salesRouter.route("/").post(SalesController.store).get(SalesController.index);
+salesRoute.route("/").post(SalesController.store).get(SalesController.index);
 
-export default salesRouter;
+export default salesRoute;

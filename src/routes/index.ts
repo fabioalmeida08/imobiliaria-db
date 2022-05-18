@@ -1,8 +1,12 @@
 import { Router } from "express";
-import salesRouter from "./sales";
+import clientRoute from "./clients";
+import realtorRoute from "./realtors";
+import salesRoute from "./sales";
 
 const routes = Router();
 
-routes.use("/property/:id/sales", salesRouter);
+routes.use("/clients", clientRoute);
+routes.use("/realtor", realtorRoute);
+routes.use("/", salesRoute);
 
 export default routes;
