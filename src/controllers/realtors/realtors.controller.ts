@@ -1,6 +1,5 @@
 import { Request, response, Response } from "express";
 import CreateRealtorService from "../../services/realtors/createRealtor.service";
-import Service from "../../services/realtors/createRealtor.service";
 import DeleteRealtorService from "../../services/realtors/deleteRealtor.service";
 import ListOneRealtorService from "../../services/realtors/listOneRealtor.service";
 import ListRealtorService from "../../services/realtors/listRealtor.service";
@@ -17,6 +16,7 @@ export default class RealtorsController {
 
   //index para listar todos os elementos
   public static async index(req: Request, res: Response) {
+   // const authToken = req.headers.authorization
     const data = req.body;
     const listRealtor = await ListRealtorService.execute(data);
     return res.status(201).json(listRealtor);
