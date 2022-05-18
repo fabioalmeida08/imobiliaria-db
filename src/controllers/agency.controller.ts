@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import CreateAgencyService from "../services/agency/createAgency.service";
 import ListAllAgencyService from "../services/agency/listAllAgency.service";
 import ListOneAgencyService from "../services/agency/listOneAgency.service";
+import UpdateAgencyService from "../services/agency/updateAgency.service";
 
 export default class AgencyController {
     public static async store(req: Request, res: Response) {
@@ -24,6 +25,14 @@ export default class AgencyController {
       return res.status(201).json(listAgency);
     }
 
-   
+    public static async update(req: Request, res: Response) {
+     const data = req.body
+     const id = req.params.id
+      data.id = id
+      const updateAgency = await UpdateAgencyService.execute(data)
+      return res.status(200).json(updateAgency)
+    }
+  
+
     
   }
