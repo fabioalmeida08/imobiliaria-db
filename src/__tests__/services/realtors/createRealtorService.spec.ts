@@ -1,5 +1,10 @@
 import { AppDataSource } from "../../../data-source";
-import { ILoginRealtor, IRealtors, IRealtorsExtId } from "../../../interfaces/realtor";
+import {
+  ILoginRealtor,
+  IRealtors,
+  IRealtorsExtId,
+  IRealtorToken,
+} from "../../../interfaces/realtor";
 import CreateRealtorService from "../../../services/realtors/createRealtor.service";
 import ListOneRealtorService from "../../../services/realtors/listOneRealtor.service";
 import ListRealtorService from "../../../services/realtors/listRealtor.service";
@@ -18,11 +23,11 @@ describe("Realtors Services", () => {
     phone_number: "1234567890122",
     password: "gorimar123",
   };
-  const loginrealtor : ILoginRealtor ={
+  const loginrealtor: ILoginRealtor = {
     email: "gorimar@mail.com",
     password: "gorimar123",
-  }
-
+  };
+  let token: IRealtorToken;
   let realtorCreated: IRealtorsExtId;
   it("Should be able to create a new realtor", async () => {
     const newRealtor = await CreateRealtorService.execute(realtor);
@@ -43,7 +48,9 @@ describe("Realtors Services", () => {
     expect(realtor).toHaveProperty("id");
   });
   it("Should to login realtor", async () => {
-    const loginRealtor = await  LoginRealtorService.execute(loginrealtor)
-    expect(loginRealtor).toHaveProperty("acessToken")
-  })
+    const logRealtor = await LoginRealtorService.execute(loginrealtor);
+
+    token = logRealtor
+    expect(token).toHaveProperty("accessToken");
+  });
 });

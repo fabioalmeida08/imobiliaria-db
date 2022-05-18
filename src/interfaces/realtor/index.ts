@@ -11,3 +11,6 @@ export interface ILoginRealtor {
   email: string;
   password: string;
 }
+export interface IRealtorToken{
+  accessToken : string
+}

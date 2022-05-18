@@ -33,6 +33,6 @@ export default class LoginRealtorService {
       }
     );
 
-    return generateToken;
+    return {accessToken :generateToken}
   }
 }

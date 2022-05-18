@@ -50,6 +50,6 @@ export default class RealtorsController {
   public static async login(req: Request, res: Response) {
     const data = req.body;
     const loginRealtor = await LoginRealtorService.execute(data);
-    return res.status(201).json({acessToken : loginRealtor});
+    return res.status(201).json(loginRealtor);
   }
 }
