@@ -2,9 +2,11 @@ import { AppDataSource } from '../../../data-source'
 import CreateClientService from '../../../services/clients/createClient.service'
 import ListAllClients from '../../../services/clients/listAllClient.service'
 import ListClient from '../../../services/clients/listClient.service'
+import UpdatedClient from '../../../services/clients/updateClient.service'
 import {
   ICreateClient,
   IClient,
+  IUpdatedClient
 } from '../../../interfaces/client'
 
 describe('Client Services', () => {
@@ -48,5 +50,18 @@ describe('Client Services', () => {
     )
     expect(client).toBeDefined()
     expect(client).toHaveProperty('id')
+  })
+
+  it('Should update the client' , async () => {
+    const updatedClientInfo :IUpdatedClient = {
+      name: 'Gorimar2',
+      intention:'vender'
+    }
+
+    const updatedClient = await UpdatedClient.execute(clientCreated.id,updatedClientInfo)
+
+    expect(updatedClient?.name).toBe('Gorimar2')
+    expect(updatedClient?.intention).toBe('vender')
+
   })
 })

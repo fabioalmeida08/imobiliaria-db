@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import CreateClientService from '../services/clients/createClient.service'
 import ListAllClients from '../services/clients/listAllClient.service'
 import ListClient from '../services/clients/listClient.service'
-import UpdatedClient from '../services/clients'
+import UpdateClient from '../services/clients/updateClient.service'
 
 export default class ClientController {
   public static async store(req: Request, res: Response) {
@@ -23,8 +23,8 @@ export default class ClientController {
   }
   public static async update(req: Request, res: Response) {
     const {id} = req.params
-    const data = 
-    const client = await ListClient.execute(id)
-    return res.status(200).json(client)
+    const data = req.body
+    const updatedclient = await UpdateClient.execute(id,data)
+    return res.status(200).json(updatedclient)
   }
 }
