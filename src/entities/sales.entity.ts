@@ -33,7 +33,7 @@ export class Sales {
   @JoinTable()
   realtors: Realtor[]
 
-  @OneToOne((tyoe) => Property, { eager: true })
+  @OneToOne((type) => Property, { eager: true })
   @JoinColumn()
   property: Property
 
