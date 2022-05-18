@@ -1,4 +1,5 @@
 import { AppDataSource } from "../../../data-source";
+import { describe, beforeAll, afterAll, it, expect } from "@jest/globals";
 import { IRealtors, IRealtorsExtId } from "../../../interfaces/realtor";
 import CreateRealtorService from "../../../services/realtors/createRealtor.service";
 import ListOneRealtorService from "../../../services/realtors/listOneRealtor.service";
