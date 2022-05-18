@@ -15,6 +15,7 @@ beforeAll(async () => {
   )
 })
 afterAll(async () => {
+  await AppDataSource.dropDatabase()
   await AppDataSource.destroy().catch((err) =>
     console.log(err)
   )

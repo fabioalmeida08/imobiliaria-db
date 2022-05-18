@@ -14,4 +14,4 @@ ENV PORT=3001
 
 EXPOSE 3001
 
-CMD bash start.sh
+CMD yarn dev
