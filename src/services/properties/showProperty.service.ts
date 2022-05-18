@@ -28,9 +28,7 @@ export default class ShowPropertyService {
           id: id_property,
         },
       });
-      if (!property?.availability) {
-        throw new AppError("Property unavailable");
-      }
+
       const {
         country,
         state,
@@ -41,7 +39,7 @@ export default class ShowPropertyService {
         acquisition_type,
         price,
         description,
-      } = property;
+      } = property as Property;
       return {
         country,
         state,

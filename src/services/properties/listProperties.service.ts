@@ -34,21 +34,18 @@ export default class ListPropertiesService {
           acquisition_type,
           price,
           description,
-          availability,
         }) => {
-          if (availability) {
-            return {
-              country,
-              state,
-              city,
-              type,
-              area,
-              complement,
-              acquisition_type,
-              price,
-              description,
-            };
-          }
+          return {
+            country,
+            state,
+            city,
+            type,
+            area,
+            complement,
+            acquisition_type,
+            price,
+            description,
+          };
         }
       );
       return availableProperties;
