@@ -6,8 +6,7 @@ export default class ListOneAgencyService {
   public static async execute(id : string){
 
     const AgencyRepo = AppDataSource.getRepository(Agency);
-    const agencies = await AgencyRepo.find();
-    const findAgency = agencies.find((user) => user.id === id);
+    const findAgency = await AgencyRepo.findOneBy({ id })
   
     if(!findAgency){
       throw new AppError("Agency not found", 400)
