@@ -1,9 +1,11 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm'
 import { Clients } from './clients.entity'
 import { Images } from './images.entity'
@@ -82,6 +84,18 @@ export class Property {
 
   @Column({ type: 'varchar', width: 1500, nullable: false })
   description: string
+
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'timestamp',
+  })
+  createdAt: Date
+
+  @UpdateDateColumn({
+    name: 'updated_at',
+    type: 'timestamp',
+  })
+  updatedAt: Date
 
   @ManyToOne((type) => Clients, (clients) => clients.properties)
   client_seller: Clients
