@@ -4,9 +4,10 @@ import 'dotenv/config'
 /*export const AppDataSource =
   process.env.NODE_ENV === 'test'
     ? new DataSource({
-        type: 'sqlite',
-        database: ':memory:',
+        type: 'postgres',
+        url: process.env.DATABASE_URL,
         entities: ['src/entities/*.*'],
+        migrations: ['src/migrations/*.*'],
         synchronize: true,
       })
     : new DataSource({
