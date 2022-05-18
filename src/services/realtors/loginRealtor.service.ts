@@ -1,11 +1,11 @@
 import bcryptjs from "bcryptjs";
 import { AppDataSource } from "../../data-source";
-import { IRealtors } from "../../interfaces/realtor";
+import { ILoginRealtor } from "../../interfaces/realtor";
 import jwt from "jsonwebtoken";
 import AppError from "../../errors/appError";
 import { Realtor } from "../../entities/realtor.entity";
 export default class LoginRealtorService {
-  public static async execute(data: IRealtors) {
+  public static async execute(data : ILoginRealtor) {
     const { password, email } = data;
 
     const realtorRepo = AppDataSource.getRepository(Realtor);
@@ -33,6 +33,6 @@ export default class LoginRealtorService {
       }
     );
 
-    return generateToken;
+    return {accessToken :generateToken}
   }
 }

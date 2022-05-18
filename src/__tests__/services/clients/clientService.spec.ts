@@ -9,40 +9,34 @@ import {
   IUpdatedClient
 } from '../../../interfaces/client'
 
-describe('Client Services', () => {
+describe("Client Services", () => {
   beforeAll(async () => {
-    await AppDataSource.initialize().catch((err) =>
-      console.log(err)
-    )
-  })
+    await AppDataSource.initialize().catch((err) => console.log(err));
+  });
   afterAll(async () => {
-    await AppDataSource.destroy().catch((err) =>
-      console.log(err)
-    )
-  })
+    await AppDataSource.destroy().catch((err) => console.log(err));
+  });
   const client: ICreateClient = {
-    name: 'Gorimar',
-    email: 'gorimar@mail.com',
-    phone_number: '1234567890122',
-    intention: 'comprar',
-  }
+    name: "Gorimar",
+    email: "gorimar@mail.com",
+    phone_number: "1234567890122",
+    intention: "comprar",
+  };
 
-  let clientCreated: IClient
+  let clientCreated: IClient;
 
-  it('Should be able to create a new client', async () => {
-    const newClient = await CreateClientService.execute(
-      client
-    )
+  it("Should be able to create a new client", async () => {
+    const newClient = await CreateClientService.execute(client);
 
-    clientCreated = newClient
-    expect(newClient).toHaveProperty('id')
-  })
+    clientCreated = newClient;
+    expect(newClient).toHaveProperty("id");
+  });
 
-  it('Should return a list of clients', async () => {
-    const allClients = await ListAllClients.execute()
+  it("Should return a list of clients", async () => {
+    const allClients = await ListAllClients.execute();
 
-    expect(allClients).toHaveLength(1)
-  })
+    expect(allClients).toHaveLength(1);
+  });
 
   it('Should return a client by id', async () => {
     const client = await ListClient.execute(
