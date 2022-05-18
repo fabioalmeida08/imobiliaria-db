@@ -1,15 +1,7 @@
 import { Router } from "express";
-<<<<<<< HEAD
-import realtor from "./realtors";
-
-const routes = Router()
-routes.use(realtor)
-
-
-=======
 import clientRoute from "./clients";
+import realtorRoute from "./realtors";
 const routes = Router()
 routes.use('/clients',clientRoute)
->>>>>>> develop
-
+routes.use('/realtor', realtorRoute)
 export default routes

@@ -1,5 +1,5 @@
 import { AppDataSource } from "../../data-source";
-import bcrypt from "bcrypt";
+import bcryptjs from "bcryptjs";
 import { IRealtors } from "../../interfaces/realtor";
 import AppError from "../../errors/appError";
 import { Realtor } from "../../entities/realtor.entity";
@@ -16,7 +16,7 @@ export default class CreateRealtorService {
       throw new AppError("Realtor already is registered", 401);
     }
 
-    const hash = await bcrypt.hash(password, 10);
+    const hash = await bcryptjs.hash(password, 10);
     data.password = hash;
 
     const newRealtor = realtorRepo.create(data);

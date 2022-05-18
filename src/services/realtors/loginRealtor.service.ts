@@ -1,4 +1,4 @@
-import bcrypt from "bcrypt";
+import bcryptjs from "bcryptjs";
 import { AppDataSource } from "../../data-source";
 import { IRealtors } from "../../interfaces/realtor";
 import jwt from "jsonwebtoken";
@@ -15,7 +15,7 @@ export default class LoginRealtorService {
     if (!findRealtor) {
       throw new AppError("Email or password invalid", 401);
     }
-    const comparePsswordHash = await bcrypt.compare(
+    const comparePsswordHash = await bcryptjs.compare(
       password,
       findRealtor.password
     );

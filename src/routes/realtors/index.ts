@@ -3,9 +3,9 @@ import RealtorsController from "../../controllers/realtors/realtors.controller";
 import { expressYupMiddleware } from "express-yup-middleware";
 import realtorCreateValidator from "../../validations/realtors";
 
-const realtor = express.Router();
+const realtorRoute = express.Router();
 
-realtor
+realtorRoute
   .route("/")
   .get(
     expressYupMiddleware({ schemaValidator: realtorCreateValidator }),
@@ -16,12 +16,12 @@ realtor
     RealtorsController.store
   );
 
-realtor.route("/login").post(RealtorsController.login);
+realtorRoute.route("/login").post(RealtorsController.login);
 
-realtor
+realtorRoute
   .route("/:id")
   .delete(RealtorsController.delete)
   .patch(RealtorsController.update)
   .get(RealtorsController.show);
 
-export default realtor;
+export default realtorRoute;

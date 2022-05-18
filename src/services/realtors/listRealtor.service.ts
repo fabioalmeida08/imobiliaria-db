@@ -4,7 +4,7 @@ import AppError from "../../errors/appError";
 import { IRealtors } from "../../interfaces/realtor";
 
 export default class ListRealtorService {
-    public static async execute(data : IRealtors): Promise<Realtor[]> {
+    public static async execute(): Promise<Realtor[]> {
      
   
       const realtorRepo = AppDataSource.getRepository(Realtor);
