@@ -60,6 +60,7 @@ describe('Client Services', () => {
 
     const updatedClient = await UpdatedClient.execute(clientCreated.id,updatedClientInfo)
 
+
     expect(updatedClient?.name).toBe('Gorimar2')
     expect(updatedClient?.intention).toBe('vender')
 
