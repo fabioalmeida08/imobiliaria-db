@@ -34,12 +34,13 @@ describe('Succes Routes', () => {
     expect(response.body).toHaveProperty('createdAt')
   })
 
-  it('Should list client', async () => {
+  it('Should list clients', async () => {
     const response = await request(app).get('/clients')
 
     
     expect(response.status).toBe(200)
-    expect(response.body).toHaveLength(2)
+    expect(response.body).toBeTruthy()
+    expect(response.body[0]).toHaveProperty('id')
   })
 
   it('Should be able to list a user by id', async () => {
@@ -81,7 +82,7 @@ describe('Succes Routes', () => {
       const response = await request(app).post('/clients').send(clientMissingFields)
 
       expect(response.status).toBe(400)
-      expect(response.body).toHaveProperty('errors' || 'error')
+      expect(response.body).toHaveProperty('errors')
     })
 
     it('Should not be able to create a client with same email',async () => {
