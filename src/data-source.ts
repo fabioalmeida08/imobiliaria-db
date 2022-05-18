@@ -29,14 +29,13 @@ import 'dotenv/config'
 //             : ['src/migrations/*.ts'],
 //       })
 
-
 export const AppDataSource =
   process.env.NODE_ENV === 'test'
     ? new DataSource({
         type: 'postgres',
         url: process.env.DATABASE_URL,
         entities: ['src/entities/*.*'],
-        migrations: ['src/migrations/*.*'],
+        migrations: ['src/migrations/*.ts'],
         synchronize: true,
       })
     : new DataSource({
@@ -46,8 +45,7 @@ export const AppDataSource =
           process.env.NODE_ENV === 'production'
             ? { rejectUnauthorized: false }
             : false,
-        synchronize:
-          process.env.NODE_ENV === 'dev' ? true : false,
+        synchronize: process.env.NODE_ENV === 'dev' ? true : false,
         logging: true,
         entities:
           process.env.NODE_ENV === 'production'
