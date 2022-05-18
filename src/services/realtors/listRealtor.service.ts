@@ -1,12 +1,18 @@
 import { AppDataSource } from "../../data-source";
+import { Realtor } from "../../entities/realtor.entity";
+import AppError from "../../errors/appError";
 import { IRealtors } from "../../interfaces/realtor";
 
 export default class ListRealtorService {
-    public static async execute(data : IRealtors): Promise<Realtors> {
+    public static async execute(data : IRealtors): Promise<Realtor[]> {
      
   
       const realtorRepo = AppDataSource.getRepository(Realtor);
-      const findRealtors = realtorRepo.find()
+      const findRealtors = await realtorRepo.find()
+
+      if(!findRealtors){
+        throw new AppError("Something is wrong", 400)
+      }
   
       return findRealtors;
     }

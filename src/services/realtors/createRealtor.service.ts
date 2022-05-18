@@ -2,14 +2,15 @@ import { AppDataSource } from "../../data-source";
 import bcrypt from "bcrypt";
 import { IRealtors } from "../../interfaces/realtor";
 import AppError from "../../errors/appError";
+import { Realtor } from "../../entities/realtor.entity";
 
 export default class CreateRealtorService {
-  public static async execute(data: IRealtors): Promise<Realtors> {
+  public static async execute(data: IRealtors): Promise<Realtor> {
     const { password, email } = data;
 
     const realtorRepo = AppDataSource.getRepository(Realtor);
-
-    const realters = await realtorRepo.find((user) => user.email === email);
+    const getRealtors = await realtorRepo.find();
+    const realters = getRealtors.find((user) => user.email === email);
 
     if (realters) {
       throw new AppError("Realtor already is registered", 401);
@@ -21,7 +22,7 @@ export default class CreateRealtorService {
     const newRealtor = realtorRepo.create(data);
     await realtorRepo.save(newRealtor);
 
-    delete newRealtor.password;
+  //  delete newRealtor.password;
 
     return newRealtor;
   }

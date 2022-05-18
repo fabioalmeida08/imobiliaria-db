@@ -1,13 +1,18 @@
 import { AppDataSource } from "../../data-source";
 import bcrypt from "bcrypt";
 import { IRealtors, IRealtorsAlteration } from "../../interfaces/realtor";
+import { Realtor } from "../../entities/realtor.entity";
 
 export default class UpdateRealtorService {
-  public static async execute({data,id } : IRealtorsAlteration): Promise<Realtors> {
+  public static async execute({data,id } : IRealtorsAlteration) {
    const {name,email,phone_number} = data
+
     const realtorRepo = AppDataSource.getRepository(Realtor);
-    const realtors = realtorRepo.find()
-    const findUpdateRealtor = await realtors.find((user) => user.id === id)
+
+    const realtors = await realtorRepo.find()
+
+    const findUpdateRealtor = realtors.find((user) => user.id === id)
+
     const newInfo = {
         name,
         email,
@@ -15,6 +20,6 @@ export default class UpdateRealtorService {
       };
     await realtorRepo.update(findUpdateRealtor!.id , newInfo);
 
-    return findUpdateRealtor;
+    return realtorRepo;
   }
 }
