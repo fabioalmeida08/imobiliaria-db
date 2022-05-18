@@ -1,7 +1,5 @@
 import { AppDataSource } from "../../data-source";
 
-
-
 export default class DeleteRealtorService {
     public static async execute(id : string): Promise<Realtors> {
       const realtorRepo = AppDataSource.getRepository(Realtor);
