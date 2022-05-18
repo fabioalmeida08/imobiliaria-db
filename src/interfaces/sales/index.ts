@@ -1,9 +1,8 @@
-interface ISale {
-  id_realtor: string;
-  id_property: string;
-  id_client_seller: string;
-  id_client_buyer: string;
+export interface ICreateSale {
   selling_value: number;
   down_payment: number;
   description: string;
+  realtors: string[];
+  client_buyer: string;
+  property: string;
 }
