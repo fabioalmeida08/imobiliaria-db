@@ -52,7 +52,7 @@ describe('Client Services', () => {
     expect(client).toHaveProperty('id')
   })
 
-  it('Should update the client' , async () => {
+  it('Should be able update the client' , async () => {
     const updatedClientInfo :IUpdatedClient = {
       name: 'Gorimar2',
       intention:'vender'

@@ -10,8 +10,9 @@ export default class UpdatedClient {
     const clientRepo = AppDataSource.getRepository(Clients)
     const client = await clientRepo.findOneBy({ id })
     await clientRepo.save({ ...client, ...data })
-    console.log(client)
+    const upClient = await clientRepo.findOneBy({id})
 
-    return client
+    return upClient
+
   }
 }
