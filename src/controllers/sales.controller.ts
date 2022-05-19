@@ -1,28 +1,41 @@
-import { Request, response, Response } from "express";
-import CreateSaleService from "../services/sales/CreateSale.service";
-import ListSalesService from "../services/sales/ListSales.service";
+import { Request, response, Response } from "express"
+import CreateSaleService from "../services/sales/createSale.service"
+import ListSalesService from "../services/sales/listSales.service"
+import ShowSaleService from "../services/sales/showSale.service"
 
 export default class SalesController {
   public static async store(req: Request, res: Response) {
-    const property = req.params.id;
-    const { selling_value, down_payment, description, realtors, client_buyer } =
-      req.body;
+    let data = { ...req.body }
+    const { id_property } = req.params
+    //const id_property = req.params.id
+    //const {
+    //  selling_value,
+    //  down_payment,
+    //  description,
+    //  realtors,
+    //  id_client_buyer,
+    //} = req.body
 
-    const newSale = await CreateSaleService.execute({
-      selling_value,
-      down_payment,
-      description,
-      realtors,
-      client_buyer,
-      property,
-    });
+    if (id_property) {
+      data = { ...data, id_property }
+    }
 
-    return response.status(201).json(newSale);
+    const newSale = await CreateSaleService.execute(data)
+
+    return response.status(201).json(newSale)
+  }
+
+  public static async show(req: Request, res: Response) {
+    const { id } = req.params
+
+    const sale = await ShowSaleService.execute(id)
+
+    return res.status(200).json(sale)
   }
 
   public static async index(req: Request, res: Response) {
-    const listOfSales = await ListSalesService.execute();
+    const listOfSales = await ListSalesService.execute()
 
-    return res.status(200).json(listOfSales);
+    return res.status(200).json(listOfSales)
   }
 }
