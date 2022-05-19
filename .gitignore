@@ -3,3 +3,4 @@ node_modules
 .dockerpsql.env
 docker-compose.yml
 .dockerapp.env
+dist
