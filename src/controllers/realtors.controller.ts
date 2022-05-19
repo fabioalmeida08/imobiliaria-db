@@ -1,10 +1,10 @@
 import { Request, response, Response } from "express";
-import CreateRealtorService from "../../services/realtors/createRealtor.service";
-import DeleteRealtorService from "../../services/realtors/deleteRealtor.service";
-import ListOneRealtorService from "../../services/realtors/listOneRealtor.service";
-import ListRealtorService from "../../services/realtors/listRealtor.service";
-import LoginRealtorService from "../../services/realtors/loginRealtor.service";
-import UpdateRealtorService from "../../services/realtors/updateRealtor.service";
+import CreateRealtorService from "../services/realtors/createRealtor.service";
+import DeleteRealtorService from "../services/realtors/deleteRealtor.service";
+import ListOneRealtorService from "../services/realtors/listOneRealtor.service";
+import ListRealtorService from "../services/realtors/listRealtor.service";
+import LoginRealtorService from "../services/realtors/loginRealtor.service";
+import UpdateRealtorService from "../services/realtors/updateRealtor.service";
 
 export default class RealtorsController {
   //store para criar um elemento
