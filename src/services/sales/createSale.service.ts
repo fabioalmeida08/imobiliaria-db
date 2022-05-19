@@ -39,7 +39,7 @@ export default class CreateSaleService {
     newSale.selling_value = data.selling_value
     newSale.down_payment = data.down_payment
     newSale.description = data.description
-    // newSale.realtors = realtorsList as Realtor
+    newSale.realtors = realtorsList as Realtor[]
     newSale.client_buyer = client as Clients
     newSale.property = property as Property
 

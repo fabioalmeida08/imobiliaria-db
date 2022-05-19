@@ -1,5 +1,6 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   JoinTable,
@@ -7,10 +8,18 @@ import {
   ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
+<<<<<<< HEAD
 } from "typeorm"
 import { Clients } from "./clients.entity"
 import { Property } from "./property.entity"
 import { Realtor } from "./realtor.entity"
+=======
+  UpdateDateColumn,
+} from 'typeorm'
+import { Clients } from './clients.entity'
+import { Property } from './property.entity'
+import { Realtor } from './realtor.entity'
+>>>>>>> origin
 
 @Entity()
 export class Sales {
@@ -25,6 +34,18 @@ export class Sales {
 
   @Column({ type: "varchar", width: 1500, nullable: false })
   description: string
+
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'timestamp',
+  })
+  createdAt: Date
+
+  @UpdateDateColumn({
+    name: 'updated_at',
+    type: 'timestamp',
+  })
+  updatedAt: Date
 
   @ManyToMany((type) => Realtor, (realtor) => realtor.sales, {
     cascade: true,

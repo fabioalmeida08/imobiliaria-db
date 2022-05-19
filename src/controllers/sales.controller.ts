@@ -7,14 +7,6 @@ export default class SalesController {
   public static async store(req: Request, res: Response) {
     let data = { ...req.body }
     const { id_property } = req.params
-    //const id_property = req.params.id
-    //const {
-    //  selling_value,
-    //  down_payment,
-    //  description,
-    //  realtors,
-    //  id_client_buyer,
-    //} = req.body
 
     if (id_property) {
       data = { ...data, id_property }
@@ -27,9 +19,7 @@ export default class SalesController {
 
   public static async show(req: Request, res: Response) {
     const { id } = req.params
-
     const sale = await ShowSaleService.execute(id)
-
     return res.status(200).json(sale)
   }
 

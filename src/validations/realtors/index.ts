@@ -1,6 +1,6 @@
 import * as yup from 'yup'
 
-const realtorCreateValidator = {
+export const realtorCreateValidator = {
   schema: {
     body: {
       yupSchema: yup.object().shape({
@@ -14,5 +14,15 @@ const realtorCreateValidator = {
     },
   },
 }
-
-export default realtorCreateValidator
+export const realtorLoginValidator = {
+  schema: {
+    body: {
+      yupSchema: yup.object().shape({
+        email: yup.string().required('email is required'),
+        password: yup
+          .string()
+          .required('password is required'),
+      }),
+    },
+  },
+}

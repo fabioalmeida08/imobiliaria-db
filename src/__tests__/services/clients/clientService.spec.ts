@@ -2,22 +2,25 @@ import { AppDataSource } from '../../../data-source'
 import CreateClientService from '../../../services/clients/createClient.service'
 import ListAllClients from '../../../services/clients/listAllClient.service'
 import ListClient from '../../../services/clients/listClient.service'
+import UpdatedClient from '../../../services/clients/updateClient.service'
 import {
   ICreateClient,
   IClient,
+  IUpdatedClient,
 } from '../../../interfaces/client'
 
+beforeAll(async () => {
+  await AppDataSource.initialize().catch((err) =>
+  console.log(err)
+  )
+
+})
+afterAll(async () => {
+  await AppDataSource.destroy().catch((err) =>
+    console.log(err)
+  )
+})
 describe('Client Services', () => {
-  beforeAll(async () => {
-    await AppDataSource.initialize().catch((err) =>
-      console.log(err)
-    )
-  })
-  afterAll(async () => {
-    await AppDataSource.destroy().catch((err) =>
-      console.log(err)
-    )
-  })
   const client: ICreateClient = {
     name: 'Gorimar',
     email: 'gorimar@mail.com',
@@ -39,7 +42,8 @@ describe('Client Services', () => {
   it('Should return a list of clients', async () => {
     const allClients = await ListAllClients.execute()
 
-    expect(allClients).toHaveLength(1)
+    expect(allClients).toBeTruthy()
+    expect(allClients[0]).toHaveProperty('id')
   })
 
   it('Should return a client by id', async () => {
@@ -48,5 +52,20 @@ describe('Client Services', () => {
     )
     expect(client).toBeDefined()
     expect(client).toHaveProperty('id')
+  })
+
+  it('Should be able update the client', async () => {
+    const updatedClientInfo: IUpdatedClient = {
+      name: 'Gorimar2',
+      intention: 'vender',
+    }
+
+    const updatedClient = await UpdatedClient.execute(
+      clientCreated.id,
+      updatedClientInfo
+    )
+
+    expect(updatedClient?.name).toBe('Gorimar2')
+    expect(updatedClient?.intention).toBe('vender')
   })
 })

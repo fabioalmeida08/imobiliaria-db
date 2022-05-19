@@ -13,5 +13,5 @@ clientRoute
 clientRoute
   .route('/:id')
   .get(ClientController.show)
-
+  .patch(ClientController.update)
 export default clientRoute

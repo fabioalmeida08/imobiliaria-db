@@ -1,9 +1,11 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
+  UpdateDateColumn,
 } from 'typeorm'
 import { Property } from './property.entity'
 import { Realtor } from './realtor.entity'
@@ -20,11 +22,23 @@ export class Clients {
   @Column({ type: 'varchar', width: 11, nullable: false })
   phone_number: string
 
-  @Column({ type: 'varchar', width: 256, nullable: false , unique:true})
+  @Column({ type: 'varchar', width: 256, nullable: false, unique: true })
   email: string
 
   @Column({ type: 'varchar', width: 256, nullable: false })
   intention: string
+
+  @CreateDateColumn({
+    name: 'created_at',
+    type: 'timestamp',
+  })
+  createdAt: Date
+
+  @UpdateDateColumn({
+    name: 'updated_at',
+    type: 'timestamp',
+  })
+  updatedAt: Date
 
   @ManyToOne((type) => Realtor, (realtor) => realtor.clients)
   realtor: Realtor
