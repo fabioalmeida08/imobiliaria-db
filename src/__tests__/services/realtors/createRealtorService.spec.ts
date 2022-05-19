@@ -14,7 +14,9 @@ describe("Realtors Services", () => {
   beforeAll(async () => {
     await AppDataSource.initialize().catch((err) => console.log(err));
   });
+
   afterAll(async () => {
+    await AppDataSource.dropDatabase();
     await AppDataSource.destroy().catch((err) => console.log(err));
   });
   const realtor: IRealtors = {
@@ -50,7 +52,7 @@ describe("Realtors Services", () => {
   it("Should to login realtor", async () => {
     const logRealtor = await LoginRealtorService.execute(loginrealtor);
 
-    token = logRealtor
+    token = logRealtor;
     expect(token).toHaveProperty("accessToken");
   });
 });

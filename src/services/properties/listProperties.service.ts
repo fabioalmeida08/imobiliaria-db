@@ -21,7 +21,7 @@ export default class ListPropertiesService {
       },
     });
 
-    if (!agency && !realtor) {
+    if ((!agency && !realtor) || !id) {
       const properties = await propertyRepository.find();
       const availableProperties = properties.map(
         ({
@@ -34,21 +34,18 @@ export default class ListPropertiesService {
           acquisition_type,
           price,
           description,
-          availability,
         }) => {
-          if (availability) {
-            return {
-              country,
-              state,
-              city,
-              type,
-              area,
-              complement,
-              acquisition_type,
-              price,
-              description,
-            };
-          }
+          return {
+            country,
+            state,
+            city,
+            type,
+            area,
+            complement,
+            acquisition_type,
+            price,
+            description,
+          };
         }
       );
       return availableProperties;
