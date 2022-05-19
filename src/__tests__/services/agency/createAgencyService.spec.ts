@@ -16,10 +16,9 @@ describe('agency Services', () => {
     )
   })
   afterAll(async () => {
-    await AppDataSource.destroy().catch((err) =>
-      console.log(err)
-    )
-  })
+    await AppDataSource.dropDatabase();
+    await AppDataSource.destroy().catch((err) => console.log(err));
+  });
   const agency: IAgency = {
     name: 'Choles',
     email: 'choles@mail.com',
@@ -57,5 +56,7 @@ describe('agency Services', () => {
     token = logAgency
     expect(token).toHaveProperty("accessToken");
   });
+  
+
 
 })
