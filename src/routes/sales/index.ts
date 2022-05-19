@@ -1,8 +1,13 @@
-import { Router } from "express";
-import SalesController from "../../controllers/sales.controller";
+import { Router } from "express"
+import SalesController from "../../controllers/sales.controller"
 
-const salesRoute = Router();
+const salesRoute = Router()
 
-salesRoute.route("/").post(SalesController.store).get(SalesController.index);
+salesRoute
+  .route("/:id/sale")
+  .post(SalesController.store)
+  .get(SalesController.show)
 
-export default salesRoute;
+salesRoute.route("/sale").get(SalesController.index)
+
+export default salesRoute
