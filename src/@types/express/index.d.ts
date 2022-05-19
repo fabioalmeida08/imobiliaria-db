@@ -1,11 +1,10 @@
-declare namespace Express {
-  export interface Request {
-    id_realtor: string;
-  }
-}
+import * as express from "express";
 
-declare namespace Express {
-  export interface Request {
-    id_agency: string;
+export declare global {
+  namespace Express {
+    interface Request {
+      id_realtor: string;
+      id_agency: string;
+    }
   }
 }

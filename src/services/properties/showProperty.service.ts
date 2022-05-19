@@ -22,15 +22,17 @@ export default class ShowPropertyService {
       },
     });
 
-    if (!agency && !realtor) {
+    if ((!agency && !realtor) || !id) {
       const property = await propertyRepository.findOne({
         where: {
           id: id_property,
         },
       });
-      if (!property?.availability) {
-        throw new AppError("Property unavailable");
+
+      if (!property) {
+        throw new AppError("Property not found");
       }
+
       const {
         country,
         state,
@@ -41,7 +43,7 @@ export default class ShowPropertyService {
         acquisition_type,
         price,
         description,
-      } = property;
+      } = property as Property;
       return {
         country,
         state,
@@ -60,6 +62,10 @@ export default class ShowPropertyService {
         id: id_property,
       },
     });
+
+    if (!property) {
+      throw new AppError("Property not found");
+    }
 
     return property;
   }
