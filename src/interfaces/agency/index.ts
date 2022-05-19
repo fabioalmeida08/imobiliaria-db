@@ -17,3 +17,5 @@ export interface IAgencyLogin {
 export interface IAgencyToken{
   accessToken : string
 }
+
+export interface IUpdatedAgency extends Partial<IAgency>{}

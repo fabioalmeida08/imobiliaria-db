@@ -23,21 +23,22 @@ export default class AgencyController {
     public static async index(req: Request, res: Response) {
      // const authToken = req.headers.authorization
       const listAgency = await ListAllAgencyService.execute();
-      return res.status(201).json(listAgency);
+      return res.status(200).json(listAgency);
     }
 
     public static async update(req: Request, res: Response) {
      const data = req.body
      const id = req.params.id
       data.id = id
-      const updateAgency = await UpdateAgencyService.execute(data)
+      const updateAgency = await UpdateAgencyService.execute(data);
+      console.log(updateAgency)
       return res.status(200).json(updateAgency)
     }
   
     public static async login(req: Request, res: Response) {
       const data = req.body;
       const loginAgency = await LoginAgencyService.execute(data);
-      return res.status(201).json(loginAgency);
+      return res.status(200).json(loginAgency);
     }
     
   }

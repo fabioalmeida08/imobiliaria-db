@@ -8,11 +8,10 @@ import verifyAgencyTokenMiddleware from "../../middlewares/agency/verifyToken.mi
 const agencyRoute = express.Router();
 
 agencyRoute
-  .route("/")
-  .get(verifyAgencyTokenMiddleware, AgencyController.index)
+  .route("")
+  .get( AgencyController.index)
   .post(
     expressYupMiddleware({ schemaValidator: agencyCreateValidator }),
-    verifyAgencyEmailMiddleware,
     AgencyController.store
   );
 
@@ -20,7 +19,7 @@ agencyRoute.route("/login").post(AgencyController.login);
 
 agencyRoute
   .route("/:id")
-  .patch(verifyAgencyTokenMiddleware, AgencyController.update)
+  .patch( AgencyController.update)
   /* .get(AgencyController.show); */
 
 export default agencyRoute;

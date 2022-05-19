@@ -32,6 +32,9 @@ export default class LoginAgencyService {
       }
     );
 
-    return {accessToken :generateToken};
+    return {
+      accessToken :generateToken,
+      id: findAgency.id
+    };
   }
 }

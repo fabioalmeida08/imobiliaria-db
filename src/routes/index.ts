@@ -6,7 +6,7 @@ import realtorRoute from "./realtors";
 
 const routes = Router();
 
-routes.use('/agency', agencyRoute)
+routes.use("/agency", agencyRoute)
 routes.use("/clients", clientRoute);
 routes.use("/realtor", realtorRoute);
 routes.use("/properties", propertiesRouter);
