@@ -51,16 +51,11 @@ describe('agency Services', () => {
     expect(allagencys).toHaveLength(1)
   })
 
-  it("Should to login realtor", async () => {
-    const logRealtor = await LoginAgencyService.execute(login);
+  it("Should to login Agency", async () => {
+    const logAgency = await LoginAgencyService.execute(login);
 
-    token = logRealtor
+    token = logAgency
     expect(token).toHaveProperty("accessToken");
   });
 
-  /* it("Should return a client by id", async () => {
-    const realtor = await ListOneRealtorService.execute(realtorCreated.id);
-    expect(realtor).toBeDefined();
-    expect(realtor).toHaveProperty("id");
-  }); */
 })
