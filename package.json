@@ -4,13 +4,13 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ts-node-dev --ignore src/node_modules src/server.ts",
+    "dev": "ts-node-dev --files --ignore src/node_modules src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
     "typeormjs": "typeorm",
     "tests": "yarn typeorm migration:run -d src/data-source.ts && NODE_ENV=test jest",
     "build": "tsc",
     "start": "node dist/src/server.js",
-    "test" : "yarn typeorm migration:run -d src/data-source && yarn test && yarn typeorm schema:drop -d src/data-source.ts"
+    "test": "yarn typeorm migration:run -d src/data-source && yarn test && yarn typeorm schema:drop -d src/data-source.ts"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
