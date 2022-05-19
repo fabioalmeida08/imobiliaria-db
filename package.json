@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "engines": { "node": "16.13.1" },
   "scripts": {
     "dev": "ts-node-dev --files --ignore src/node_modules src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs",
@@ -10,6 +11,7 @@
     "tests": "NODE_ENV=test jest -i",
     "build": "tsc",
     "start": "node dist/src/server.js",
+    "postinstall": "tsc",
     "test": "yarn typeorm migration:run -d src/data-source && yarn test && yarn typeorm schema:drop -d src/data-source.ts"
   },
   "dependencies": {
