@@ -22,12 +22,16 @@ export default class ShowPropertyService {
       },
     });
 
-    if (!agency && !realtor) {
+    if ((!agency && !realtor) || !id) {
       const property = await propertyRepository.findOne({
         where: {
           id: id_property,
         },
       });
+
+      if (!property) {
+        throw new AppError("Property not found");
+      }
 
       const {
         country,
@@ -58,6 +62,10 @@ export default class ShowPropertyService {
         id: id_property,
       },
     });
+
+    if (!property) {
+      throw new AppError("Property not found");
+    }
 
     return property;
   }

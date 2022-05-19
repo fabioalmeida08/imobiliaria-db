@@ -24,7 +24,7 @@ export default class PropertiesController {
       ? req.id_realtor
       : req.id_agency
       ? req.id_agency
-      : "";
+      : undefined;
 
     const properties = await ListPropertiesService.execute(id);
 
@@ -36,7 +36,7 @@ export default class PropertiesController {
       ? req.id_realtor
       : req.id_agency
       ? req.id_agency
-      : "";
+      : undefined;
 
     const { id_property } = req.params;
 

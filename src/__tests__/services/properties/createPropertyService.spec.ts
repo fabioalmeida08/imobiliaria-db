@@ -1,5 +1,7 @@
+import { DeleteResult } from "typeorm";
 import { AppDataSource } from "../../../data-source";
 import { Property } from "../../../entities/property.entity";
+import AppError from "../../../errors/appError";
 import { IClient, ICreateClient } from "../../../interfaces/client";
 import { CreateProperty } from "../../../interfaces/properties";
 import { IRealtors, IRealtorsExtId } from "../../../interfaces/realtor";
@@ -15,7 +17,9 @@ describe("Properites Services", () => {
   beforeAll(async () => {
     await AppDataSource.initialize().catch((err) => console.log(err));
   });
+
   afterAll(async () => {
+    await AppDataSource.dropDatabase();
     await AppDataSource.destroy().catch((err) => console.log(err));
   });
 
@@ -85,7 +89,7 @@ describe("Properites Services", () => {
   });
 
   it("Should return a list of properties with selected elements", async () => {
-    const properties = await ListPropertiesService.execute("");
+    const properties = await ListPropertiesService.execute(undefined);
 
     expect(Object.keys(properties[0]).length).toBe(9);
   });
@@ -97,7 +101,10 @@ describe("Properites Services", () => {
   });
 
   it("Should return one property with selected elements", async () => {
-    const property = await ShowPropertyService.execute(createdProperty.id, "");
+    const property = await ShowPropertyService.execute(
+      createdProperty.id,
+      undefined
+    );
     expect(property).toBeTruthy();
     if (property) {
       expect(Object.keys(property).length).toBe(9);
@@ -125,10 +132,10 @@ describe("Properites Services", () => {
   });
 
   it("Should delete one property", async () => {
-    await DeletePropertyService.execute(createdProperty.id);
+    const deleteProperty = await DeletePropertyService.execute(
+      createdProperty.id
+    );
 
-    const property = await ShowPropertyService.execute(createdProperty.id);
-
-    expect(property).toBeFalsy();
+    expect(deleteProperty).toBeInstanceOf(DeleteResult);
   });
 });

@@ -21,7 +21,7 @@ export default class ListPropertiesService {
       },
     });
 
-    if (!agency && !realtor) {
+    if ((!agency && !realtor) || !id) {
       const properties = await propertyRepository.find();
       const availableProperties = properties.map(
         ({
