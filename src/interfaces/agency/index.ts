@@ -8,3 +8,12 @@ export interface IAgency {
 export interface IAgencyExtId extends IAgency{
   id:string
 }
+
+export interface IAgencyLogin {
+  email:string
+  password:string
+}
+
+export interface IAgencyToken{
+  accessToken : string
+}

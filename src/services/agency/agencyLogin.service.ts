@@ -1,11 +1,11 @@
 import bcryptjs from "bcryptjs";
 import { AppDataSource } from "../../data-source";
-import { IAgency } from "../../interfaces/agency";
+import { IAgency, IAgencyLogin } from "../../interfaces/agency";
 import jwt from "jsonwebtoken";
 import AppError from "../../errors/appError";
 import { Agency } from "../../entities/agency.entity";
 export default class LoginAgencyService {
-  public static async execute(data: IAgency) {
+  public static async execute(data: IAgencyLogin) {
     const { password, email } = data;
 
     const AgencyRepo = AppDataSource.getRepository(Agency);
@@ -32,6 +32,6 @@ export default class LoginAgencyService {
       }
     );
 
-    return generateToken;
+    return {accessToken :generateToken};
   }
 }
