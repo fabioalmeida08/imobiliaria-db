@@ -5,7 +5,7 @@ import jwt from "jsonwebtoken";
 import AppError from "../../errors/appError";
 import { Realtor } from "../../entities/realtor.entity";
 export default class LoginRealtorService {
-  public static async execute(data : ILoginRealtor) {
+  public static async execute(data: ILoginRealtor) {
     const { password, email } = data;
 
     const realtorRepo = AppDataSource.getRepository(Realtor);
@@ -33,6 +33,6 @@ export default class LoginRealtorService {
       }
     );
 
-    return {accessToken :generateToken}
+    return { accessToken: generateToken };
   }
 }
