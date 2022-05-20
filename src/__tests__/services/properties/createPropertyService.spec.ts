@@ -89,25 +89,11 @@ describe("Properites Services", () => {
     expect(newProperty).toHaveProperty("id");
   });
 
-  // it("Should return a list of properties with selected elements", async () => {
-  //   const properties = await ListPropertiesService.execute();
-
-  //   expect(Object.keys(properties[0]).length).toBe(19);
-  // });
-
   it("Should return a list of properties with all elements", async () => {
     const properties = await ListPropertiesService.execute();
 
     expect(properties[0]).toHaveProperty("id");
   });
-
-  // it("Should return one property with selected elements", async () => {
-  //   const property = await ShowPropertyService.execute(createdProperty.id);
-  //   expect(property).toBeTruthy();
-  //   if (property) {
-  //     expect(Object.keys(property).length).toBe(19);
-  //   }
-  // });
 
   it("Should return one property with all elements", async () => {
     const property = await ShowPropertyService.execute(createdProperty.id);
