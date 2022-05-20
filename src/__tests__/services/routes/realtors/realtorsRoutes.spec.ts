@@ -89,7 +89,7 @@ describe("Succes Routes", () => {
     const responseRealtor = await request(app).get("/realtor").set("Authorization", `Bearer ${token}`);
 
     expect(responseRealtor.status).toBe(200)
-    expect(responseRealtor).toBeInstanceOf(DeleteResult);
+    expect(responseRealtor.body).toBeInstanceOf(DeleteResult);
   });
 
   it("Should be able to update a realtor", async () => {
