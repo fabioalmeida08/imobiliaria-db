@@ -50,7 +50,7 @@ beforeAll(async () => {
     });
 
     it("Should list agency", async () => {
-        const response = await request(app).get("/agency");
+        const response = await request(app).get("/agency").set("Authorization", `Bearer ${token}`);
     
         expect(response.status).toBe(200);
         expect(response.body).toBeTruthy();
@@ -71,9 +71,8 @@ beforeAll(async () => {
       };
       const response = await request(app)
         .patch(`/agency/${agencyId}`)
-        .send(updatedagency);
-
-        console.log(response.body)
+        .send(updatedagency)
+        .set("Authorization", `Bearer ${token}`)
   
       expect(response.status).toBe(200);
       expect(response.body.id).toEqual(id);
