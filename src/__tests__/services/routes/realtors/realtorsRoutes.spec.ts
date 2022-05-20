@@ -1,4 +1,5 @@
 import request from "supertest";
+import { DeleteResult } from "typeorm";
 import app from "../../../../app";
 import { AppDataSource } from "../../../../data-source";
 import { IAgency, IAgencyExtId, IAgencyLogin, IAgencyToken } from "../../../../interfaces/agency";
@@ -88,7 +89,7 @@ describe("Succes Routes", () => {
     const responseRealtor = await request(app).get("/realtor").set("Authorization", `Bearer ${token}`);
 
     expect(responseRealtor.status).toBe(200)
-    expect(responseRealtor.body).toHaveLength(1);
+    expect(responseRealtor).toBeInstanceOf(DeleteResult);
   });
 
   it("Should be able to update a realtor", async () => {
