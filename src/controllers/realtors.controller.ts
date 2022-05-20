@@ -18,7 +18,7 @@ export default class RealtorsController {
   public static async index(req: Request, res: Response) {
    // const authToken = req.headers.authorization
     const listRealtor = await ListRealtorService.execute();
-    return res.status(201).json(listRealtor);
+    return res.status(200).json(listRealtor);
   }
 
   //show para listar apenas um elemento
