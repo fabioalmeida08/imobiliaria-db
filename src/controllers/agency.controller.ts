@@ -31,7 +31,6 @@ export default class AgencyController {
      const id = req.params.id
       data.id = id
       const updateAgency = await UpdateAgencyService.execute(data);
-      console.log(updateAgency)
       return res.status(200).json(updateAgency)
     }
   

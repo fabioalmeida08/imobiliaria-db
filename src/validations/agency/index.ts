@@ -1,6 +1,6 @@
 import * as yup from 'yup'
 
-const agencyCreateValidator = {
+export const agencyCreateValidator = {
   schema: {
     body: {
       yupSchema: yup.object().shape({
@@ -15,4 +15,15 @@ const agencyCreateValidator = {
   },
 }
 
-export default agencyCreateValidator
+export const agencyLoginValidator = {
+  schema: {
+    body: {
+      yupSchema: yup.object().shape({
+        email: yup.string().required('email is required'),
+        password: yup
+          .string()
+          .required('password is required'),
+      }),
+    },
+  },
+}
