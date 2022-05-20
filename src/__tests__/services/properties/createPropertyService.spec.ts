@@ -9,6 +9,7 @@ import CreateClientService from "../../../services/clients/createClient.service"
 import CreatePropertyService from "../../../services/properties/createProperty.service";
 import DeletePropertyService from "../../../services/properties/deleteProperty.service";
 import ListPropertiesService from "../../../services/properties/listProperties.service";
+import ListPropertiesByQueryService from "../../../services/properties/listPropertiesByQuery.service";
 import ShowPropertyService from "../../../services/properties/showProperty.service";
 import UpdatePropertyService from "../../../services/properties/updateProperty.service";
 import CreateRealtorService from "../../../services/realtors/createRealtor.service";
@@ -129,6 +130,37 @@ describe("Properites Services", () => {
     });
 
     expect(updatedProperty.state).toBe("Novo estado");
+  });
+
+  it("Should return a filtered list of properties", async () => {
+    const propetyTwo: CreateProperty = {
+      street: "Rua teste 2",
+      city: "Cidade teste 2",
+      state: "Estado teste 2",
+      postal_code: "87654321",
+      country: "Pais teste 2",
+      area: 45,
+      complement: "Complemento teste 2",
+      type: "Casa",
+      acquisition_type: "Venda",
+      price: 250000,
+      description: "Descrição teste 2",
+      id_client: clientCreated.id,
+      id_realtor: realtorCreated.id,
+    };
+
+    await CreatePropertyService.execute(propetyTwo);
+
+    const query = { price_menor: 250000 };
+
+    const filteredProperty = await ListPropertiesByQueryService.execute(
+      query,
+      realtorCreated.id
+    );
+
+    expect(filteredProperty[0]).toHaveProperty("id");
+    expect(filteredProperty.length).toBe(1);
+    expect(Number(filteredProperty[0].price)).toBeLessThanOrEqual(250000);
   });
 
   it("Should delete one property", async () => {

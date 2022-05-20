@@ -10,6 +10,16 @@ export default class ShowPropertyService {
     const agencyRepository = AppDataSource.getRepository(Agency);
     const realtorRepository = AppDataSource.getRepository(Realtor);
 
+    const property = await propertyRepository.findOne({
+      where: {
+        id: id_property,
+      },
+    });
+
+    if (!property) {
+      throw new AppError("Property not found");
+    }
+
     const agency = await agencyRepository.findOne({
       where: {
         id,
@@ -23,16 +33,6 @@ export default class ShowPropertyService {
     });
 
     if ((!agency && !realtor) || !id) {
-      const property = await propertyRepository.findOne({
-        where: {
-          id: id_property,
-        },
-      });
-
-      if (!property) {
-        throw new AppError("Property not found");
-      }
-
       const {
         country,
         state,
@@ -43,7 +43,7 @@ export default class ShowPropertyService {
         acquisition_type,
         price,
         description,
-      } = property as Property;
+      } = property;
       return {
         country,
         state,
@@ -55,16 +55,6 @@ export default class ShowPropertyService {
         price,
         description,
       };
-    }
-
-    const property = await propertyRepository.findOne({
-      where: {
-        id: id_property,
-      },
-    });
-
-    if (!property) {
-      throw new AppError("Property not found");
     }
 
     return property;
