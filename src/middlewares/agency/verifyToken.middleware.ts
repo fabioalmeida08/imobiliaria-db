@@ -11,7 +11,7 @@ const verifyAgencyTokenMiddleware = (req : Request , res : Response , next : Nex
   
     const verifyToken = token.split(" ")[1];
   
-    jwt.verify(verifyToken, "c5e728ad9311059cc3c09092b6a7aca6", (err, decode) => {
+    jwt.verify(verifyToken, "12720f6991bf17630654e468a3c99a5a", (err, decode) => {
       if (err) {
         throw new AppError("Agency Authentication failed", 401)
       }
