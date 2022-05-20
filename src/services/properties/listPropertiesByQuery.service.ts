@@ -65,6 +65,40 @@ export default class ListPropertiesByQueryService {
             ({ area }) => area >= Number(querys.area_maior)
           ))
         : false;
+      element === "bathroom"
+        ? (properties = properties.filter(
+            ({ bathroom_number }) => bathroom_number === Number(querys.bathroom)
+          ))
+        : false;
+      element === "bathroom_maior"
+        ? (properties = properties.filter(
+            ({ bathroom_number }) =>
+              bathroom_number <= Number(querys.bathroom_maior)
+          ))
+        : false;
+      element === "bathroom_menor"
+        ? (properties = properties.filter(
+            ({ bathroom_number }) =>
+              bathroom_number >= Number(querys.bathroom_menor)
+          ))
+        : false;
+      element === "bedroom"
+        ? (properties = properties.filter(
+            ({ bedroom_number }) => bedroom_number === Number(querys.bedroom)
+          ))
+        : false;
+      element === "bedroom_menor"
+        ? (properties = properties.filter(
+            ({ bedroom_number }) =>
+              bedroom_number <= Number(querys.bedroom_menor)
+          ))
+        : false;
+      element === "bedroom_maior"
+        ? (properties = properties.filter(
+            ({ bedroom_number }) =>
+              bedroom_number >= Number(querys.bedroom_maior)
+          ))
+        : false;
     });
 
     return properties;

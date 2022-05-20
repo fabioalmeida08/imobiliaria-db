@@ -13,6 +13,56 @@
 <h3>Agency</h3>
 
   Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a listas de corretores, atribuir os corretores aos clientes. ADM
+  
+   `POST /agency - Criar Agencia - FORMATO DA REQUISIÇÃO - STATUS 201`
+> ```json
+>  {
+>    "name": "John",
+>    "email": "example@gmail.com",
+>    "phone_number": 125463348,
+>    "password" : "asd132"
+>  }
+> ```
+
+`POST /agency - Criar Agencia - FORMATO DA RESPOSTA - STATUS 200`
+> ```json
+>  {
+>    "name": "John",
+>    "email": "example@gmail.com",
+>    "phone_number": 125463348,
+>    "id" : "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
+>  }
+> ```
+
+ `POST /agency/login - acessar conta - FORMATO DA REQUISIÇÃO - STATUS 200`
+> ```json
+>  {
+>    "email": "example@gmail.com",
+>    "password" : "asd132"
+>  }
+> ```
+
+ `POST /agency/login - acessar conta - FORMATO DA RESPOSTA - STATUS 200`
+> ```json
+>  {
+>    "accessToken": "d14w56q1w56q1dq7-wqd4d4s1adsa-dwq4dqw44w4dqqw4dqw54",
+>    "id" : "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
+>  }
+> ```
+
+
+ `GET /agency - visualizar Agencia - FORMATO DA REPOSTA - STATUS 200`
+> ```json
+>  {
+>    "name": "John",
+>    "email": "example@gmail.com",
+>    "phone_number": 125463348,
+>    "id" : "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
+>  }
+> ```
+  
+  
+  
  
 <h3>Realtor</h3>
  Rota para o corretor, nela poderá, ler a lista de seus clientes, ler a lista de vendas efetivadas por ele.
