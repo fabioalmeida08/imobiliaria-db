@@ -89,7 +89,7 @@ describe("Succes Routes", () => {
     const responseRealtor = await request(app).get("/realtor").set("Authorization", `Bearer ${token}`);
 
     expect(responseRealtor.status).toBe(200)
-    expect(responseRealtor.body).toBeInstanceOf(DeleteResult);
+    expect(responseRealtor.body).toHaveLength(1);
   });
 
   it("Should be able to update a realtor", async () => {
@@ -103,6 +103,6 @@ describe("Succes Routes", () => {
     const response = await request(app).delete(`/realtor/${realtorCreated.id}`).set("Authorization", `Bearer ${token}`);
 
     expect(response.status).toBe(200)
-    expect(response.body).toHaveProperty("id");
+    expect(response.body).toBeInstanceOf(DeleteResult);
   });
 })
