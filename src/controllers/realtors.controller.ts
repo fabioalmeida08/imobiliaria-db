@@ -16,7 +16,7 @@ export default class RealtorsController {
 
   //index para listar todos os elementos
   public static async index(req: Request, res: Response) {
-   // const authToken = req.headers.authorization
+    // const authToken = req.headers.authorization
     const listRealtor = await ListRealtorService.execute();
     return res.status(200).json(listRealtor);
   }
@@ -27,24 +27,23 @@ export default class RealtorsController {
 
     const getRealtor = await ListOneRealtorService.execute(data);
 
-    return res.status(200).json(getRealtor)
+    return res.status(200).json(getRealtor);
   }
   //update para atualizar um elemento
   public static async update(req: Request, res: Response) {
-   const data = req.body
-   const id = req.params.id
-    data.id = id
-    const updateRealtor = await UpdateRealtorService.execute(data)
-    return res.status(200).json(updateRealtor)
+    const data = req.body;
+    const id = req.params.id;
+    data.id = id;
+    const updateRealtor = await UpdateRealtorService.execute(data);
+    return res.status(200).json(updateRealtor);
   }
   //delete para deletar o elemento
   public static async delete(req: Request, res: Response) {
-    const id = req.params.id
+    const id = req.params.id;
 
-    const deleteRealtor = await DeleteRealtorService.execute(id)
+    await DeleteRealtorService.execute(id);
 
-    return res.status(200).json(deleteRealtor)
-
+    return res.status(204).json();
   }
 
   public static async login(req: Request, res: Response) {

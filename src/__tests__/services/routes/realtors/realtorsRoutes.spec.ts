@@ -102,7 +102,6 @@ describe("Succes Routes", () => {
   it("Should be able to delete a realtor", async () => {
     const response = await request(app).delete(`/realtor/${realtorCreated.id}`).set("Authorization", `Bearer ${token}`);
 
-    expect(response.status).toBe(200)
-    expect(response.body).toBeInstanceOf(DeleteResult);
+    expect(response.status).toBe(204)
   });
 })
