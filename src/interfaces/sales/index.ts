@@ -8,7 +8,7 @@ export interface ICreateSale {
 }
 
 export interface ISale extends ICreateSale {
-  property: string
+  id: string
 }
 
 export interface ISalesExtId {

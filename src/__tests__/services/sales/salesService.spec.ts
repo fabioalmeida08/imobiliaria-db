@@ -1,7 +1,6 @@
-import { AppDataSource } from "../../../data-source"
+/* import { AppDataSource } from "../../../data-source"
 import CreateSaleService from "../../../services/sales/createSale.service"
 import { ICreateSale, ISalesExtId } from "../../../interfaces/sales"
-
 import CreateClientService from "../../../services/clients/createClient.service"
 import { IClient, ICreateClient } from "../../../interfaces/client"
 import CreateRealtorService from "../../../services/realtors/createRealtor.service"
@@ -134,4 +133,4 @@ describe('Sales Services', () => {
       expect(showSales).toHaveProperty('id')
     })
     
-  })
+  }) */

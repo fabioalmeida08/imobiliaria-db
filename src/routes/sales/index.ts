@@ -3,10 +3,12 @@ import SalesController from "../../controllers/sales.controller"
 
 const salesRoute = Router()
 
-salesRoute.route("/:id/sale").post(SalesController.store)
+salesRoute
+  .route("/:id")
+  .post(SalesController.store)
+  .get(SalesController.show)
+  .patch(SalesController.update)
 
-salesRoute.route("/sale/:id").get(SalesController.show)
-
-salesRoute.route("/sale").get(SalesController.index)
+salesRoute.route("").get(SalesController.index)
 
 export default salesRoute

@@ -2,6 +2,7 @@ import { Request, response, Response } from "express"
 import CreateSaleService from "../services/sales/createSale.service"
 import ListSalesService from "../services/sales/listSales.service"
 import ShowSaleService from "../services/sales/showSale.service"
+import UpdateSaleService from "../services/sales/updateSales.service"
 
 export default class SalesController {
   public static async store(req: Request, res: Response) {
@@ -27,5 +28,13 @@ export default class SalesController {
     const listOfSales = await ListSalesService.execute()
 
     return res.status(200).json(listOfSales)
+  }
+
+  public static async update(req: Request, res: Response) {
+    const data = req.body
+    const id = req.params.id
+    data.id = id
+    const updateRealtor = await UpdateSaleService.execute(data)
+    return res.status(200).json(updateRealtor)
   }
 }
