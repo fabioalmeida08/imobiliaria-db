@@ -24,10 +24,7 @@ export default class CreatePropertyService {
       },
     })
 
-    const image = imageRepository.create({ img_url })
-    await imageRepository.save(image)
-
-    /*const property = new Property()
+    const property = new Property()
     property.street = data.street
     property.city = data.city
     property.state = data.state
@@ -41,13 +38,9 @@ export default class CreatePropertyService {
     property.description = data.description
     property.client_seller = client_seller as Clients
     property.realtor_creator = realtor_creator as Realtor
-    property.image = [image]*/
-    const property = propertyRepository.create({
-      ...data,
-      ...image,
-      ...client_seller,
-      ...realtor_creator,
-    })
+    const image = imageRepository.create({ img_url, property })
+    await imageRepository.save(image)
+    property.image = [image]
 
     await propertyRepository.save(property)
 

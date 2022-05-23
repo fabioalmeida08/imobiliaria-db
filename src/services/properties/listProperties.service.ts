@@ -2,12 +2,19 @@ import { AppDataSource } from "../../data-source";
 import { Agency } from "../../entities/agency.entity";
 import { Property } from "../../entities/property.entity";
 import { Realtor } from "../../entities/realtor.entity";
+import AppError from "../../errors/appError";
 
 export default class ListPropertiesService {
   public static async execute(id?: string) {
     const propertyRepository = AppDataSource.getRepository(Property);
     const agencyRepository = AppDataSource.getRepository(Agency);
     const realtorRepository = AppDataSource.getRepository(Realtor);
+
+    const properties = await propertyRepository.find();
+
+    if (!properties) {
+      throw new AppError("There aren't registered properties", 409);
+    }
 
     const agency = await agencyRepository.findOne({
       where: {
@@ -22,7 +29,6 @@ export default class ListPropertiesService {
     });
 
     if ((!agency && !realtor) || !id) {
-      const properties = await propertyRepository.find();
       const availableProperties = properties.map(
         ({
           country,
@@ -51,6 +57,6 @@ export default class ListPropertiesService {
       return availableProperties;
     }
 
-    return propertyRepository.find();
+    return properties;
   }
 }

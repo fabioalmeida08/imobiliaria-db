@@ -1,7 +1,8 @@
-import { Request, Response } from 'express'
+import { Request, response, Response } from 'express'
 import CreatePropertyService from '../services/properties/createProperty.service'
 import DeletePropertyService from '../services/properties/deleteProperty.service'
 import ListPropertiesService from '../services/properties/listProperties.service'
+import ListPropertiesByQueryService from '../services/properties/listPropertiesByQuery.service'
 import ShowPropertyService from '../services/properties/showProperty.service'
 import UpdatePropertyService from '../services/properties/updateProperty.service'
 
@@ -27,6 +28,14 @@ export default class PropertiesController {
       : req.id_agency
       ? req.id_agency
       : undefined
+
+    if (req.query) {
+      const querys = req.query
+
+      const properties = await ListPropertiesByQueryService.execute(querys, id)
+
+      return res.json(properties)
+    }
 
     const properties = await ListPropertiesService.execute(id)
 

@@ -81,5 +81,5 @@ jobs:
         run: yarn tests
         # Environment variables used by the `client.js` script to create a new PostgreSQL table.
         env:
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          DATABASE_TEST: ${{ secrets.DATABASE_URL }}
           
