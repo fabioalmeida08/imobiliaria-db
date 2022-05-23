@@ -6,64 +6,65 @@
    Existem diversos aplicativos de imobiliárias com bom funcionamento, mas sempre há problemas por falta de uma interface mais amigável que possa melhorar as relações entre imobiliária, corretores e cliente.
    Por isso, o objetivo deste projeto é disponibilizar uma API segura e assertiva que melhore a administração de imobiliárias.
     
-## 
+##
 
  <h2  align="center">Rotas</h2>
  
 <h3>Agency</h3>
 
-  Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a listas de corretores, atribuir os corretores aos clientes. ADM
-  
-   `POST /agency - Criar Agencia - FORMATO DA REQUISIÇÃO - STATUS 201`
+Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a listas de corretores, atribuir os corretores aos clientes. ADM
+
+`POST /agency - Criar Agencia - FORMATO DA REQUISIÇÃO - STATUS 201`
+
 > ```json
->  {
->    "name": "John",
->    "email": "example@gmail.com",
->    "phone_number": 125463348,
->    "password" : "asd132"
->  }
+> {
+>   "name": "John",
+>   "email": "example@gmail.com",
+>   "phone_number": 125463348,
+>   "password": "asd132"
+> }
 > ```
 
 `POST /agency - Criar Agencia - FORMATO DA RESPOSTA - STATUS 200`
+
 > ```json
->  {
->    "name": "John",
->    "email": "example@gmail.com",
->    "phone_number": 125463348,
->    "id" : "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
->  }
+> {
+>   "name": "John",
+>   "email": "example@gmail.com",
+>   "phone_number": 125463348,
+>   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
+> }
 > ```
 
- `POST /agency/login - acessar conta - FORMATO DA REQUISIÇÃO - STATUS 200`
+`POST /agency/login - acessar conta - FORMATO DA REQUISIÇÃO - STATUS 200`
+
 > ```json
->  {
->    "email": "example@gmail.com",
->    "password" : "asd132"
->  }
+> {
+>   "email": "example@gmail.com",
+>   "password": "asd132"
+> }
 > ```
 
- `POST /agency/login - acessar conta - FORMATO DA RESPOSTA - STATUS 200`
+`POST /agency/login - acessar conta - FORMATO DA RESPOSTA - STATUS 200`
+
 > ```json
->  {
->    "accessToken": "d14w56q1w56q1dq7-wqd4d4s1adsa-dwq4dqw44w4dqqw4dqw54",
->    "id" : "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
->  }
+> {
+>   "accessToken": "d14w56q1w56q1dq7-wqd4d4s1adsa-dwq4dqw44w4dqqw4dqw54",
+>   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
+> }
 > ```
 
+`GET /agency - visualizar Agencia - FORMATO DA REPOSTA - STATUS 200`
 
- `GET /agency - visualizar Agencia - FORMATO DA REPOSTA - STATUS 200`
 > ```json
->  {
->    "name": "John",
->    "email": "example@gmail.com",
->    "phone_number": 125463348,
->    "id" : "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
->  }
+> {
+>   "name": "John",
+>   "email": "example@gmail.com",
+>   "phone_number": 125463348,
+>   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
+> }
 > ```
-  
-  
-  
- 
+
 <h3>Realtor</h3>
  Rota para o corretor, nela poderá, ler a lista de seus clientes, ler a lista de vendas efetivadas por ele.
  
@@ -78,56 +79,699 @@
 > ```
 
 `POST /realtor - Criar corretor - FORMATO DA RESPOSTA - STATUS 200`
+
 > ```json
->  {
->    "name": "John",
->    "email": "example@gmail.com",
->    "phone_number": 125463348,
->    "id" : "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
->  }
+> {
+>   "name": "John",
+>   "email": "example@gmail.com",
+>   "phone_number": 125463348,
+>   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
+> }
 > ```
 
- `POST /realtor/login - acessar conta - FORMATO DA REQUISIÇÃO - STATUS 200`
+`POST /realtor/login - acessar conta - FORMATO DA REQUISIÇÃO - STATUS 200`
+
 > ```json
->  {
->    "email": "example@gmail.com",
->    "password" : "asd132"
->  }
+> {
+>   "email": "example@gmail.com",
+>   "password": "asd132"
+> }
 > ```
 
- `POST /realtor/login - acessar conta - FORMATO DA RESPOSTA - STATUS 200`
+`POST /realtor/login - acessar conta - FORMATO DA RESPOSTA - STATUS 200`
+
 > ```json
->  {
->    "accessToken": "d14w56q1w56q1dq7-wqd4d4s1adsa-dwq4dqw44w4dqqw4dqw54",
->    "password" : "asd132"
->  }
+> {
+>   "accessToken": "d14w56q1w56q1dq7-wqd4d4s1adsa-dwq4dqw44w4dqqw4dqw54"
+> }
+> ```
+
+`GET /realtor/:id - visualizar corretor - FORMATO DA REPOSTA - STATUS 200`
+
+> ```json
+> {
+>   "name": "John",
+>   "email": "example@gmail.com",
+>   "phone_number": 125463348,
+>   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
+> }
+> ```
+
+`PATCH /realtor/:id - atualizar corretor - FORMATO DA REQUISIÇÃO - STATUS 202`
+
+> ```json
+> {
+>   "name": "John",
+>   "email": "example@gmail.com",
+>   "phone_number": 125463348,
+> }
+> ```
+
+`DELETE /realtor/:id - deletar corretor - FORMATO DA REQUISIÇÂO - STATUS 202`
+
+---
+
+<h3>Client</h3>
+
+`POST /clients - Criar um Client - FORMATO DA REQUISIÇÃO`
+
+> ```json
+> {
+>   "name": "John",
+>   "email": "example@gmail.com",
+>   "phone_number": 125463348
+> }
+> ```
+
+`POST /clients - Criar Client - FORMATO DA RESPOSTA - STATUS 201`
+
+> ```json
+> {
+>  "name":"Ivan Ilitch",
+>	"email":"ivan@mail.com",
+>	"phone_number":"1234578901",
+>	"intention":"comprar"
+> }
+> ```
+
+`GET /clients/:id - visulalisar o Client pelo id - FORMATO DA REPOSTA - STATUS 200`
+
+> ```json
+> {
+>	"id": "38aaa48e-24da-45f4-a9a6-2aa7ceb84546",
+>	"name": "Ivan Ilitch",
+>	"phone_number": "1234578901",
+>	"email": "ivan@mail.com",
+>	"intention": "comprar",
+>	"createdAt": "2022-05-23T13:00:48.780Z",
+>	"updatedAt": "2022-05-23T13:00:48.780Z",
+>	"properties": [],
+>	"buyers": []
+> }
+> ```
+
+`GET /clients - retorna uma lista com os clients cadastrados - FORMATO DA REPOSTA - STATUS 200`
+
+> ```json
+>[
+>	{
+>		"id": "daa2282f-a5b2-4ffc-bb47-2d7ebb440413",
+>		"name": "jhonny",
+>		"phone_number": "1234578901",
+>		"email": "jhonny@mail.com",
+>		"intention": "comprar",
+>		"createdAt": "2022-05-19T21:39:19.681Z",
+>		"updatedAt": "2022-05-19T21:39:19.681Z",
+>		"properties": [],
+>		"buyers": []
+>	},
+>	{
+>		"id": "9dd23373-84b4-4e96-ae30-dd29020189b2",
+>		"name": "Ivan Ilitch",
+>		"phone_number": "1234578901",
+>		"email": "ivan@mail.com",
+>		"intention": "comprar",
+>		"createdAt": "2022-05-23T13:00:48.780Z",
+>		"updatedAt": "2022-05-23T13:00:48.780Z",
+>		"properties": [],
+>		"buyers": []
+>	}
+>]
 > ```
 
 
- `GET /realtor/:id - visualizar corretor - FORMATO DA REPOSTA - STATUS 200`
-> ```json
->  {
->    "name": "John",
->    "email": "example@gmail.com",
->    "phone_number": 125463348,
->    "id" : "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
->  }
-> ```
+`PATCH /clients/:id - Edita qualquer campo do Client pelo id - FORMATO DA REQUESIÇÃO`
 
-..... em progresso ....
+> ```json
+> {
+>	 "name": "Dostoiévski",
+>	 "intention": "comprar",
+> }
+> ```
+`PATCH /clients/:id - Edita qualquer campo do Client pelo id - FORMATO DA RESPOSTA - STATUS 200`
+
+> ```json
+> {
+>	"id": "38aaa48e-24da-45f4-a9a6-2aa7ceb84546",
+>	"name": "Dostoiévski",
+>	"phone_number": "1234578901",
+>	"email": "ivan@mail.com",
+>	"intention": "vender",
+>	"createdAt": "2022-05-23T13:53:38.510Z",
+>	"updatedAt": "2022-05-23T13:56:48.932Z",
+>	"properties": [],
+>	"buyers": []
+> }
+> ```
 
 
 ---
-<h3>Client</h3>
 
- ---
-<h3>Property</h3>
+<h3>Properties</h3>
 
- ---
+Rota para a criação, listagem, atualização e deleção de propriedades.
+
+`POST /properties - Criar propriedade - FORMATO DA REQUISIÇÃO CASO IMOBILIÁRIA`
+
+<h4>Necessário token de autorização</h4>
+
+> ```json
+> {
+>   "street": "Rua Exemplo",
+>   "city": "Cidade Exemplo",
+>   "state": "Estado Exemplo",
+>   "postal_code": "00011122",
+>   "country": "País Exemplo",
+>   "area": 75,
+>   "complement": "Andar 2, numero 5",
+>   "type": "Apartamento",
+>   "acquisition_type": "Venda",
+>   "price": 420000,
+>   "description": "Apartamento novo, em otima localidade!",
+>   "id_client": "9fa879ba-19e2-4ac8-bfa8-2b1f8e6cc5ee",
+>   "id_realtor": "cc947d60-e04a-4a22-ab27-9df8f32f92e7"
+> }
+> ```
+
+`POST /properties - Criar propriedade - FORMATO DA REQUISIÇÃO CASO CORRETOR`
+
+<h4>Necessário token de autorização</h4>
+
+> ```json
+> {
+>   "street": "Rua Exemplo",
+>   "city": "Cidade Exemplo",
+>   "state": "Estado Exemplo",
+>   "postal_code": "00011122",
+>   "country": "País Exemplo",
+>   "area": 75,
+>   "complement": "Andar 2, numero 5",
+>   "type": "Apartamento",
+>   "acquisition_type": "Venda",
+>   "price": 420000,
+>   "description": "Apartamento novo, em otima localidade!",
+>   "id_client": "9fa879ba-19e2-4ac8-bfa8-2b1f8e6cc5ee"
+> }
+> ```
+
+`POST /properties - Criar propriedade - FORMATO DA RESPOSTA - STATUS 201`
+
+> ```json
+> {
+>   "street": "Rua Exemplo",
+>   "city": "Cidade Exemplo",
+>   "state": "Estado Exemplo",
+>   "postal_code": "00011122",
+>   "country": "País Exemplo",
+>   "area": 75,
+>   "complement": "Andar 2, numero 5",
+>   "type": "Apartamento",
+>   "acquisition_type": "Venda",
+>   "price": 420000,
+>   "description": "Apartamento novo, em otima localidade!",
+>   "client_seller": {
+>     "id": "9fa879ba-19e2-4ac8-bfa8-2b1f8e6cc5ee",
+>     "name": "Carlos Santos",
+>     "phone_number": "11989224002",
+>     "email": "carlos@mail.com",
+>     "intention": "Vender",
+>     "createdAt": "2022-05-20T16:13:48.299Z",
+>     "updatedAt": "2022-05-20T16:13:48.299Z",
+>     "properties": [],
+>     "buyers": []
+>   },
+>   "realtor_creator": {
+>     "id": "cc947d60-e04a-4a22-ab27-9df8f32f92e7",
+>     "name": "Andrey Silva",
+>     "phone_number": "11940028922",
+>     "email": "andrey@mail.com",
+>     "password": "$2a$10$T0PcVgJVBSRO.kkQ.y/RAO6Nd32qokuGa9R9mQgUm6Q6puETRsGii",
+>     "createdAt": "2022-05-20T16:13:17.871Z",
+>     "updatedAt": "2022-05-20T16:13:17.871Z",
+>     "properties_created": []
+>   },
+>   "bathroom_number": null,
+>   "bedroom_number": null,
+>   "parking_spaces": null,
+>   "elevator": null,
+>   "party_hall": false,
+>   "party_area": false,
+>   "grill": false,
+>   "swimming_pool": false,
+>   "gym": false,
+>   "playground": false,
+>   "sports_court": false,
+>   "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
+>   "availability": true,
+>   "createdAt": "2022-05-20T16:25:57.537Z",
+>   "updatedAt": "2022-05-20T16:25:57.537Z"
+> }
+> ```
+
+`GET /properties - listar propriedades - FORMATO DA RESPOSTA COM AUTORIZAÇÃO - STATUS 200`
+
+<h4>É possivel utilizar querys na requisição para filtragem</h4>
+
+<h5>Querys especiais</h5>
+
+> ```json
+> {
+>   "price_menor": "Busca por preços iguais ou menores que o indicado",
+>   "price_maior": "Busca por preços iguais ou maiores que o indicado",
+>   "area_menor": "Busca por areas iguais ou menores que o indicado",
+>   "area_maior": "Busca por areas iguais ou maiores que o indicado",
+>   "bathroom_menor": "Busca por quantidade de banheiros iguais ou menores que o indicado",
+>   "bathroom_maior": "Busca por quantidade de banheiros iguais ou maiores que o indicado",
+>   "bedroom_menor": "Busca por quantidade de quartos iguais ou menores que o indicado",
+>   "bedroom_maior": "Busca por quantidade de quartos iguais ou maiores que o indicado"
+> }
+> ```
+
+> ```json
+> [
+>   {
+>     "street": "Rua Exemplo",
+>     "city": "Cidade Exemplo",
+>     "state": "Estado Exemplo",
+>     "postal_code": "00011122",
+>     "country": "País Exemplo",
+>     "area": 75,
+>     "complement": "Andar 2, numero 5",
+>     "type": "Apartamento",
+>     "acquisition_type": "Venda",
+>     "price": "420000.00",
+>     "description": "Apartamento novo, em otima localidade!",
+>     "client_seller": {
+>       "id": "9fa879ba-19e2-4ac8-bfa8-2b1f8e6cc5ee",
+>       "name": "Carlos Santos",
+>       "phone_number": "11989224002",
+>       "email": "carlos@mail.com",
+>       "intention": "Vender",
+>       "createdAt": "2022-05-20T16:13:48.299Z",
+>       "updatedAt": "2022-05-20T16:13:48.299Z",
+>       "properties": [
+>         {
+>           "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
+>           "type": "Apartamento",
+>           "street": "Rua Exemplo",
+>           "city": "Cidade Exemplo",
+>           "state": "Estado Exemplo",
+>           "postal_code": "00011122",
+>           "country": "País Exemplo",
+>           "area": 75,
+>           "complement": "Andar 2, numero 5",
+>           "availability": true,
+>           "acquisition_type": "Venda",
+>           "price": "420000.00",
+>           "bathroom_number": null,
+>           "bedroom_number": null,
+>           "parking_spaces": null,
+>           "elevator": null,
+>           "party_hall": false,
+>           "party_area": false,
+>           "gtill": false,
+>           "swimming_pool": false,
+>           "gym": false,
+>           "playground": false,
+>           "sports_court": false,
+>           "description": "Apartamento novo, em otima localidade!",
+>           "createdAt": "2022-05-20T16:25:57.537Z",
+>           "updatedAt": "2022-05-20T16:25:57.537Z",
+>           "image": []
+>         }
+>       ],
+>       "buyers": []
+>     },
+>     "realtor_creator": {
+>       "id": "cc947d60-e04a-4a22-ab27-9df8f32f92e7",
+>       "name": "Andrey Silva",
+>       "phone_number": "11940028922",
+>       "email": "andrey@mail.com",
+>       "password": "$2a$10$T0PcVgJVBSRO.kkQ.y/RAO6Nd32qokuGa9R9mQgUm6Q6puETRsGii",
+>       "createdAt": "2022-05-20T16:13:17.871Z",
+>       "updatedAt": "2022-05-20T16:13:17.871Z",
+>       "properties_created": [
+>         {
+>           "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
+>           "type": "Apartamento",
+>           "street": "Rua Exemplo",
+>           "city": "Cidade Exemplo",
+>           "state": "Estado Exemplo",
+>           "postal_code": "00011122",
+>           "country": "País Exemplo",
+>           "area": 75,
+>           "complement": "Andar 2, numero 5",
+>           "availability": true,
+>           "acquisition_type": "Venda",
+>           "price": "420000.00",
+>           "bathroom_number": null,
+>           "bedroom_number": null,
+>           "parking_spaces": null,
+>           "elevator": null,
+>           "party_hall": false,
+>           "party_area": false,
+>           "gtill": false,
+>           "swimming_pool": false,
+>           "gym": false,
+>           "playground": false,
+>           "sports_court": false,
+>           "description": "Apartamento novo, em otima localidade!",
+>           "createdAt": "2022-05-20T16:25:57.537Z",
+>           "updatedAt": "2022-05-20T16:25:57.537Z",
+>           "image": []
+>         }
+>       ]
+>     },
+>     "bathroom_number": null,
+>     "bedroom_number": null,
+>     "parking_spaces": null,
+>     "elevator": null,
+>     "party_hall": false,
+>     "party_area": false,
+>     "grill": false,
+>     "swimming_pool": false,
+>     "gym": false,
+>     "playground": false,
+>     "sports_court": false,
+>     "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
+>     "availability": true,
+>     "createdAt": "2022-05-20T16:25:57.537Z",
+>     "updatedAt": "2022-05-20T16:25:57.537Z",
+>     "image": []
+>   }
+> ]
+> ```
+
+`GET /properties - listar propriedades - FORMATO DA RESPOSTA SEM AUTORIZAÇÃO - STATUS 200`
+
+> ```json
+> [
+>   {
+>     "type": "Apartamento",
+>     "city": "Cidade Exemplo",
+>     "state": "Estado Exemplo",
+>     "country": "País Exemplo",
+>     "area": 75,
+>     "complement": "Andar 2, numero 5",
+>     "acquisition_type": "Venda",
+>     "price": "420000.00",
+>     "bathroom_number": null,
+>     "bedroom_number": null,
+>     "parking_spaces": null,
+>     "elevator": null,
+>     "party_hall": false,
+>     "party_area": false,
+>     "gtill": false,
+>     "swimming_pool": false,
+>     "gym": false,
+>     "playground": false,
+>     "sports_court": false,
+>     "description": "Apartamento novo, em otima localidade!",
+>     "image": []
+>   }
+> ]
+> ```
+
+`GET /properties/:id_property - visualizar propiedade - FORMATO DA REPOSTA COM AUTORIZAÇÂO- STATUS 200`
+
+> ```json
+> {
+>   "street": "Rua Exemplo",
+>   "city": "Cidade Exemplo",
+>   "state": "Estado Exemplo",
+>   "postal_code": "00011122",
+>   "country": "País Exemplo",
+>   "area": 75,
+>   "complement": "Andar 2, numero 5",
+>   "type": "Apartamento",
+>   "acquisition_type": "Venda",
+>   "price": "420000.00",
+>   "description": "Apartamento novo, em otima localidade!",
+>   "client_seller": {
+>     "id": "9fa879ba-19e2-4ac8-bfa8-2b1f8e6cc5ee",
+>     "name": "Carlos Santos",
+>     "phone_number": "11989224002",
+>     "email": "carlos@mail.com",
+>     "intention": "Vender",
+>     "createdAt": "2022-05-20T16:13:48.299Z",
+>     "updatedAt": "2022-05-20T16:13:48.299Z",
+>     "properties": [
+>       {
+>         "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
+>         "type": "Apartamento",
+>         "street": "Rua Exemplo",
+>         "city": "Cidade Exemplo",
+>         "state": "Estado Exemplo",
+>         "postal_code": "00011122",
+>         "country": "País Exemplo",
+>         "area": 75,
+>         "complement": "Andar 2, numero 5",
+>         "availability": true,
+>         "acquisition_type": "Venda",
+>         "price": "420000.00",
+>         "bathroom_number": null,
+>         "bedroom_number": null,
+>         "parking_spaces": null,
+>         "elevator": null,
+>         "party_hall": false,
+>         "party_area": false,
+>         "gtill": false,
+>         "swimming_pool": false,
+>         "gym": false,
+>         "playground": false,
+>         "sports_court": false,
+>         "description": "Apartamento novo, em otima localidade!",
+>         "createdAt": "2022-05-20T16:25:57.537Z",
+>         "updatedAt": "2022-05-20T16:25:57.537Z",
+>         "image": []
+>       }
+>     ],
+>     "buyers": []
+>   },
+>   "realtor_creator": {
+>     "id": "cc947d60-e04a-4a22-ab27-9df8f32f92e7",
+>     "name": "Andrey Silva",
+>     "phone_number": "11940028922",
+>     "email": "andrey@mail.com",
+>     "password": "$2a$10$T0PcVgJVBSRO.kkQ.y/RAO6Nd32qokuGa9R9mQgUm6Q6puETRsGii",
+>     "createdAt": "2022-05-20T16:13:17.871Z",
+>     "updatedAt": "2022-05-20T16:13:17.871Z",
+>     "properties_created": [
+>       {
+>         "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
+>         "type": "Apartamento",
+>         "street": "Rua Exemplo",
+>         "city": "Cidade Exemplo",
+>         "state": "Estado Exemplo",
+>         "postal_code": "00011122",
+>         "country": "País Exemplo",
+>         "area": 75,
+>         "complement": "Andar 2, numero 5",
+>         "availability": true,
+>         "acquisition_type": "Venda",
+>         "price": "420000.00",
+>         "bathroom_number": null,
+>         "bedroom_number": null,
+>         "parking_spaces": null,
+>         "elevator": null,
+>         "party_hall": false,
+>         "party_area": false,
+>         "gtill": false,
+>         "swimming_pool": false,
+>         "gym": false,
+>         "playground": false,
+>         "sports_court": false,
+>         "description": "Apartamento novo, em otima localidade!",
+>         "createdAt": "2022-05-20T16:25:57.537Z",
+>         "updatedAt": "2022-05-20T16:25:57.537Z",
+>         "image": []
+>       }
+>     ]
+>   },
+>   "bathroom_number": null,
+>   "bedroom_number": null,
+>   "parking_spaces": null,
+>   "elevator": null,
+>   "party_hall": false,
+>   "party_area": false,
+>   "grill": false,
+>   "swimming_pool": false,
+>   "gym": false,
+>   "playground": false,
+>   "sports_court": false,
+>   "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
+>   "availability": true,
+>   "createdAt": "2022-05-20T16:25:57.537Z",
+>   "updatedAt": "2022-05-20T16:25:57.537Z",
+>   "image": []
+> }
+> ```
+
+`GET /properties/:id_property - visualizar propiedade - FORMATO DA REPOSTA SEM AUTORIZAÇÂO- STATUS 200`
+
+> ```json
+> {
+>   "type": "Apartamento",
+>   "city": "Cidade Exemplo",
+>   "state": "Estado Exemplo",
+>   "country": "País Exemplo",
+>   "area": 75,
+>   "complement": "Andar 2, numero 5",
+>   "acquisition_type": "Venda",
+>   "price": "420000.00",
+>   "bathroom_number": null,
+>   "bedroom_number": null,
+>   "parking_spaces": null,
+>   "elevator": null,
+>   "party_hall": false,
+>   "party_area": false,
+>   "gtill": false,
+>   "swimming_pool": false,
+>   "gym": false,
+>   "playground": false,
+>   "sports_court": false,
+>   "description": "Apartamento novo, em otima localidade!",
+>   "image": []
+> }
+> ```
+
+`PATCH /properties/:id_property - atualiza propiedade - FORMATO DA REQUISIÇÃO`
+
+<h4>Necessário token de autorização da imobiliária ou corretor responsavel</h4>
+
+> ```json
+> {
+>   "bathroom_number": 2,
+>   "bedroom_number": 2,
+>   "parking_spaces": 2,
+>   "elevator": 2,
+>   "party_hall": true,
+>   "swimming_pool": true
+> }
+> ```
+
+`PATCH /properties/:id_property - atualiza propiedade - FORMATO DA REPOSTA- STATUS 200`
+
+> ```json
+> {
+>   "street": "Rua Exemplo",
+>   "city": "Cidade Exemplo",
+>   "state": "Estado Exemplo",
+>   "postal_code": "00011122",
+>   "country": "País Exemplo",
+>   "area": 75,
+>   "complement": "Andar 2, numero 5",
+>   "type": "Apartamento",
+>   "acquisition_type": "Venda",
+>   "price": "420000.00",
+>   "description": "Apartamento novo, em otima localidade!",
+>   "client_seller": {
+>     "id": "9fa879ba-19e2-4ac8-bfa8-2b1f8e6cc5ee",
+>     "name": "Carlos Santos",
+>     "phone_number": "11989224002",
+>     "email": "carlos@mail.com",
+>     "intention": "Vender",
+>     "createdAt": "2022-05-20T16:13:48.299Z",
+>     "updatedAt": "2022-05-20T16:13:48.299Z",
+>     "properties": [
+>       {
+>         "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
+>         "type": "Apartamento",
+>         "street": "Rua Exemplo",
+>         "city": "Cidade Exemplo",
+>         "state": "Estado Exemplo",
+>         "postal_code": "00011122",
+>         "country": "País Exemplo",
+>         "area": 75,
+>         "complement": "Andar 2, numero 5",
+>         "availability": true,
+>         "acquisition_type": "Venda",
+>         "price": "420000.00",
+>         "bathroom_number": 2,
+>         "bedroom_number": 2,
+>         "parking_spaces": 2,
+>         "elevator": 2,
+>         "party_hall": true,
+>         "party_area": false,
+>         "gtill": false,
+>         "swimming_pool": true,
+>         "gym": false,
+>         "playground": false,
+>         "sports_court": false,
+>         "description": "Apartamento novo, em otima localidade!",
+>         "createdAt": "2022-05-20T16:25:57.537Z",
+>         "updatedAt": "2022-05-20T16:25:57.537Z",
+>         "image": []
+>       }
+>     ],
+>     "buyers": []
+>   },
+>   "realtor_creator": {
+>     "id": "cc947d60-e04a-4a22-ab27-9df8f32f92e7",
+>     "name": "Andrey Silva",
+>     "phone_number": "11940028922",
+>     "email": "andrey@mail.com",
+>     "password": "$2a$10$T0PcVgJVBSRO.kkQ.y/RAO6Nd32qokuGa9R9mQgUm6Q6puETRsGii",
+>     "createdAt": "2022-05-20T16:13:17.871Z",
+>     "updatedAt": "2022-05-20T16:13:17.871Z",
+>     "properties_created": [
+>       {
+>         "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
+>         "type": "Apartamento",
+>         "street": "Rua Exemplo",
+>         "city": "Cidade Exemplo",
+>         "state": "Estado Exemplo",
+>         "postal_code": "00011122",
+>         "country": "País Exemplo",
+>         "area": 75,
+>         "complement": "Andar 2, numero 5",
+>         "availability": true,
+>         "acquisition_type": "Venda",
+>         "price": "420000.00",
+>         "bathroom_number": 2,
+>         "bedroom_number": 2,
+>         "parking_spaces": 2,
+>         "elevator": 2,
+>         "party_hall": true,
+>         "party_area": false,
+>         "gtill": false,
+>         "swimming_pool": true,
+>         "gym": false,
+>         "playground": false,
+>         "sports_court": false,
+>         "description": "Apartamento novo, em otima localidade!",
+>         "createdAt": "2022-05-20T16:25:57.537Z",
+>         "updatedAt": "2022-05-20T16:25:57.537Z",
+>         "image": []
+>       }
+>     ]
+>   },
+>   "bathroom_number": 2,
+>   "bedroom_number": 2,
+>   "parking_spaces": 2,
+>   "elevator": 2,
+>   "party_hall": true,
+>   "party_area": false,
+>   "grill": false,
+>   "swimming_pool": true,
+>   "gym": false,
+>   "playground": false,
+>   "sports_court": false,
+>   "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
+>   "availability": true,
+>   "createdAt": "2022-05-20T16:25:57.537Z",
+>   "updatedAt": "2022-05-20T16:25:57.537Z",
+>   "image": []
+> }
+> ```
+
+`DELETE /properties/:id_property - deleta propiedade - REPOSTA STATUS 204`
+
+<h4>Necessário token de autorização da imobiliária</h4>
 
 <h3>Sales</h3>
 
- ---
+---
 
 <h2 align="center"> Desenvolvido com:</h2>
 <div align="center" style="display: inline_block">
@@ -148,4 +792,3 @@
       <h6>Igo Santana de Lima - SM</h6>
       <h6>João Henrique Pereira Neto - DEV</h6></div>
 </div>
-   

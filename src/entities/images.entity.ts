@@ -28,6 +28,8 @@ export class Images {
   })
   updatedAt: Date
 
-  @ManyToOne((type) => Property, (property) => property.image)
+  @ManyToOne((type) => Property, (property) => property.image, {
+    onDelete: 'CASCADE',
+  })
   property: Property
 }

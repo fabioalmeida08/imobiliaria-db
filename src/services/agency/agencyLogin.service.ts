@@ -9,7 +9,7 @@ export default class LoginAgencyService {
     const { password, email } = data;
 
     const AgencyRepo = AppDataSource.getRepository(Agency);
-    const findAgency = await AgencyRepo.findOneBy({ email })
+    const findAgency = await AgencyRepo.findOneBy({ email });
 
     if (!findAgency) {
       throw new AppError("Email or password invalid", 401);
@@ -33,8 +33,8 @@ export default class LoginAgencyService {
     );
 
     return {
-      accessToken :generateToken,
-      id: findAgency.id
+      accessToken: generateToken,
+      id: findAgency.id,
     };
   }
 }
