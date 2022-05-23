@@ -10,6 +10,7 @@ import { Property } from "../../../entities/property.entity"
 import { CreateProperty } from "../../../interfaces/properties"
 import CreatePropertyService from "../../../services/properties/createProperty.service"
 import ListSalesService from "../../../services/sales/listSales.service"
+import ShowSaleService from "../../../services/sales/showSale.service"
 
 describe('Sales Services', () => {
     beforeAll(async () => {
@@ -127,12 +128,11 @@ describe('Sales Services', () => {
       expect(allSales).toHaveLength(1)
     })
   
-    /* it("Should to login Sales", async () => {
-      const logSales = await LoginSaleService.execute(login);
+    it('Should return a list of Sales', async () => {
+      const showSales = await ShowSaleService.execute(salesCreated.id)
   
-      token = logSales
-      expect(token).toHaveProperty("accesToken");
-    }); */
+      expect(showSales).toHaveProperty('id')
+    })
     
   
   
