@@ -102,8 +102,7 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 
 > ```json
 > {
->   "accessToken": "d14w56q1w56q1dq7-wqd4d4s1adsa-dwq4dqw44w4dqqw4dqw54",
->   "password": "asd132"
+>   "accessToken": "d14w56q1w56q1dq7-wqd4d4s1adsa-dwq4dqw44w4dqqw4dqw54"
 > }
 > ```
 
@@ -118,7 +117,17 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 > }
 > ```
 
-..... em progresso ....
+`PATCH /realtor/:id - atualizar corretor - FORMATO DA REQUISIÇÃO - STATUS 202`
+
+> ```json
+> {
+>   "name": "John",
+>   "email": "example@gmail.com",
+>   "phone_number": 125463348,
+> }
+> ```
+
+`DELETE /realtor/:id - deletar corretor - FORMATO DA REQUISIÇÂO - STATUS 202`
 
 ---
 
