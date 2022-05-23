@@ -8,19 +8,11 @@ import {
   ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
-<<<<<<< HEAD
+  UpdateDateColumn,
 } from "typeorm"
 import { Clients } from "./clients.entity"
 import { Property } from "./property.entity"
 import { Realtor } from "./realtor.entity"
-=======
-  UpdateDateColumn,
-} from 'typeorm'
-import { Clients } from './clients.entity'
-import { Property } from './property.entity'
-import { Realtor } from './realtor.entity'
->>>>>>> origin
-
 @Entity()
 export class Sales {
   @PrimaryGeneratedColumn("uuid")
@@ -36,14 +28,14 @@ export class Sales {
   description: string
 
   @CreateDateColumn({
-    name: 'created_at',
-    type: 'timestamp',
+    name: "created_at",
+    type: "timestamp",
   })
   createdAt: Date
 
   @UpdateDateColumn({
-    name: 'updated_at',
-    type: 'timestamp',
+    name: "updated_at",
+    type: "timestamp",
   })
   updatedAt: Date
 
