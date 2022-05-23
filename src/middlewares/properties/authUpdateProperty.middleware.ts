@@ -19,7 +19,7 @@ const authUpdatePropertyMiddleware = async (
 
   const verifyToken = token.split(" ")[1];
 
-  const secret = process.env.SECRET_KEY || "default";
+  const secret = process.env.SECRET_KEY || "c5e728ad9311059cc3c09092b6a7aca6";
 
   const decoded = verify(verifyToken, secret);
 

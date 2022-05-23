@@ -1,26 +1,10 @@
 import { AppDataSource } from "../../data-source";
-import { Agency } from "../../entities/agency.entity";
 import { Property } from "../../entities/property.entity";
-import { Realtor } from "../../entities/realtor.entity";
 import AppError from "../../errors/appError";
 
 export default class ListPropertiesByQueryService {
-  public static async execute(querys: any, id?: string) {
+  public static async execute(querys: any) {
     const propertiesRepository = AppDataSource.getRepository(Property);
-    const agencyRepository = AppDataSource.getRepository(Agency);
-    const realtorRepository = AppDataSource.getRepository(Realtor);
-
-    const agency = await agencyRepository.findOne({
-      where: {
-        id,
-      },
-    });
-
-    const realtor = await realtorRepository.findOne({
-      where: {
-        id,
-      },
-    });
 
     let properties = await propertiesRepository.find();
 
@@ -81,70 +65,41 @@ export default class ListPropertiesByQueryService {
             ({ area }) => area >= Number(querys.area_maior)
           ))
         : false;
-        element === "bathroom"
+      element === "bathroom"
         ? (properties = properties.filter(
             ({ bathroom_number }) => bathroom_number === Number(querys.bathroom)
           ))
         : false;
       element === "bathroom_maior"
         ? (properties = properties.filter(
-            ({ bathroom_number }) => bathroom_number <= Number(querys.bathroom_maior)
+            ({ bathroom_number }) =>
+              bathroom_number <= Number(querys.bathroom_maior)
           ))
         : false;
       element === "bathroom_menor"
         ? (properties = properties.filter(
-            ({ bathroom_number }) => bathroom_number >= Number(querys.bathroom_menor)
+            ({ bathroom_number }) =>
+              bathroom_number >= Number(querys.bathroom_menor)
           ))
         : false;
-        element === "bedroom"
+      element === "bedroom"
         ? (properties = properties.filter(
             ({ bedroom_number }) => bedroom_number === Number(querys.bedroom)
           ))
         : false;
       element === "bedroom_menor"
         ? (properties = properties.filter(
-            ({ bedroom_number }) => bedroom_number <= Number(querys.bedroom_menor)
+            ({ bedroom_number }) =>
+              bedroom_number <= Number(querys.bedroom_menor)
           ))
         : false;
       element === "bedroom_maior"
         ? (properties = properties.filter(
-            ({ bedroom_number }) => bedroom_number >= Number(querys.bedroom_maior)
+            ({ bedroom_number }) =>
+              bedroom_number >= Number(querys.bedroom_maior)
           ))
         : false;
     });
-
-    if ((!agency && !realtor) || !id) {
-      const availableProperties = properties.map(
-        ({
-          country,
-          state,
-          city,
-          type,
-          area,
-          complement,
-          acquisition_type,
-          price,
-          description,
-          bedroom_number,
-          bathroom_number
-        }) => {
-          return {
-            country,
-            state,
-            city,
-            type,
-            area,
-            complement,
-            acquisition_type,
-            price,
-            description,
-            bedroom_number,
-            bathroom_number
-          };
-        }
-      );
-      return availableProperties;
-    }
 
     return properties;
   }

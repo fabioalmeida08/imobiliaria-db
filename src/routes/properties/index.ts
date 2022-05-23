@@ -6,6 +6,8 @@ import authListPropertyMiddleware from '../../middlewares/properties/authListPro
 import authUpdatePropertyMiddleware from '../../middlewares/properties/authUpdateProperty.middleware'
 import multer from 'multer'
 import { uploadImage } from '../../services/firebase/firebase'
+import { expressYupMiddleware } from 'express-yup-middleware'
+import propertyValidator from '../../validations/properties'
 
 const propertiesRouter = Router()
 
@@ -19,7 +21,8 @@ const Multer = multer({
 propertiesRouter
   .route('/')
   .post(
-    /*authCreatePropertyMiddleware,*/
+    expressYupMiddleware({ schemaValidator: propertyValidator }),
+    authCreatePropertyMiddleware,
     Multer.single('image'),
     uploadImage,
     PropertiesController.store

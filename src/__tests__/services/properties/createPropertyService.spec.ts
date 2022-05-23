@@ -91,34 +91,14 @@ describe('Properites Services', () => {
     expect(newProperty).toHaveProperty('id')
   })
 
-  it('Should return a list of properties with selected elements', async () => {
-    const properties = await ListPropertiesService.execute(undefined)
-
-    expect(Object.keys(properties[0]).length).toBe(9)
-  })
-
   it('Should return a list of properties with all elements', async () => {
-    const properties = await ListPropertiesService.execute(realtorCreated.id)
+    const properties = await ListPropertiesService.execute()
 
     expect(properties[0]).toHaveProperty('id')
   })
 
-  it('Should return one property with selected elements', async () => {
-    const property = await ShowPropertyService.execute(
-      createdProperty.id,
-      undefined
-    )
-    expect(property).toBeTruthy()
-    if (property) {
-      expect(Object.keys(property).length).toBe(9)
-    }
-  })
-
   it('Should return one property with all elements', async () => {
-    const property = await ShowPropertyService.execute(
-      createdProperty.id,
-      realtorCreated.id
-    )
+    const property = await ShowPropertyService.execute(createdProperty.id)
 
     expect(property).toBeTruthy()
 
@@ -157,10 +137,7 @@ describe('Properites Services', () => {
 
     const query = { price_menor: 250000 }
 
-    const filteredProperty = await ListPropertiesByQueryService.execute(
-      query,
-      realtorCreated.id
-    )
+    const filteredProperty = await ListPropertiesByQueryService.execute(query)
 
     expect(filteredProperty[0]).toHaveProperty('id')
     expect(filteredProperty.length).toBe(1)

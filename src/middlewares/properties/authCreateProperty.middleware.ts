@@ -13,12 +13,12 @@ const authCreatePropertyMiddleware = async (
   const token = req.headers.authorization;
 
   if (!token) {
-    throw new AppError("Missing authorization token", 401);
+    return res.status(401).json("Missing authorization token");
   }
 
   const verifyToken = token.split(" ")[1];
 
-  const secret = process.env.SECRET_KEY || "default";
+  const secret = process.env.SECRET_KEY || "c5e728ad9311059cc3c09092b6a7aca6";
 
   const decoded = verify(verifyToken, secret);
 
