@@ -134,6 +134,4 @@ describe('Sales Services', () => {
       expect(showSales).toHaveProperty('id')
     })
     
-  
-  
   })
