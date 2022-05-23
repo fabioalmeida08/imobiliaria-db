@@ -9,6 +9,7 @@ import { IRealtors, IRealtorsExtId } from "../../../interfaces/realtor"
 import { Property } from "../../../entities/property.entity"
 import { CreateProperty } from "../../../interfaces/properties"
 import CreatePropertyService from "../../../services/properties/createProperty.service"
+import ListSalesService from "../../../services/sales/listSales.service"
 
 describe('Sales Services', () => {
     beforeAll(async () => {
@@ -99,9 +100,7 @@ describe('Sales Services', () => {
     
     it('Should be able to create a new Sales', async () => {
       const client = await createClient(client2);
-      console.log(client.id)
       const realtor = await createRealtor(realtor2);
-      console.log(realtor.id)
       const property = await instanceProperty();
 
       const newProperty = await CreatePropertyService.execute(property);
@@ -122,17 +121,17 @@ describe('Sales Services', () => {
       expect(newSales).toHaveProperty('id')
     })
   
-   /*  it('Should return a list of Saless', async () => {
-      const allSaless = await ListAllSalesService.execute()
+    it('Should return a list of Sales', async () => {
+      const allSales = await ListSalesService.execute()
   
-      expect(allSaless).toHaveLength(1)
-    }) */
+      expect(allSales).toHaveLength(1)
+    })
   
     /* it("Should to login Sales", async () => {
-      const logSales = await LoginSalesService.execute(login);
+      const logSales = await LoginSaleService.execute(login);
   
       token = logSales
-      expect(token).toHaveProperty("accessToken");
+      expect(token).toHaveProperty("accesToken");
     }); */
     
   
