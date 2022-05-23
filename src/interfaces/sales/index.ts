@@ -10,3 +10,7 @@ export interface ICreateSale {
 export interface ISale extends ICreateSale {
   property: string
 }
+
+export interface ISalesExtId {
+  id: string
+}
