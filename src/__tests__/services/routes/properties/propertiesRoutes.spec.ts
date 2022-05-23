@@ -181,25 +181,25 @@ describe("Succes Routes", () => {
     expect(response.body.state).toBe("Novo estado");
   });
 
-  //   it("Should delete one property", async () => {
-  //     const agency = {
-  //       name: "Imobiliaria Legal",
-  //       email: "imob@mail.com",
-  //       phone_number: "1140028922",
-  //       password: "senhaforte",
-  //     };
+  it("Should delete one property", async () => {
+    const agency = {
+      name: "Imobiliaria Legal",
+      email: "imob@mail.com",
+      phone_number: "1140028922",
+      password: "senhaforte",
+    };
 
-  //     await CreateAgencyService.execute(agency);
+    await CreateAgencyService.execute(agency);
 
-  //     const loginAgency = await LoginAgencyService.execute({
-  //       email: "imob@mail.com",
-  //       password: "senhaforte",
-  //     });
+    const loginAgency = await LoginAgencyService.execute({
+      email: "imob@mail.com",
+      password: "senhaforte",
+    });
 
-  //     const response = await request(app)
-  //       .delete(`/properties/${createdProperty.id}`)
-  //       .set("Authorization", `Bearer ${loginAgency.accessToken}`);
+    const response = await request(app)
+      .delete(`/properties/${createdProperty.id}`)
+      .set("Authorization", `Bearer ${loginAgency.accessToken}`);
 
-  //     expect(response.status).toBe(204);
-  //   });
+    expect(response.status).toBe(204);
+  });
 });
