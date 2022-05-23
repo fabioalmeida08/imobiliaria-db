@@ -1,4 +1,6 @@
 import { Router } from "express";
+import { expressYupMiddleware } from "express-yup-middleware";
+import propertyValidator from "../../validations/properties";
 
 import PropertiesController from "../../controllers/properties.controller";
 
@@ -11,7 +13,11 @@ const propertiesRouter = Router();
 
 propertiesRouter
   .route("/")
-  .post(authCreatePropertyMiddleware, PropertiesController.store)
+  .post(
+    expressYupMiddleware({ schemaValidator: propertyValidator }),
+    authCreatePropertyMiddleware,
+    PropertiesController.store
+  )
   .get(authListPropertyMiddleware, PropertiesController.index);
 
 propertiesRouter
