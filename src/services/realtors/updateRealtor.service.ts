@@ -19,6 +19,6 @@ export default class UpdateRealtorService {
     };
     await realtorRepo.update(findUpdateRealtor!.id, newInfo);
 
-    return realtorRepo;
+    return realtorRepo.findOneBy({ id });
   }
 }

@@ -1,23 +1,22 @@
 import bcryptjs from "bcryptjs";
 import { AppDataSource } from "../../data-source";
-import { ILoginRealtor } from "../../interfaces/realtor";
+import { IAgency, IAgencyLogin } from "../../interfaces/agency";
 import jwt from "jsonwebtoken";
 import AppError from "../../errors/appError";
-import { Realtor } from "../../entities/realtor.entity";
-export default class LoginRealtorService {
-  public static async execute(data: ILoginRealtor) {
+import { Agency } from "../../entities/agency.entity";
+export default class LoginAgencyService {
+  public static async execute(data: IAgencyLogin) {
     const { password, email } = data;
 
-    const realtorRepo = AppDataSource.getRepository(Realtor);
-    const realtors = await realtorRepo.find();
-    const findRealtor = realtors.find((user) => user.email === email);
+    const AgencyRepo = AppDataSource.getRepository(Agency);
+    const findAgency = await AgencyRepo.findOneBy({ email });
 
-    if (!findRealtor) {
+    if (!findAgency) {
       throw new AppError("Email or password invalid", 401);
     }
     const comparePsswordHash = await bcryptjs.compare(
       password,
-      findRealtor.password
+      findAgency.password
     );
 
     if (!comparePsswordHash) {
@@ -26,13 +25,16 @@ export default class LoginRealtorService {
 
     const generateToken = jwt.sign(
       { email: email },
-      "c5e728ad9311059cc3c09092b6a7aca6",
+      "12720f6991bf17630654e468a3c99a5a",
       {
         expiresIn: "24h",
-        subject: findRealtor.id,
+        subject: findAgency.id,
       }
     );
 
-    return { accessToken: generateToken };
+    return {
+      accessToken: generateToken,
+      id: findAgency.id,
+    };
   }
 }

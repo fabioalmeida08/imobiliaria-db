@@ -4,13 +4,16 @@ export interface IRealtors {
   email: string;
   password: string;
 }
+
 export interface IRealtorsExtId extends IRealtors {
   id: string;
 }
+
 export interface ILoginRealtor {
   email: string;
   password: string;
 }
+
 export interface IRealtorToken{
   accessToken : string
 }

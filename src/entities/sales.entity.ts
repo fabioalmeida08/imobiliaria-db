@@ -8,18 +8,11 @@ import {
   ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
-<<<<<<< HEAD
-} from "typeorm"
-import { Clients } from "./clients.entity"
-import { Property } from "./property.entity"
-import { Realtor } from "./realtor.entity"
-=======
   UpdateDateColumn,
 } from 'typeorm'
 import { Clients } from './clients.entity'
 import { Property } from './property.entity'
 import { Realtor } from './realtor.entity'
->>>>>>> origin
 
 @Entity()
 export class Sales {
