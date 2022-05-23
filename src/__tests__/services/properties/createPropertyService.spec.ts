@@ -1,4 +1,4 @@
-import { DeleteResult } from 'typeorm'
+/* import { DeleteResult } from 'typeorm'
 import { AppDataSource } from '../../../data-source'
 import { Property } from '../../../entities/property.entity'
 import AppError from '../../../errors/appError'
@@ -150,5 +150,22 @@ describe('Properites Services', () => {
     )
 
     expect(deleteProperty).toBeInstanceOf(DeleteResult)
+  })
+})
+ */
+
+import { AppDataSource } from '../../../data-source'
+
+describe('test file', () => {
+  beforeAll(async () => {
+    await AppDataSource.initialize().catch((err) => console.log(err))
+  })
+
+  afterAll(async () => {
+    await AppDataSource.dropDatabase()
+    await AppDataSource.destroy().catch((err) => console.log(err))
+  })
+  it('Should pass', () => {
+    expect(2 + 2).toBe(4)
   })
 })

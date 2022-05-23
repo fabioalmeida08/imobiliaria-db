@@ -1,7 +1,7 @@
-import { AppDataSource } from "../../../../data-source";
-import { IAgency, IAgencyExtId, IAgencyLogin, IAgencyToken, IUpdatedAgency } from "../../../../interfaces/agency";
+import { AppDataSource } from "../../../data-source";
+import { IAgency, IAgencyExtId, IAgencyLogin, IAgencyToken, IUpdatedAgency } from "../../../interfaces/agency";
 import request from "supertest";
-import app from "../../../../app";
+import app from "../../../app";
 
 beforeAll(async () => {
     await AppDataSource.initialize().catch((err) => console.log(err));

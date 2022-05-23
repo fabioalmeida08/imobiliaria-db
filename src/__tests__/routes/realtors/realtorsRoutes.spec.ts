@@ -1,10 +1,10 @@
 import request from "supertest";
 import { DeleteResult } from "typeorm";
-import app from "../../../../app";
-import { AppDataSource } from "../../../../data-source";
-import { IAgency, IAgencyExtId, IAgencyLogin, IAgencyToken } from "../../../../interfaces/agency";
-import { ILoginRealtor, IRealtors, IRealtorsExtId } from "../../../../interfaces/realtor";
-import CreateRealtorService from "../../../../services/realtors/createRealtor.service";
+import app from "../../../app";
+import { AppDataSource } from "../../../data-source";
+import { IAgency, IAgencyExtId, IAgencyLogin, IAgencyToken } from "../../../interfaces/agency";
+import { ILoginRealtor, IRealtors, IRealtorsExtId } from "../../../interfaces/realtor";
+import CreateRealtorService from "../../../services/realtors/createRealtor.service";
 
 
 

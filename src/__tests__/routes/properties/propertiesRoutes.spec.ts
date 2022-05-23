@@ -227,7 +227,7 @@ describe('Succes Routes', () => {
   //   });
 })*/
 
-import { AppDataSource } from '../../../../data-source'
+import { AppDataSource } from '../../../data-source'
 
 describe('test file', () => {
   beforeAll(async () => {
