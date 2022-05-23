@@ -1,16 +1,14 @@
 import { AppDataSource } from '../../data-source'
 import { Clients } from '../../entities/clients.entity'
-import { Images } from '../../entities/images.entity'
 import { Property } from '../../entities/property.entity'
 import { Realtor } from '../../entities/realtor.entity'
 import { CreateProperty } from '../../interfaces/properties'
 
 export default class CreatePropertyService {
-  public static async execute(data: CreateProperty, img_url: string) {
+  public static async execute(data: CreateProperty) {
     const propertyRepository = AppDataSource.getRepository(Property)
     const clientRepository = AppDataSource.getRepository(Clients)
     const realtorRepository = AppDataSource.getRepository(Realtor)
-    const imageRepository = AppDataSource.getRepository(Images)
 
     const client_seller = await clientRepository.findOne({
       where: {
@@ -38,9 +36,6 @@ export default class CreatePropertyService {
     property.description = data.description
     property.client_seller = client_seller as Clients
     property.realtor_creator = realtor_creator as Realtor
-    const image = imageRepository.create({ img_url, property })
-    await imageRepository.save(image)
-    property.image = [image]
 
     await propertyRepository.save(property)
 

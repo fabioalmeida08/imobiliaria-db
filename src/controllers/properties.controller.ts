@@ -12,13 +12,11 @@ export default class PropertiesController {
     let data = { ...req.body }
     const { id_realtor } = req
 
-    const img_url = req.firebaseUrl
-
     if (id_realtor) {
       data = { ...data, id_realtor }
     }
 
-    const property = await CreatePropertyService.execute(data, img_url)
+    const property = await CreatePropertyService.execute(data)
 
     return res.status(201).json(property)
   }
