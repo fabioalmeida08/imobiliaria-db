@@ -124,6 +124,98 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 
 <h3>Client</h3>
 
+`POST /clients - Criar um Client - FORMATO DA REQUISIÇÃO`
+
+> ```json
+> {
+>   "name": "John",
+>   "email": "example@gmail.com",
+>   "phone_number": 125463348
+> }
+> ```
+
+`POST /clients - Criar Client - FORMATO DA RESPOSTA - STATUS 201`
+
+> ```json
+> {
+>  "name":"Ivan Ilitch",
+>	"email":"ivan@mail.com",
+>	"phone_number":"1234578901",
+>	"intention":"comprar"
+> }
+> ```
+
+`GET /clients/:id - visulalisar o Client pelo id - FORMATO DA REPOSTA - STATUS 200`
+
+> ```json
+> {
+>	"id": "38aaa48e-24da-45f4-a9a6-2aa7ceb84546",
+>	"name": "Ivan Ilitch",
+>	"phone_number": "1234578901",
+>	"email": "ivan@mail.com",
+>	"intention": "comprar",
+>	"createdAt": "2022-05-23T13:00:48.780Z",
+>	"updatedAt": "2022-05-23T13:00:48.780Z",
+>	"properties": [],
+>	"buyers": []
+> }
+> ```
+
+`GET /clients - retorna uma lista com os clients cadastrados - FORMATO DA REPOSTA - STATUS 200`
+
+> ```json
+>[
+>	{
+>		"id": "daa2282f-a5b2-4ffc-bb47-2d7ebb440413",
+>		"name": "jhonny",
+>		"phone_number": "1234578901",
+>		"email": "jhonny@mail.com",
+>		"intention": "comprar",
+>		"createdAt": "2022-05-19T21:39:19.681Z",
+>		"updatedAt": "2022-05-19T21:39:19.681Z",
+>		"properties": [],
+>		"buyers": []
+>	},
+>	{
+>		"id": "9dd23373-84b4-4e96-ae30-dd29020189b2",
+>		"name": "Ivan Ilitch",
+>		"phone_number": "1234578901",
+>		"email": "ivan@mail.com",
+>		"intention": "comprar",
+>		"createdAt": "2022-05-23T13:00:48.780Z",
+>		"updatedAt": "2022-05-23T13:00:48.780Z",
+>		"properties": [],
+>		"buyers": []
+>	}
+>]
+> ```
+
+
+`PATCH /clients/:id - Edita qualquer campo do Client pelo id - FORMATO DA REQUESIÇÃO - STATUS 200`
+
+> ```json
+> {
+>	 "name": "Dostoiévski",
+>	 "intention": "comprar",
+> }
+> ```
+
+
+> ```json
+> {
+>	"id": "38aaa48e-24da-45f4-a9a6-2aa7ceb84546",
+>	"name": "Dostoiévski",
+>	"phone_number": "1234578901",
+>	"email": "ivan@mail.com",
+>	"intention": "vender",
+>	"createdAt": "2022-05-23T13:53:38.510Z",
+>	"updatedAt": "2022-05-23T13:56:48.932Z",
+>	"properties": [],
+>	"buyers": []
+> }
+> ```
+
+
 ---
 
 <h3>Properties</h3>
