@@ -9,34 +9,33 @@ import {
   OneToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from 'typeorm'
-import { Clients } from './clients.entity'
-import { Property } from './property.entity'
-import { Realtor } from './realtor.entity'
-
+} from "typeorm"
+import { Clients } from "./clients.entity"
+import { Property } from "./property.entity"
+import { Realtor } from "./realtor.entity"
 @Entity()
 export class Sales {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn("uuid")
   readonly id: string
 
-  @Column({ type: 'decimal', precision: 10, scale: 2, nullable: false })
+  @Column({ type: "decimal", precision: 10, scale: 2, nullable: false })
   selling_value: number
 
-  @Column({ type: 'decimal', precision: 10, scale: 2, nullable: false })
+  @Column({ type: "decimal", precision: 10, scale: 2, nullable: false })
   down_payment: number
 
-  @Column({ type: 'varchar', width: 1500, nullable: false })
+  @Column({ type: "varchar", width: 1500, nullable: false })
   description: string
 
   @CreateDateColumn({
-    name: 'created_at',
-    type: 'timestamp',
+    name: "created_at",
+    type: "timestamp",
   })
   createdAt: Date
 
   @UpdateDateColumn({
-    name: 'updated_at',
-    type: 'timestamp',
+    name: "updated_at",
+    type: "timestamp",
   })
   updatedAt: Date
 
