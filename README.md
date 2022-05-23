@@ -191,7 +191,7 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 > ```
 
 
-`PATCH /clients/:id - Edita qualquer campo do Client pelo id - FORMATO DA REQUESIÇÃO - STATUS 200`
+`PATCH /clients/:id - Edita qualquer campo do Client pelo id - FORMATO DA REQUESIÇÃO`
 
 > ```json
 > {
@@ -199,7 +199,7 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 >	 "intention": "comprar",
 > }
 > ```
-
+`PATCH /clients/:id - Edita qualquer campo do Client pelo id - FORMATO DA RESPOSTA - STATUS 200`
 
 > ```json
 > {
