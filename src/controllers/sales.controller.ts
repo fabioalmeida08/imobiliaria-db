@@ -15,7 +15,7 @@ export default class SalesController {
 
     const newSale = await CreateSaleService.execute(data)
 
-    return response.status(201).json(newSale)
+    return res.status(201).json(newSale)
   }
 
   public static async show(req: Request, res: Response) {

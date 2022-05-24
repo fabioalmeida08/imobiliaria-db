@@ -54,7 +54,6 @@ describe("Sales Services", () => {
   let clientCreated: IClient;
   const createClient = async (client: ICreateClient) => {
     const newClient = await CreateClientService.execute(client);
-
     clientCreated = newClient;
 
     return clientCreated;
