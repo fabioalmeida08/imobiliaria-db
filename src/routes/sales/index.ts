@@ -5,10 +5,9 @@ const salesRoute = Router()
 
 salesRoute
   .route("/:id")
-  .post(SalesController.store)
   .get(SalesController.show)
   .patch(SalesController.update)
 
-salesRoute.route("").get(SalesController.index)
+salesRoute.route("").get(SalesController.index).post(SalesController.store)
 
 export default salesRoute

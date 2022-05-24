@@ -26,7 +26,7 @@ export default class LoginRealtorService {
 
     const generateToken = jwt.sign(
       { email: email },
-      process.env.JWT_SECRET_KEY || "c5e728ad9311059cc3c09092b6a7aca6",
+      process.env.JWT_SECRET_KEY as string,
       {
         expiresIn: "24h",
         subject: findRealtor.id,
