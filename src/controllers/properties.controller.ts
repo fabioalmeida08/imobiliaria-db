@@ -1,4 +1,4 @@
-import { Request, response, Response } from "express";
+import { Request, Response } from "express";
 import CreatePropertyService from "../services/properties/createProperty.service";
 import DeletePropertyService from "../services/properties/deleteProperty.service";
 import ListPropertiesService from "../services/properties/listProperties.service";

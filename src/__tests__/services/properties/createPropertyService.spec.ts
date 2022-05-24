@@ -1,7 +1,5 @@
 import { DeleteResult } from "typeorm";
 import { AppDataSource } from "../../../data-source";
-import { Property } from "../../../entities/property.entity";
-import AppError from "../../../errors/appError";
 import { IClient, ICreateClient } from "../../../interfaces/client";
 import { CreateProperty } from "../../../interfaces/properties";
 import { IRealtors, IRealtorsExtId } from "../../../interfaces/realtor";

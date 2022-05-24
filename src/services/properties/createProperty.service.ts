@@ -40,7 +40,6 @@ export default class CreatePropertyService {
     property.client_seller = client_seller as Clients;
     property.realtor_creator = realtor_creator as Realtor;
 
-    propertyRepository.create(property);
     await propertyRepository.save(property);
 
     const propertyReturned: ReturnedPropertyList = {

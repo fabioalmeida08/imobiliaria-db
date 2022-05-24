@@ -1,16 +1,16 @@
-import { AppDataSource } from "../../../../data-source";
+import { AppDataSource } from "../../../data-source";
 import request from "supertest";
-import { Property } from "../../../../entities/property.entity";
-import { IClient, ICreateClient } from "../../../../interfaces/client";
-import { CreateProperty } from "../../../../interfaces/properties";
-import { IRealtors, IRealtorsExtId } from "../../../../interfaces/realtor";
-import CreateClientService from "../../../../services/clients/createClient.service";
-import CreateRealtorService from "../../../../services/realtors/createRealtor.service";
-import app from "../../../../app";
-import LoginRealtorService from "../../../../services/realtors/loginRealtor.service";
-import CreatePropertyService from "../../../../services/properties/createProperty.service";
-import CreateAgencyService from "../../../../services/agency/createAgency.service";
-import LoginAgencyService from "../../../../services/agency/agencyLogin.service";
+import { IClient, ICreateClient } from "../../../interfaces/client";
+import { CreateProperty } from "../../../interfaces/properties";
+import { IRealtors, IRealtorsExtId } from "../../../interfaces/realtor";
+import CreateClientService from "../../../services/clients/createClient.service";
+import CreateRealtorService from "../../../services/realtors/createRealtor.service";
+import app from "../../../app";
+import LoginRealtorService from "../../../services/realtors/loginRealtor.service";
+import CreatePropertyService from "../../../services/properties/createProperty.service";
+import CreateAgencyService from "../../../services/agency/createAgency.service";
+import LoginAgencyService from "../../../services/agency/agencyLogin.service";
+import { ReturnedPropertyList } from "../../../services/properties/listPropertiesByQuery.service";
 
 beforeAll(async () => {
   await AppDataSource.initialize().catch((err) => console.log(err));
@@ -65,12 +65,12 @@ describe("Succes Routes", () => {
     return realtorCreated;
   };
 
-  let createdProperty: Property;
+  let createdProperty: ReturnedPropertyList;
   const instanceProperty = async () => {
     const client = await createClient();
     const realtor = await createRealtor();
 
-    const property: CreateProperty = {
+    const property = {
       street: "Rua teste",
       city: "Cidade teste",
       state: "Estado teste",

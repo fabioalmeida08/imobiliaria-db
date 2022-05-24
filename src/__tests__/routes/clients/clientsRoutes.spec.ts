@@ -1,11 +1,11 @@
-import { AppDataSource } from "../../../../data-source";
+import { AppDataSource } from "../../../data-source";
 import request from "supertest";
-import app from "../../../../app";
+import app from "../../../app";
 import {
   ICreateClient,
   IClient,
   IUpdatedClient,
-} from "../../../../interfaces/client";
+} from "../../../interfaces/client";
 
 beforeAll(async () => {
   await AppDataSource.initialize().catch((err) => console.log(err));
