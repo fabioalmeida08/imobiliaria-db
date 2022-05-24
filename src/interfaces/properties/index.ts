@@ -42,3 +42,7 @@ export interface UpdateProperty {
   id_client?: string;
   id_realtor?: string;
 }
+
+export interface testIdProperty {
+  id: string;
+}
