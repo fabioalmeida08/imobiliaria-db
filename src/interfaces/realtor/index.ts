@@ -17,3 +17,7 @@ export interface ILoginRealtor {
 export interface IRealtorToken{
   accessToken : string
 }
+
+export interface IRealtorsId {
+  id: string;
+}

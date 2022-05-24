@@ -15,7 +15,7 @@ export default class SalesController {
 
     const newSale = await CreateSaleService.execute(data)
 
-    return response.status(201).json(newSale)
+    return res.status(201).json(newSale)
   }
 
   public static async show(req: Request, res: Response) {
@@ -32,9 +32,8 @@ export default class SalesController {
 
   public static async update(req: Request, res: Response) {
     const data = req.body
-    const id = req.params.id
-    data.id = id
-    const updateRealtor = await UpdateSaleService.execute(data)
-    return res.status(200).json(updateRealtor)
+    const { id } = req.params
+    const updatedSale = await UpdateSaleService.execute(id, data)
+    return res.status(200).json(updatedSale)
   }
 }

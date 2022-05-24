@@ -10,3 +10,7 @@ export interface IClient extends ICreateClient {
 }
 
 export interface IUpdatedClient extends Partial<ICreateClient>{}
+
+export interface IClientId {
+  id: string
+}
