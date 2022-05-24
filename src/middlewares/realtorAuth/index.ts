@@ -17,7 +17,7 @@ const realtorAuthMiddleware = (
 
   jwt.verify(
     verifyToken,
-    process.env.JWT_SECRET_KEY || "c5e728ad9311059cc3c09092b6a7aca6",
+    String(process.env.JWT_SECRET_KEY),
     (err, decode) => {
       if (err) {
         throw new AppError("Realtor Authentication failed", 401);

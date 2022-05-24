@@ -108,7 +108,6 @@ describe("Sales Services", () => {
       id_client_buyer: client.id,
       id_property: newProperty.id,
     };
-    //sales.realtors.push(realtor.id)
 
     const newSales = await CreateSaleService.execute(sales);
 
