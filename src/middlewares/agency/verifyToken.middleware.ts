@@ -18,7 +18,7 @@ const verifyAgencyTokenMiddleware = (
 
   jwt.verify(
     verifyToken,
-    process.env.JWT_SECRET_KEY as string,
+    String(process.env.JWT_SECRET_KEY),
     (err, decode) => {
       if (err) {
         throw new AppError("Agency Authentication failed", 401);

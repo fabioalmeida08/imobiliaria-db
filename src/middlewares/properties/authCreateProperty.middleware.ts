@@ -18,7 +18,7 @@ const authCreatePropertyMiddleware = async (
 
   const verifyToken = token.split(" ")[1];
 
-  const secret = process.env.JWT_SECRET_KEY as string
+  const secret = String(process.env.JWT_SECRET_KEY)
 
   const decoded = verify(verifyToken, secret);
 
