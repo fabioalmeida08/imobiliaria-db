@@ -5,7 +5,7 @@ export declare global {
     interface Request {
       id_realtor: string
       id_agency: string
-      firebaseUrl: string
+      firebaseUrl: string[]
     }
   }
 }
