@@ -1,5 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import jwt from "jsonwebtoken";
+import { string } from "yup";
 import AppError from "../../errors/appError";
 
 const verifyAgencyTokenMiddleware = (
@@ -17,7 +18,7 @@ const verifyAgencyTokenMiddleware = (
 
   jwt.verify(
     verifyToken,
-    process.env.JWT_SECRET_KEY || "c5e728ad9311059cc3c09092b6a7aca6",
+    String(process.env.JWT_SECRET_KEY),
     (err, decode) => {
       if (err) {
         throw new AppError("Agency Authentication failed", 401);
