@@ -15,12 +15,16 @@ const realtorAuthMiddleware = (
 
   const verifyToken = token.split(" ")[1];
 
-  jwt.verify(verifyToken, "c5e728ad9311059cc3c09092b6a7aca6", (err, decode) => {
-    if (err) {
-      throw new AppError("Realtor Authentication failed", 401);
-    }
+  jwt.verify(
+    verifyToken,
+    process.env.JWT_SECRET_KEY || "c5e728ad9311059cc3c09092b6a7aca6",
+    (err, decode) => {
+      if (err) {
+        throw new AppError("Realtor Authentication failed", 401);
+      }
 
-    next();
-  });
+      next();
+    }
+  );
 };
 export default realtorAuthMiddleware;

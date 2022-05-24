@@ -25,7 +25,7 @@ export default class LoginAgencyService {
 
     const generateToken = jwt.sign(
       { email: email },
-      "12720f6991bf17630654e468a3c99a5a",
+      process.env.JWT_SECRET_KEY || "c5e728ad9311059cc3c09092b6a7aca6",
       {
         expiresIn: "24h",
         subject: findAgency.id,
