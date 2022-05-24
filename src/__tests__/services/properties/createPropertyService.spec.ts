@@ -9,7 +9,9 @@ import CreateClientService from "../../../services/clients/createClient.service"
 import CreatePropertyService from "../../../services/properties/createProperty.service";
 import DeletePropertyService from "../../../services/properties/deleteProperty.service";
 import ListPropertiesService from "../../../services/properties/listProperties.service";
-import ListPropertiesByQueryService from "../../../services/properties/listPropertiesByQuery.service";
+import ListPropertiesByQueryService, {
+  ReturnedPropertyList,
+} from "../../../services/properties/listPropertiesByQuery.service";
 import ShowPropertyService from "../../../services/properties/showProperty.service";
 import UpdatePropertyService from "../../../services/properties/updateProperty.service";
 import CreateRealtorService from "../../../services/realtors/createRealtor.service";
@@ -56,7 +58,7 @@ describe("Properites Services", () => {
     return realtorCreated;
   };
 
-  let createdProperty: Property;
+  let createdProperty: ReturnedPropertyList;
   const instanceProperty = async () => {
     const client = await createClient();
     const realtor = await createRealtor();
@@ -90,13 +92,16 @@ describe("Properites Services", () => {
   });
 
   it("Should return a list of properties with all elements", async () => {
-    const properties = await ListPropertiesService.execute();
+    const properties = await ListPropertiesService.execute(realtorCreated.id);
 
     expect(properties[0]).toHaveProperty("id");
   });
 
   it("Should return one property with all elements", async () => {
-    const property = await ShowPropertyService.execute(createdProperty.id);
+    const property = await ShowPropertyService.execute(
+      createdProperty.id,
+      realtorCreated.id
+    );
 
     expect(property).toBeTruthy();
 
@@ -133,7 +138,10 @@ describe("Properites Services", () => {
 
     const query = { price_menor: 250000 };
 
-    const filteredProperty = await ListPropertiesByQueryService.execute(query);
+    const filteredProperty = await ListPropertiesByQueryService.execute(
+      query,
+      realtorCreated.id
+    );
 
     expect(filteredProperty[0]).toHaveProperty("id");
     expect(filteredProperty.length).toBe(1);

@@ -5,7 +5,6 @@ import ListPropertiesService from "../services/properties/listProperties.service
 import ListPropertiesByQueryService from "../services/properties/listPropertiesByQuery.service";
 import ShowPropertyService from "../services/properties/showProperty.service";
 import UpdatePropertyService from "../services/properties/updateProperty.service";
-import { instanceToPlain } from "class-transformer";
 
 export default class PropertiesController {
   public static async store(req: Request, res: Response) {
@@ -28,23 +27,15 @@ export default class PropertiesController {
       ? req.id_agency
       : undefined;
 
-    if (req.query) {
+    if (Object.keys(req.query).length) {
       const querys = req.query;
 
-      const properties = await ListPropertiesByQueryService.execute(querys);
-
-      if (!id) {
-        return res.json(instanceToPlain(properties));
-      }
+      const properties = await ListPropertiesByQueryService.execute(querys, id);
 
       return res.json(properties);
     }
 
-    const properties = await ListPropertiesService.execute();
-
-    if (!id) {
-      return res.json(instanceToPlain(properties));
-    }
+    const properties = await ListPropertiesService.execute(id);
 
     return res.json(properties);
   }
@@ -58,11 +49,7 @@ export default class PropertiesController {
 
     const { id_property } = req.params;
 
-    const property = await ShowPropertyService.execute(id_property);
-
-    if (!id) {
-      return res.json(instanceToPlain(property));
-    }
+    const property = await ShowPropertyService.execute(id_property, id);
 
     return res.json(property);
   }

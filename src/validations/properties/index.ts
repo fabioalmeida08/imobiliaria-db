@@ -16,7 +16,6 @@ const propertyValidator = {
         price: yup.number().required("price is required"),
         description: yup.string().required("description is required"),
         id_client: yup.string().required("id_client is required"),
-        id_realtor: yup.string().required("id_realtor is required"),
       }),
       validateOptions: {
         abortEarly: false,

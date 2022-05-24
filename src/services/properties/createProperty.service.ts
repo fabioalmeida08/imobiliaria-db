@@ -3,9 +3,12 @@ import { Clients } from "../../entities/clients.entity";
 import { Property } from "../../entities/property.entity";
 import { Realtor } from "../../entities/realtor.entity";
 import { CreateProperty } from "../../interfaces/properties";
+import { ReturnedPropertyList } from "./listPropertiesByQuery.service";
 
 export default class CreatePropertyService {
-  public static async execute(data: CreateProperty): Promise<Property> {
+  public static async execute(
+    data: CreateProperty
+  ): Promise<ReturnedPropertyList> {
     const propertyRepository = AppDataSource.getRepository(Property);
     const clientRepository = AppDataSource.getRepository(Clients);
     const realtorRepository = AppDataSource.getRepository(Realtor);
@@ -40,6 +43,18 @@ export default class CreatePropertyService {
     propertyRepository.create(property);
     await propertyRepository.save(property);
 
-    return property;
+    const propertyReturned: ReturnedPropertyList = {
+      ...property,
+      client_seller: {
+        id: client_seller?.id as string,
+        name: client_seller?.name as string,
+      },
+      realtor_creator: {
+        id: realtor_creator?.id as string,
+        name: realtor_creator?.name as string,
+      },
+    };
+
+    return propertyReturned;
   }
 }

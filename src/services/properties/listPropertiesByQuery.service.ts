@@ -1,10 +1,51 @@
+import { instanceToPlain } from "class-transformer";
 import { AppDataSource } from "../../data-source";
+import { Clients } from "../../entities/clients.entity";
+import { Images } from "../../entities/images.entity";
 import { Property } from "../../entities/property.entity";
+import { Realtor } from "../../entities/realtor.entity";
 import AppError from "../../errors/appError";
 
+export interface IdName {
+  id: string;
+  name: string;
+}
+
+export interface ReturnedPropertyList {
+  id: string;
+  street: string;
+  city: string;
+  state: string;
+  postal_code: string;
+  country: string;
+  area: number;
+  complement: string;
+  availability: boolean;
+  type: string;
+  acquisition_type: string;
+  price: number;
+  bathroom_number: number;
+  bedroom_number: number;
+  parking_spaces: number;
+  elevator: number;
+  party_hall: boolean;
+  party_area: boolean;
+  gtill: boolean;
+  swimming_pool?: boolean;
+  gym: boolean;
+  playground: boolean;
+  sports_court: boolean;
+  description: string;
+  client_seller: IdName;
+  realtor_creator: IdName;
+  image: Images[];
+}
+
 export default class ListPropertiesByQueryService {
-  public static async execute(querys: any) {
+  public static async execute(querys: any, id?: string) {
     const propertiesRepository = AppDataSource.getRepository(Property);
+    const clientRepository = AppDataSource.getRepository(Clients);
+    const realtorRepository = AppDataSource.getRepository(Realtor);
 
     let properties = await propertiesRepository.find();
 
@@ -101,6 +142,37 @@ export default class ListPropertiesByQueryService {
         : false;
     });
 
-    return properties;
+    if (!id) {
+      return instanceToPlain(properties);
+    }
+
+    const clients = await clientRepository.find();
+    const realtors = await realtorRepository.find();
+
+    const propertiesList = properties.map((property) => {
+      const actualClient = clients.find(({ properties }) => {
+        return properties.some((prop) => prop.id === property.id);
+      });
+
+      const actualRealtor = realtors.find(({ properties_created }) => {
+        return properties_created.some((prop) => prop.id === property.id);
+      });
+
+      const returnedProperty: ReturnedPropertyList = {
+        ...property,
+        client_seller: {
+          id: actualClient?.id as string,
+          name: actualClient?.name as string,
+        },
+        realtor_creator: {
+          id: actualRealtor?.id as string,
+          name: actualRealtor?.name as string,
+        },
+      };
+
+      return returnedProperty;
+    });
+
+    return propertiesList;
   }
 }
