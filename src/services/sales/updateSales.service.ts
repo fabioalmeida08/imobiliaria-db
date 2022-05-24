@@ -1,33 +1,26 @@
 import { AppDataSource } from "../../data-source"
 import { Sales } from "../../entities/sales.entity"
-import { ISale } from "../../interfaces/sales"
+import { IUpdateSale } from "../../interfaces/sales"
+import AppError from "../../errors/appError"
 
 export default class UpdateSaleService {
-  public static async execute(data: ISale) {
-    const {
-      id,
-      selling_value,
-      down_payment,
-      description,
-      id_client_buyer,
-      id_property,
-    } = data
-
+  public static async execute(id: string, data: IUpdateSale) {
     const salesRepo = AppDataSource.getRepository(Sales)
+    const sale = await salesRepo.findOneBy({ id })
 
-    const sales = await salesRepo.find()
-
-    const findedSale = sales.find((e) => e.id === id)
-
-    const newSale = {
-      selling_value,
-      down_payment,
-      description,
-      id_client_buyer,
-      id_property,
+    if (!sale) {
+      throw new AppError("Sale not found")
     }
-    await salesRepo.update(findedSale!.id, newSale)
 
-    return salesRepo.findOneBy({ id })
+    data.selling_value
+      ? (sale.selling_value = data.selling_value)
+      : sale.selling_value
+    data.down_payment
+      ? (sale.down_payment = data.down_payment)
+      : sale.down_payment
+    data.description ? (sale.description = data.description) : sale.description
+    await salesRepo.save(sale)
+
+    return sale
   }
 }

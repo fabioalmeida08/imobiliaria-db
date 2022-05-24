@@ -202,4 +202,104 @@ describe("Succes Routes", () => {
 
     expect(response.status).toBe(204);
   });
+
+  describe("Erros cases routes", () => {
+    let newCreatedProperty: ReturnedPropertyList;
+    const propertyThree = {
+      street: "Rua teste 3",
+      city: "Cidade teste 3",
+      state: "Estado teste 3",
+      postal_code: "12345678",
+      country: "Pais teste 3",
+      area: 66,
+      complement: "Complemento teste 3",
+      type: "Apartamento",
+      acquisition_type: "Venda 3",
+      price: 400000,
+      description: "Descrição teste 3",
+    };
+
+    const newRealtor: IRealtors = {
+      name: "Goleiro Cassio",
+      email: "cassiooo@mail.com",
+      phone_number: "1234567890122",
+      password: "casiooo123",
+    };
+    let newRealtorToken: Token;
+
+    it("Should not create without a field", async () => {
+      const response = await request(app)
+        .post("/properties")
+        .set("Authorization", `Bearer ${realtorToken.accessToken}`)
+        .send(propertyThree);
+
+      expect(response.status).toBe(400);
+      expect(response.body).toHaveProperty("errors");
+    });
+
+    it("Should not create without authorization", async () => {
+      const response = await request(app)
+        .post("/properties")
+        .send({ ...propertyThree, id_client: clientCreated.id });
+
+      expect(response.status).toBe(401);
+      expect(response.body).toContain("Missing authorization token");
+    });
+
+    it("Should not update without authorization", async () => {
+      const createNewRealtor = await CreateRealtorService.execute(newRealtor);
+
+      const newLogin = await LoginRealtorService.execute({
+        email: "cassiooo@mail.com",
+        password: "casiooo123",
+      });
+      newRealtorToken = newLogin;
+
+      const newProperty = await CreatePropertyService.execute({
+        ...propertyThree,
+        id_client: clientCreated.id,
+        id_realtor: createNewRealtor.id,
+      });
+      newCreatedProperty = newProperty;
+
+      const response = await request(app)
+        .patch(`/properties/${newProperty.id}`)
+        .send({ city: "Nova cidade" });
+
+      expect(response.status).toBe(401);
+      expect(response.body.message).toBe("Missing authorization token");
+    });
+
+    it("Should not update without the correct authorization", async () => {
+      const response = await request(app)
+        .patch(`/properties/${newCreatedProperty.id}`)
+        .set("Authorization", `Bearer ${realtorToken.accessToken}`)
+        .send({ city: "Nova Cidade" });
+
+      expect(response.status).toBe(401);
+      expect(response.body.message).toBe(
+        "Only the responsible realtor can access this feature"
+      );
+    });
+
+    it("Should not delete without authorization", async () => {
+      const response = await request(app).delete(
+        `/properties/${newCreatedProperty.id}`
+      );
+
+      expect(response.status).toBe(401);
+      expect(response.body.message).toBe("Missing authorization token");
+    });
+
+    it("Should not delete without the correct authorization", async () => {
+      const response = await request(app)
+        .delete(`/properties/${newCreatedProperty.id}`)
+        .set("Authorization", `Bearer ${newRealtorToken.accessToken}`);
+
+      expect(response.status).toBe(401);
+      expect(response.body.message).toBe(
+        "Only the admin can access this feature"
+      );
+    });
+  });
 });
