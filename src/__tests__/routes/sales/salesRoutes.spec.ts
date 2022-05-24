@@ -144,7 +144,6 @@ describe("Succes Routes", () => {
       .send(sales);
 
     createSales = response.body;
-    console.log(response.status)
 
     expect(response.status).toBe(201);
     expect(response.body).toHaveProperty("id");
