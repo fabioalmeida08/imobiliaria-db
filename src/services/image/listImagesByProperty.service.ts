@@ -6,7 +6,7 @@ export default class ListImageByProperty {
   public static async execute(property_id: string) {
     const propertyRepository = AppDataSource.getRepository(Property)
 
-    const property = await propertyRepository.findOne({
+    const property = await propertyRepository.findOneOrFail({
       where: {
         id: property_id,
       },

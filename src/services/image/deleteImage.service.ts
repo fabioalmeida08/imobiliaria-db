@@ -16,8 +16,6 @@ export default class DeleteImageService {
       throw new AppError('Image not found')
     }
 
-    await imageRepository.remove(image)
-
-    return
+    return imageRepository.delete(image_id)
   }
 }

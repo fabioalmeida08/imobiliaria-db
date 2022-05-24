@@ -1,5 +1,14 @@
 import { Request, Response, NextFunction } from 'express'
 
+interface multerFile {
+  fieldname: string
+  originalname: string
+  encoding: string
+  mimetype: string
+  buffer: Buffer
+  size: number
+}
+
 var admin = require('firebase-admin')
 
 var serviceAccount = require('../../config/firebase-key.json')
@@ -18,33 +27,36 @@ export const uploadImage = (
   response: Response,
   next: NextFunction
 ) => {
-  if (!request.file) {
+  let image: Express.Multer.File[] | any = request.files
+
+  if (!image) {
     return next()
   }
-  const image = request.file
 
-  const fileName = Date.now() + '.' + image.originalname.split('.').pop()
+  const urlImages = image?.map((element: multerFile) => {
+    const fileName = Date.now() + '.' + element.originalname.split('.').pop()
+    let stringFire = ''
+    const file = bucket.file(fileName)
 
-  const file = bucket.file(fileName)
+    const stream = file.createWriteStream({
+      metaData: {
+        contentType: element.mimetype,
+      },
+    })
 
-  const stream = file.createWriteStream({
-    metaData: {
-      contentType: image.mimetype,
-    },
+    stream.on('error', (error: any) => {
+      console.log(error)
+    })
+
+    stringFire = `https://storage.googleapis.com/${BUCKET}/${fileName}`
+
+    stream.on('finish', async () => {
+      await file.makePublic()
+    })
+    stream.end(element.buffer)
+    return stringFire
   })
 
-  stream.on('error', (error: any) => {
-    console.log(error)
-  })
-
-  stream.on('finish', async () => {
-    // tornar o arquivo publico
-    await file.makePublic()
-    //obter a url publica
-    request.firebaseUrl = `https://storage.googleapis.com/${BUCKET}/${fileName}`
-
-    next()
-  })
-
-  stream.end(image.buffer)
+  request.firebaseUrl = urlImages
+  next()
 }

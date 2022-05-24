@@ -14,10 +14,9 @@ const Multer = multer({
 
 imageRoutes
   .route('/')
-  .post(Multer.single('image'), uploadImage, ImageController.store)
+  .post(Multer.array('image', 4), uploadImage, ImageController.store)
 
-imageRoutes
-  .route('/:id')
-  .delete(ImageController.delete)
-  .get(ImageController.index)
+imageRoutes.route('/:image_id').delete(ImageController.delete)
+
+imageRoutes.route('/:property_id').get(ImageController.index)
 export default imageRoutes
