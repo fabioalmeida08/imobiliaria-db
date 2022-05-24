@@ -10,6 +10,7 @@ import app from '../../../app'
 import CreatePropertyService from '../../../services/properties/createProperty.service'
 import path from 'path'
 import CreateImageService from '../../../services/image/createImage.service'
+import { ReturnedPropertyList } from '../../../services/properties/listPropertiesByQuery.service'
 
 beforeAll(async () => {
   await AppDataSource.initialize().catch((err) => console.log(err))
@@ -64,7 +65,7 @@ describe('Succes Routes', () => {
     return realtorCreated
   }
 
-  let createdProperty: Property
+  let createdProperty: ReturnedPropertyList
   const instanceProperty = async () => {
     const client = await createClient()
     const realtor = await createRealtor()

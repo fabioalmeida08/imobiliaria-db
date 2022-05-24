@@ -9,6 +9,7 @@ import CreateImageService from '../../../services/image/createImage.service'
 import DeleteImageService from '../../../services/image/deleteImage.service'
 import ListImageByProperty from '../../../services/image/listImagesByProperty.service'
 import CreatePropertyService from '../../../services/properties/createProperty.service'
+import { ReturnedPropertyList } from '../../../services/properties/listPropertiesByQuery.service'
 import CreateRealtorService from '../../../services/realtors/createRealtor.service'
 
 describe('Images services', () => {
@@ -53,7 +54,7 @@ describe('Images services', () => {
     return realtorCreated
   }
 
-  let createdProperty: Property
+  let createdProperty: ReturnedPropertyList
   const createProperty = async () => {
     const client = await createClient()
     const realtor = await createRealtor()
