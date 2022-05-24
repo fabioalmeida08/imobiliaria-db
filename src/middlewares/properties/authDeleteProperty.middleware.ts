@@ -12,7 +12,11 @@ const authDeletePropertyMiddleware = async (
   const token = req.headers.authorization;
 
   if (!token) {
-    throw new AppError("Missing authorization token", 401);
+    return res.status(401).json({
+      status: "error",
+      statusCode: 401,
+      message: "Missing authorization token",
+    });
   }
 
   const verifyToken = token.split(" ")[1];
@@ -32,7 +36,11 @@ const authDeletePropertyMiddleware = async (
   });
 
   if (!agency) {
-    throw new AppError("Only the admin can access this feature", 401);
+    return res.status(401).json({
+      status: "error",
+      statusCode: 401,
+      message: "Only the admin can access this feature",
+    });
   }
   next();
 };

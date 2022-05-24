@@ -14,7 +14,11 @@ const authUpdatePropertyMiddleware = async (
   const { id_property } = req.params;
 
   if (!token) {
-    throw new AppError("Missing authorization token", 401);
+    return res.status(401).json({
+      status: "error",
+      statusCode: 401,
+      message: "Missing authorization token",
+    });
   }
 
   const verifyToken = token.split(" ")[1];
@@ -45,14 +49,19 @@ const authUpdatePropertyMiddleware = async (
   });
 
   if (!agency && !realtor) {
-    throw new AppError("Invalid token", 401);
+    return res.status(401).json({
+      status: "error",
+      statusCode: 401,
+      message: "Invalid token",
+    });
   }
 
-  if (!realtor?.properties_created.some(({ id }) => id === id_property)) {
-    throw new AppError(
-      "Only the responsible realtor can access this feature",
-      401
-    );
+  if (!realtor?.properties_created.some(({ id }) => id == id_property)) {
+    return res.status(401).json({
+      status: "error",
+      statusCode: 401,
+      message: "Only the responsible realtor can access this feature",
+    });
   }
 
   next();
