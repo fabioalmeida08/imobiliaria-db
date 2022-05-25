@@ -9,11 +9,11 @@ const clientRoute = Router()
 
 clientRoute
   .route('/')
-  .get(ClientController.index)
+  .get(verifyAgencyTokenMiddleware, ClientController.index)
   .post(expressYupMiddleware({schemaValidator:clientValidator}), AcessAuthMiddleware, verifyClientEmailMiddleware,ClientController.store)
 
 clientRoute
   .route('/:id')
-  .get(ClientController.show)
-  .patch(ClientController.update)
+  .get(AcessAuthMiddleware, ClientController.show)
+  .patch(AcessAuthMiddleware, ClientController.update)
 export default clientRoute

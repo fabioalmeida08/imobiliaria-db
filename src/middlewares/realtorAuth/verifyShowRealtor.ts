@@ -34,7 +34,7 @@ const AcessAuthMiddleware = async (
   });
 
   if (agency) {
-    next();
+    return next();
   }
 
   const realtorRepository = AppDataSource.getRepository(Realtor);
@@ -47,6 +47,6 @@ const AcessAuthMiddleware = async (
   if (!agency && !realtor) {
      throw new AppError("Invalid token", 401);
   }
-  next();
+  return next();
 };
 export default AcessAuthMiddleware;

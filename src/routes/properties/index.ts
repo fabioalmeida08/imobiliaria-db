@@ -6,6 +6,10 @@ import authListPropertyMiddleware from '../../middlewares/properties/authListPro
 import authUpdatePropertyMiddleware from '../../middlewares/properties/authUpdateProperty.middleware'
 import { expressYupMiddleware } from 'express-yup-middleware'
 import propertyValidator from '../../validations/properties'
+import AcessAuthMiddleware from "../../middlewares/realtorAuth/verifyShowRealtor";
+import verifyAgencyTokenMiddleware from "../../middlewares/agency/verifyToken.middleware";
+
+const clientRoute = Router()
 
 const propertiesRouter = Router()
 

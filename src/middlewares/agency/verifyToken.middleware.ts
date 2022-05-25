@@ -34,7 +34,7 @@ const verifyAgencyTokenMiddleware = async (
     throw new AppError("Invalid token", 401);
   }
 
-  next();
+  return next();
 
 };
 export default verifyAgencyTokenMiddleware;

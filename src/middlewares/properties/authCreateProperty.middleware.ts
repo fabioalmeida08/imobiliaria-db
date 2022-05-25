@@ -32,7 +32,7 @@ const authCreatePropertyMiddleware = async (
   });
 
   if (agency) {
-    next();
+    return next();
   }
 
   const realtorRepository = AppDataSource.getRepository(Realtor);
@@ -47,7 +47,7 @@ const authCreatePropertyMiddleware = async (
   }
 
   req.id_realtor = sub as string;
-  next();
+  return next();
 };
 
 export default authCreatePropertyMiddleware;
