@@ -8,6 +8,8 @@ salesRoute
   .get(SalesController.show)
   .patch(SalesController.update)
 
-salesRoute.route("").get(SalesController.index).post(SalesController.store)
+salesRoute.route("")
+  .get(SalesController.index)
+  .post(SalesController.store)
 
 export default salesRoute

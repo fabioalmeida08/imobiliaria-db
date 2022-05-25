@@ -11,9 +11,9 @@ export default class UpdatedClient {
     const clientRepo = AppDataSource.getRepository(Clients)
     const client = await clientRepo.findOneBy({ id })
     if(!client){
-      console.log('nao tem s')
+      throw new AppError("Client not found")
     }
-    await clientRepo.save({id,...client,...data})
+    await clientRepo.save({...client,...data})
     const upClient = await clientRepo.findOneBy({id})
 
     return upClient

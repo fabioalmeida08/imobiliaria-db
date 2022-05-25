@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from "express";
-import jwt from "jsonwebtoken";
-import { string } from "yup";
+import { verify } from "jsonwebtoken";
+import { AppDataSource } from "../../data-source";
+import { Agency } from "../../entities/agency.entity";
 import AppError from "../../errors/appError";
 
-const verifyAgencyTokenMiddleware = (
+const verifyAgencyTokenMiddleware = async (
   req: Request,
   res: Response,
   next: NextFunction
@@ -16,16 +17,24 @@ const verifyAgencyTokenMiddleware = (
 
   const verifyToken = token.split(" ")[1];
 
-  jwt.verify(
-    verifyToken,
-    String(process.env.JWT_SECRET_KEY),
-    (err, decode) => {
-      if (err) {
-        throw new AppError("Agency Authentication failed", 401);
-      }
+  const secret = String(process.env.JWT_SECRET_KEY)
 
-      next();
-    }
-  );
+  const decoded = verify(verifyToken, secret);
+
+  const { sub } = decoded;
+
+  const agencyRepository = AppDataSource.getRepository(Agency);
+  const agency = await agencyRepository.findOne({
+    where: {
+      id: sub as string,
+    },
+  });
+
+  if (!agency) {
+    throw new AppError("Invalid token", 401);
+  }
+
+  next();
+
 };
 export default verifyAgencyTokenMiddleware;
