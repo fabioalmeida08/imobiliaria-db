@@ -30,7 +30,7 @@ export class Realtor {
   email: string
 
   @Exclude()
-  @Column({ type: 'varchar', width: 256, nullable: false,select: false })
+  @Column({ type: 'varchar', width: 256, nullable: false})
   password: string
 
   @CreateDateColumn({
