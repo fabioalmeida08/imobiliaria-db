@@ -23,8 +23,6 @@ const verifyAgencyTokenMiddleware = async (
 
   const { sub } = decoded;
 
-  console.log(sub)
-
   const agencyRepository = AppDataSource.getRepository(Agency);
   const agency = await agencyRepository.findOne({
     where: {
