@@ -9,7 +9,7 @@ import LoginRealtorService from '../../../services/realtors/loginRealtor.service
 import { ReturnedPropertyList } from '../../../services/properties/listPropertiesByQuery.service';
 import { CreateProperty, testIdProperty } from '../../../interfaces/properties';
 import CreatePropertyService from '../../../services/properties/createProperty.service';
-import { ICreateSale } from '../../../interfaces/sales';
+import { ICreateSale, ISale } from '../../../interfaces/sales';
 
 describe("Succes Routes", () => {
 
@@ -120,7 +120,7 @@ describe("Succes Routes", () => {
   };
 
   let sales: ICreateSale;
-  let createSales: ICreateSale;
+  let createSales: ISale;
 
   it("Should be able to create a new Sales", async () => {
     const property = await instanceProperty();
@@ -150,82 +150,35 @@ describe("Succes Routes", () => {
     expect(response.body).toHaveProperty("createdAt");
   });
 
-  /* it("Should return a list of properties with selected elements", async () => {
-    const response = await request(app).get("/properties");
-
-    expect(response.status).toBe(200);
-    expect(response.body).toBeTruthy();
-    expect(Object.keys(response.body[0]).length).toBe(21);
-    expect(Number(response.body[0].price)).toBe(300000);
-  }); */
-
-  /* it("Should return a list of properties with all elements", async () => {
+  it("Should return a list of sales with selected elements", async () => {
     const response = await request(app)
-      .get("/properties")
-      .set("Authorization", `Bearer ${realtorToken.accessToken}`);
+      .get("/sales");
 
     expect(response.status).toBe(200);
     expect(response.body).toBeTruthy();
     expect(response.body[0]).toHaveProperty("id");
-  }); */
-
-  /* it("Should return one property with selected elements", async () => {
-    const response = await request(app).get(
-      `/properties/${createdProperty.id}`
-    );
-
-    expect(response.status).toBe(200);
-    expect(response.body).toBeTruthy();
-    expect(Object.keys(response.body).length).toBe(21);
+    expect(Number(response.body[0].selling_value)).toBe(300000);
   });
- */
-  /* it("Should return one property with all elements", async () => {
+
+  it("Should return a list of sales with all elements", async () => {
     const response = await request(app)
-      .get(`/properties/${createdProperty.id}`)
-      .set("Authorization", `Bearer ${realtorToken.accessToken}`);
+      .get(`/sales/${createSales.id}`)
+      // .set("Authorization", `Bearer ${realtor1Token.accessToken}`);
 
     expect(response.status).toBe(200);
     expect(response.body).toBeTruthy();
-    expect(response.body).toHaveProperty("id");
-  }); */
-
-  /* it("Should return a filtered list of properties", async () => {
-    const propetyTwo: CreateProperty = {
-      street: "Rua teste 2",
-      city: "Cidade teste 2",
-      state: "Estado teste 2",
-      postal_code: "87654321",
-      country: "Pais teste 2",
-      area: 45,
-      complement: "Complemento teste 2",
-      type: "Casa",
-      acquisition_type: "Venda",
-      price: 250000,
-      description: "Descrição teste 2",
-      id_client: clientCreated.id,
-      id_realtor: realtorCreated.id,
-    };
-
-    await CreatePropertyService.execute(propetyTwo);
-
-    const response = await request(app).get(`/properties?price_menor=250000`);
-
-    expect(response.status).toBe(200);
-    expect(response.body).toBeTruthy();
-    expect(Number(response.body[0].price)).toBeLessThanOrEqual(250000);
-    expect(Object.keys(response.body[0]).length).toBe(21);
+    expect(Number(response.body.selling_value)).toBe(300000);
   });
- */
-  /* it("Should return the updated property", async () => {
+
+  it("Should return the updated sales", async () => {
     const response = await request(app)
-      .patch(`/properties/${createdProperty.id}`)
-      .set("Authorization", `Bearer ${realtorToken.accessToken}`)
-      .send({ state: "Novo estado" });
+      .patch(`/sales/${createSales.id}`)
+      //.set("Authorization", `Bearer ${realtor1Token.accessToken}`)
+      .send({ description: "Novo test novo test novo test" });
 
     expect(response.status).toBe(200);
     expect(response.body).toHaveProperty("id");
-    expect(response.body.state).toBe("Novo estado");
-  }); */
-
+    expect(response.body.description).toBe("Novo test novo test novo test");
+  });
 
 });
