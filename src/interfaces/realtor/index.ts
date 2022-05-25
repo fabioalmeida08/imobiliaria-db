@@ -27,5 +27,4 @@ export interface ICreateRealtorPassword {
   phone_number: string;
   email: string;
   password?: string;
-  id: string;
 }
