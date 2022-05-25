@@ -5,9 +5,8 @@ import ListImageByProperty from '../services/image/listImagesByProperty.service'
 
 export default class ImageController {
   public static async store(request: Request, response: Response) {
-    const { property_id } = request.body
     const image_url = request.firebaseUrl
-
+    const { property_id } = request.body
     const propertyImage = await CreateImageService.execute(
       image_url,
       property_id

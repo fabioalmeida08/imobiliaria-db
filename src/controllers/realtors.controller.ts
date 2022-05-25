@@ -23,9 +23,9 @@ export default class RealtorsController {
 
   //show para listar apenas um elemento
   public static async show(req: Request, res: Response) {
-    const data = req.body;
+    const {id} = req.params;
 
-    const getRealtor = await ListOneRealtorService.execute(data);
+    const getRealtor = await ListOneRealtorService.execute(id);
 
     return res.status(200).json(getRealtor);
   }

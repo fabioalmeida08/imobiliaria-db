@@ -150,14 +150,14 @@ describe("Succes Routes", () => {
     expect(response.body).toHaveProperty("createdAt");
   });
 
-  /* it("Should return a list of properties with selected elements", async () => {
-    const response = await request(app).get("/properties");
+  it("Should return a list of sales with selected elements", async () => {
+    const response = await request(app)
+      .get("/sales");
 
     expect(response.status).toBe(200);
     expect(response.body).toBeTruthy();
-    expect(Object.keys(response.body[0]).length).toBe(21);
-    expect(Number(response.body[0].price)).toBe(300000);
-  }); */
+    expect(Number(response.body[0].selling_value)).toBe(300000);
+  });
 
   /* it("Should return a list of properties with all elements", async () => {
     const response = await request(app)
