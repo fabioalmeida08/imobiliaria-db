@@ -18,12 +18,10 @@ export default class CreateRealtorService {
 
     const hash = await bcryptjs.hash(password, 10);
     data.password = hash;
+    const relatorCreate = realtorRepo.create(data);
+    await realtorRepo.save(relatorCreate);
 
-    const newRealtor = realtorRepo.create(data);
-    await realtorRepo.save(newRealtor);
 
-  //  delete newRealtor.password;
-
-    return newRealtor;
+    return relatorCreate;
   }
 }

@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer'
 import {
   Column,
   CreateDateColumn,
@@ -28,7 +29,8 @@ export class Realtor {
   @Column({ type: 'varchar', width: 256, nullable: false, unique: true })
   email: string
 
-  @Column({ type: 'varchar', width: 256, nullable: false })
+  @Exclude()
+  @Column({ type: 'varchar', width: 256, nullable: false})
   password: string
 
   @CreateDateColumn({
