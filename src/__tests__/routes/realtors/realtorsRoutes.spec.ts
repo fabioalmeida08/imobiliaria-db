@@ -3,7 +3,7 @@ import { DeleteResult } from "typeorm";
 import app from "../../../app";
 import { AppDataSource } from "../../../data-source";
 import { IAgency, IAgencyExtId, IAgencyLogin, IAgencyToken } from "../../../interfaces/agency";
-import { ILoginRealtor, IRealtors, IRealtorsExtId } from "../../../interfaces/realtor";
+import { ICreateRealtorPassword, ILoginRealtor, IRealtors, IRealtorsExtId } from "../../../interfaces/realtor";
 import CreateRealtorService from "../../../services/realtors/createRealtor.service";
 
 
@@ -49,10 +49,8 @@ describe("Succes Routes", () => {
     phone_number: "1234567890122",
     password: "marvelS2",
   };
-  let realtorCreated: IRealtorsExtId;
- 
+  let realtorCreated: ICreateRealtorPassword;
 
-  
   
   /// Agency test 
   

@@ -24,6 +24,6 @@ export default class CreateRealtorService {
     const returnRealtor : ICreateRealtorPassword = relatorCreate
     delete returnRealtor.password ;
 
-    return relatorCreate;
+    return returnRealtor;
   }
 }
