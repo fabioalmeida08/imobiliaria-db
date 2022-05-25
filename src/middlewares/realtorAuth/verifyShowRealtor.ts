@@ -29,7 +29,7 @@ const AcessAuthMiddleware = async (
   const agencyRepository = AppDataSource.getRepository(Agency);
   const agency = await agencyRepository.findOne({
     where: {
-      id: sub as string,
+      id: String(sub),
     },
   });
 

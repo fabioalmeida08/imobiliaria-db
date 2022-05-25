@@ -4,12 +4,13 @@ import { expressYupMiddleware } from "express-yup-middleware";
 import clientValidator from "../../validations/clients/clientValidation";
 import verifyClientEmailMiddleware from "../../middlewares/clients/verifyEmail.middleware";
 import AcessAuthMiddleware from "../../middlewares/realtorAuth/verifyShowRealtor";
+import verifyAgencyTokenMiddleware from "../../middlewares/agency/verifyToken.middleware";
 const clientRoute = Router()
 
 clientRoute
   .route('/')
   .get(ClientController.index)
-  .post(expressYupMiddleware({schemaValidator:clientValidator}), AcessAuthMiddleware,verifyClientEmailMiddleware,ClientController.store)
+  .post(expressYupMiddleware({schemaValidator:clientValidator}), verifyClientEmailMiddleware,ClientController.store)
 
 clientRoute
   .route('/:id')

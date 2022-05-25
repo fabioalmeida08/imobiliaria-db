@@ -35,7 +35,6 @@ describe("Succes Routes", () => {
 
   let token: IAgencyToken;
   
-  
   // realtor
   const realtor: IRealtors = {
     name: "Chris",
@@ -51,9 +50,6 @@ describe("Succes Routes", () => {
   };
   let realtorCreated: IRealtorsExtId;
  
-
-  
-  
   /// Agency test 
   
   it("Should create a new agency", async () => {
@@ -75,7 +71,7 @@ describe("Succes Routes", () => {
     expect(response.body).toBeTruthy();
   })
 
-  /// create realtor 
+  // create realtor 
 
   it("Should be able to create a new realtor", async () => {
     const newRealtor = await CreateRealtorService.execute(realtor);
@@ -84,7 +80,8 @@ describe("Succes Routes", () => {
     expect(newRealtor).toHaveProperty("id");
   });
 
-  /// Realtor test create
+  // list realtor 
+
   it("Should be able to list a realtor", async () => {
     const responseRealtor = await request(app).get("/realtor").set("Authorization", `Bearer ${token}`);
 
@@ -92,12 +89,16 @@ describe("Succes Routes", () => {
     expect(responseRealtor.body).toHaveLength(1);
   });
 
+  // update realtor 
+
   it("Should be able to update a realtor", async () => {
     const response = await request(app).patch(`/realtor/${realtorCreated.id}`).send(updatedRealtor).set("Authorization", `Bearer ${token}`);
 
     expect(response.status).toBe(200)
     expect(response.body.name).toBe("Samu");
   });
+
+  // delete realtor 
 
   it("Should be able to delete a realtor", async () => {
     const response = await request(app).delete(`/realtor/${realtorCreated.id}`).set("Authorization", `Bearer ${token}`);
