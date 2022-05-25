@@ -23,7 +23,7 @@ const realtorAuthMiddleware = (
         throw new AppError("Realtor Authentication failed", 401);
       }
 
-      next();
+      return next();
     }
   );
 };

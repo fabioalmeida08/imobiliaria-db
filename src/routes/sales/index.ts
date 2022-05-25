@@ -1,15 +1,19 @@
 import { Router } from "express"
+import { expressYupMiddleware } from "express-yup-middleware"
 import SalesController from "../../controllers/sales.controller"
+import salesValidator from "../../validations/sales"
+import verifyAgencyTokenMiddleware from "../../middlewares/agency/verifyToken.middleware";
+import AcessAuthMiddleware from "../../middlewares/realtorAuth/verifyShowRealtor";
 
 const salesRoute = Router()
 
 salesRoute
   .route("/:id")
-  .get(SalesController.show)
-  .patch(SalesController.update)
+  .get(AcessAuthMiddleware, SalesController.show)
+  .patch(verifyAgencyTokenMiddleware, SalesController.update)
 
 salesRoute.route("")
-  .get(SalesController.index)
-  .post(SalesController.store)
+  .get(verifyAgencyTokenMiddleware, SalesController.index)
+  .post(AcessAuthMiddleware, SalesController.store)
 
 export default salesRoute

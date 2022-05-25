@@ -32,7 +32,7 @@ const authListPropertyMiddleware = async (
 
     if (agency) {
       req.id_agency = sub as string;
-      next();
+      return next();
     }
 
     const realtorRepository = AppDataSource.getRepository(Realtor);
@@ -47,7 +47,7 @@ const authListPropertyMiddleware = async (
     }
 
     req.id_realtor = sub as string;
-    next();
+    return next();
   }
 };
 

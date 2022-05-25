@@ -41,7 +41,7 @@ const authDeletePropertyMiddleware = async (
       message: "Only the admin can access this feature",
     });
   }
-  next();
+  return next();
 };
 
 export default authDeletePropertyMiddleware;
