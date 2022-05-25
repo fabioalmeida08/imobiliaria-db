@@ -11,6 +11,7 @@ import CreatePropertyService from "../../../services/properties/createProperty.s
 import CreateAgencyService from "../../../services/agency/createAgency.service";
 import LoginAgencyService from "../../../services/agency/agencyLogin.service";
 import { ReturnedPropertyList } from "../../../services/properties/listPropertiesByQuery.service";
+import { IAgency, IAgencyExtId } from "../../../interfaces/agency";
 
 beforeAll(async () => {
   await AppDataSource.initialize().catch((err) => console.log(err));
@@ -22,6 +23,22 @@ afterAll(async () => {
 });
 
 describe("Succes Routes", () => {
+  let agencyId: IAgencyExtId;
+  const agency: IAgency = {
+    name: "nelton",
+    email: "nelton@mail.com",
+    phone_number: "1234567890122",
+    password: "12345678",
+  };
+
+  const createAgency = async () => {
+    const newAgency = await CreateAgencyService.execute(agency);
+
+    agencyId = newAgency;
+
+    return newAgency;
+  };
+
   let clientCreated: IClient;
   const createClient = async () => {
     const client: ICreateClient = {
@@ -43,14 +60,7 @@ describe("Succes Routes", () => {
     accessToken: string;
   }
   let realtorToken: Token;
-  const createRealtor = async () => {
-    const realtor: IRealtors = {
-      name: "Gorimar",
-      email: "gorimar@mail.com",
-      phone_number: "1234567890122",
-      password: "gorimar123",
-    };
-
+  const createRealtor = async (realtor: IRealtors) => {
     const newRealtor = await CreateRealtorService.execute(realtor);
 
     realtorCreated = newRealtor;
@@ -67,8 +77,16 @@ describe("Succes Routes", () => {
 
   let createdProperty: ReturnedPropertyList;
   const instanceProperty = async () => {
+    const agency = await createAgency();
     const client = await createClient();
-    const realtor = await createRealtor();
+    const realtorValues: IRealtors = {
+      name: "Gorimar",
+      email: "gorimar@mail.com",
+      phone_number: "1234567890122",
+      password: "gorimar123",
+      agency_id: agency.id,
+    };
+    const realtor = await createRealtor(realtorValues);
 
     const property = {
       street: "Rua teste",
@@ -182,18 +200,9 @@ describe("Succes Routes", () => {
   });
 
   it("Should delete one property", async () => {
-    const agency = {
-      name: "Imobiliaria Legal",
-      email: "imob@mail.com",
-      phone_number: "1140028922",
-      password: "senhaforte",
-    };
-
-    await CreateAgencyService.execute(agency);
-
     const loginAgency = await LoginAgencyService.execute({
-      email: "imob@mail.com",
-      password: "senhaforte",
+      email: "nelton@mail.com",
+      password: "12345678",
     });
 
     const response = await request(app)
@@ -219,12 +228,6 @@ describe("Succes Routes", () => {
       description: "Descrição teste 3",
     };
 
-    const newRealtor: IRealtors = {
-      name: "Goleiro Cassio",
-      email: "cassiooo@mail.com",
-      phone_number: "1234567890122",
-      password: "casiooo123",
-    };
     let newRealtorToken: Token;
 
     it("Should not create without a field", async () => {
@@ -247,6 +250,18 @@ describe("Succes Routes", () => {
     });
 
     it("Should not update without authorization", async () => {
+      const loginAgency = await LoginAgencyService.execute({
+        email: "nelton@mail.com",
+        password: "12345678",
+      });
+
+      const newRealtor: IRealtors = {
+        name: "Goleiro Cassio",
+        email: "cassiooo@mail.com",
+        phone_number: "1234567890122",
+        password: "casiooo123",
+        agency_id: loginAgency.id,
+      };
       const createNewRealtor = await CreateRealtorService.execute(newRealtor);
 
       const newLogin = await LoginRealtorService.execute({

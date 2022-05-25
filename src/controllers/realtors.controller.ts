@@ -10,7 +10,11 @@ import UpdateRealtorService from "../services/realtors/updateRealtor.service";
 export default class RealtorsController {
   public static async store(req: Request, res: Response) {
     const data = req.body;
-    const createRealtor = await CreateRealtorService.execute(data);
+
+    const createRealtor = await CreateRealtorService.execute({
+      ...data,
+      agency_id: req.id_agency,
+    });
 
     return res.status(201).json(instanceToPlain(createRealtor));
   }

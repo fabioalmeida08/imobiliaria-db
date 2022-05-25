@@ -1,10 +1,12 @@
 import { AppDataSource } from "../../../data-source";
+import { IAgency, IAgencyExtId } from "../../../interfaces/agency";
 import {
   ILoginRealtor,
   IRealtors,
   IRealtorsExtId,
   IRealtorToken,
 } from "../../../interfaces/realtor";
+import CreateAgencyService from "../../../services/agency/createAgency.service";
 import CreateRealtorService from "../../../services/realtors/createRealtor.service";
 import ListOneRealtorService from "../../../services/realtors/listOneRealtor.service";
 import ListRealtorService from "../../../services/realtors/listRealtor.service";
@@ -19,12 +21,20 @@ describe("Realtors Services", () => {
     await AppDataSource.dropDatabase();
     await AppDataSource.destroy().catch((err) => console.log(err));
   });
-  const realtor: IRealtors = {
-    name: "Gorimar",
-    email: "gorimar@mail.com",
+
+  const agency: IAgency = {
+    name: "nelton",
+    email: "nelton@mail.com",
     phone_number: "1234567890122",
-    password: "gorimar123",
+    password: "12345678",
   };
+
+  const createAgency = async () => {
+    const newAgency = await CreateAgencyService.execute(agency);
+
+    return newAgency;
+  };
+
   const loginrealtor: ILoginRealtor = {
     email: "gorimar@mail.com",
     password: "gorimar123",
@@ -32,6 +42,14 @@ describe("Realtors Services", () => {
   let token: IRealtorToken;
   let realtorCreated: IRealtorsExtId;
   it("Should be able to create a new realtor", async () => {
+    const agency = await createAgency();
+    const realtor: IRealtors = {
+      name: "Gorimar",
+      email: "gorimar@mail.com",
+      phone_number: "1234567890122",
+      password: "gorimar123",
+      agency_id: agency.id,
+    };
     const newRealtor = await CreateRealtorService.execute(realtor);
 
     realtorCreated = newRealtor;
