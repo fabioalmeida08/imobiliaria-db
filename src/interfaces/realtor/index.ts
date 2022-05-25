@@ -21,11 +21,3 @@ export interface IRealtorToken{
 export interface IRealtorsId {
   id: string;
 }
-
-export interface ICreateRealtorPassword {
-  name: string;
-  phone_number: string;
-  email: string;
-  password?: string;
-  id : string
-}

@@ -1,11 +1,11 @@
 import { AppDataSource } from "../../data-source";
 import bcryptjs from "bcryptjs";
-import { ICreateRealtorPassword, IRealtors } from "../../interfaces/realtor";
+import { IRealtors } from "../../interfaces/realtor";
 import AppError from "../../errors/appError";
 import { Realtor } from "../../entities/realtor.entity";
 
 export default class CreateRealtorService {
-  public static async execute(data: IRealtors) {
+  public static async execute(data: IRealtors): Promise<Realtor> {
     const { password, email } = data;
 
     const realtorRepo = AppDataSource.getRepository(Realtor);
@@ -21,9 +21,7 @@ export default class CreateRealtorService {
     const relatorCreate = realtorRepo.create(data);
     await realtorRepo.save(relatorCreate);
 
-    const returnRealtor : ICreateRealtorPassword = relatorCreate
-    delete returnRealtor.password ;
 
-    return returnRealtor;
+    return relatorCreate;
   }
 }

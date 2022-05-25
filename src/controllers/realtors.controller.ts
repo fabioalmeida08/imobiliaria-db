@@ -1,4 +1,5 @@
-import { Request, response, Response } from "express";
+import { instanceToPlain } from "class-transformer";
+import { Request, Response } from "express";
 import CreateRealtorService from "../services/realtors/createRealtor.service";
 import DeleteRealtorService from "../services/realtors/deleteRealtor.service";
 import ListOneRealtorService from "../services/realtors/listOneRealtor.service";
@@ -7,29 +8,26 @@ import LoginRealtorService from "../services/realtors/loginRealtor.service";
 import UpdateRealtorService from "../services/realtors/updateRealtor.service";
 
 export default class RealtorsController {
-  //store para criar um elemento
   public static async store(req: Request, res: Response) {
     const data = req.body;
     const createRealtor = await CreateRealtorService.execute(data);
-    return res.status(201).json(createRealtor);
+
+    return res.status(201).json(instanceToPlain(createRealtor));
   }
 
-  //index para listar todos os elementos
   public static async index(req: Request, res: Response) {
-    // const authToken = req.headers.authorization
     const listRealtor = await ListRealtorService.execute();
     return res.status(200).json(listRealtor);
   }
 
-  //show para listar apenas um elemento
   public static async show(req: Request, res: Response) {
-    const {id} = req.params;
+    const { id } = req.params;
 
     const getRealtor = await ListOneRealtorService.execute(id);
 
     return res.status(200).json(getRealtor);
   }
-  //update para atualizar um elemento
+
   public static async update(req: Request, res: Response) {
     const data = req.body;
     const id = req.params.id;
@@ -37,7 +35,7 @@ export default class RealtorsController {
     const updateRealtor = await UpdateRealtorService.execute(data);
     return res.status(200).json(updateRealtor);
   }
-  //delete para deletar o elemento
+
   public static async delete(req: Request, res: Response) {
     const id = req.params.id;
 
