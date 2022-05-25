@@ -2,6 +2,7 @@ import express from "express";
 import { expressYupMiddleware } from "express-yup-middleware";
 import RealtorsController from "../../controllers/realtors.controller";
 import verifyAgencyTokenMiddleware from "../../middlewares/agency/verifyToken.middleware";
+import AcessAuthMiddleware from "../../middlewares/realtorAuth/verifyShowRealtor";
 import {
   realtorCreateValidator,
   realtorLoginValidator,
@@ -12,7 +13,7 @@ const realtorRoute = express.Router();
 realtorRoute
   .route("/")
   .get(verifyAgencyTokenMiddleware, RealtorsController.index)
-  .post(
+  .post(verifyAgencyTokenMiddleware,
     expressYupMiddleware({ schemaValidator: realtorCreateValidator }),
     RealtorsController.store
   );
@@ -28,6 +29,6 @@ realtorRoute
   .route("/:id")
   .delete(verifyAgencyTokenMiddleware, RealtorsController.delete)
   .patch(verifyAgencyTokenMiddleware, RealtorsController.update)
-  .get(RealtorsController.show);
+  .get(AcessAuthMiddleware,RealtorsController.show);
 
 export default realtorRoute;
