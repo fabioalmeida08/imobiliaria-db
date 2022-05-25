@@ -1,7 +1,6 @@
 import { AppDataSource } from "../../data-source";
 import { Realtor } from "../../entities/realtor.entity";
 import AppError from "../../errors/appError";
-import { IRealtors } from "../../interfaces/realtor";
 
 export default class ListOneRealtorService {
   public static async execute(id : string){
