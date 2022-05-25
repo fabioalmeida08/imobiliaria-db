@@ -93,7 +93,7 @@ describe("Succes Routes", () => {
 
   it("Should create a new client", async () => {
     const response = await request(app).post("/clients").auth(`${token}`, { type: 'bearer' }).send(client);
-    console.log(response.body)
+    
     id = response.body.id;
 
     expect(response.status).toBe(201);
@@ -104,7 +104,7 @@ describe("Succes Routes", () => {
   // list client
 
   it("Should list clients", async () => {
-    const response = await request(app).get("/clients");
+    const response = await request(app).get("/clients").auth(`${token}`, { type: 'bearer' });
 
     expect(response.status).toBe(200);
     expect(response.body).toBeTruthy();
@@ -114,7 +114,7 @@ describe("Succes Routes", () => {
   // show client
 
   it("Should be able to list a user by id", async () => {
-    const response = await request(app).get(`/clients/${id}`);
+    const response = await request(app).get(`/clients/${id}`).auth(`${token}`, { type: 'bearer' });
 
     expect(response.status).toBe(200);
     expect(response.body.name).toBe("choles");
@@ -130,6 +130,7 @@ describe("Succes Routes", () => {
     };
     const response = await request(app)
       .patch(`/clients/${id}`)
+      .auth(`${token}`, { type: 'bearer' })
       .send(updatedClient);
 
     expect(response.status).toBe(200);
@@ -139,7 +140,7 @@ describe("Succes Routes", () => {
     expect(response.body.intention).toBe("comprar");
   });
 
-  /* describe("Error cases routes", () => {
+  describe("Error cases routes", () => {
     const clientMissingFields: IUpdatedClient = {
       email: "gorimar54@mail.com",
       phone_number: "1234567890122",
@@ -155,6 +156,7 @@ describe("Succes Routes", () => {
     it("Should not let a register without a field", async () => {
       const response = await request(app)
         .post("/clients")
+        .auth(`${token}`, { type: 'bearer' })
         .send(clientMissingFields);
 
       expect(response.status).toBe(400);
@@ -162,11 +164,11 @@ describe("Succes Routes", () => {
     });
 
     it("Should not be able to create a client with same email", async () => {
-      const response = await request(app).post("/clients").send(client);
-      const res2 = await request(app).post("/clients").send(client);
+      const response = await request(app).post("/clients").auth(`${token}`, { type: 'bearer' }).send(client);
+      const res2 = await request(app).post("/clients").auth(`${token}`, { type: 'bearer' }).send(client);
 
       expect(res2.status).toBe(400);
       expect(res2.body).toContain("Already Exists");
     });
-  }); */
+  });
 });
