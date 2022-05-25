@@ -1,8 +1,10 @@
 import { DeleteResult } from "typeorm";
 import { AppDataSource } from "../../../data-source";
+import { IAgency, IAgencyExtId } from "../../../interfaces/agency";
 import { IClient, ICreateClient } from "../../../interfaces/client";
 import { CreateProperty } from "../../../interfaces/properties";
 import { IRealtors, IRealtorsExtId } from "../../../interfaces/realtor";
+import CreateAgencyService from "../../../services/agency/createAgency.service";
 import CreateClientService from "../../../services/clients/createClient.service";
 import CreatePropertyService from "../../../services/properties/createProperty.service";
 import DeletePropertyService from "../../../services/properties/deleteProperty.service";
@@ -24,6 +26,19 @@ describe("Properites Services", () => {
     await AppDataSource.destroy().catch((err) => console.log(err));
   });
 
+  const agency: IAgency = {
+    name: "nelton",
+    email: "nelton@mail.com",
+    phone_number: "1234567890122",
+    password: "12345678",
+  };
+
+  const createAgency = async () => {
+    const newAgency = await CreateAgencyService.execute(agency);
+
+    return newAgency;
+  };
+
   let clientCreated: IClient;
   const createClient = async () => {
     const client: ICreateClient = {
@@ -41,14 +56,7 @@ describe("Properites Services", () => {
   };
 
   let realtorCreated: IRealtorsExtId;
-  const createRealtor = async () => {
-    const realtor: IRealtors = {
-      name: "Gorimar",
-      email: "gorimar@mail.com",
-      phone_number: "1234567890122",
-      password: "gorimar123",
-    };
-
+  const createRealtor = async (realtor: IRealtors) => {
     const newRealtor = await CreateRealtorService.execute(realtor);
 
     realtorCreated = newRealtor;
@@ -58,8 +66,16 @@ describe("Properites Services", () => {
 
   let createdProperty: ReturnedPropertyList;
   const instanceProperty = async () => {
+    const agency = await createAgency();
     const client = await createClient();
-    const realtor = await createRealtor();
+    const realtorValues: IRealtors = {
+      name: "Gorimar",
+      email: "gorimar@mail.com",
+      phone_number: "1234567890122",
+      password: "gorimar123",
+      agency_id: agency.id,
+    };
+    const realtor = await createRealtor(realtorValues);
 
     const property: CreateProperty = {
       street: "Rua teste",

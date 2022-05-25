@@ -38,23 +38,11 @@ describe("Succes Routes", () => {
   let token: IAgencyToken;
 
   // realtor
-  
-  const realtor: IRealtors = {
-    name: "Chris",
-    email: "chriseuamomarvael@mail.com",
-    phone_number: "1234567890122",
-    password: "marvelS2",
-  };
-  const updatedRealtor: IRealtors = {
-    name: "Samu",
-    email: "chriseuamomarvael@mail.com",
-    phone_number: "1234567890122",
-    password: "marvelS2",
-  };
+
   let realtorCreated: IRealtorsExtId;
- 
-  // Agency test 
-  
+
+  // Agency test
+
   it("Should create a new agency", async () => {
     const response = await request(app).post("/agency").send(agency);
 
@@ -77,13 +65,21 @@ describe("Succes Routes", () => {
   // create realtor
 
   it("Should be able to create a new realtor", async () => {
+    const realtor: IRealtors = {
+      name: "Chris",
+      email: "chriseuamomarvael@mail.com",
+      phone_number: "1234567890122",
+      password: "marvelS2",
+      agency_id: id,
+    };
+
     const newRealtor = await CreateRealtorService.execute(realtor);
 
     realtorCreated = newRealtor;
     expect(newRealtor).toHaveProperty("id");
   });
 
-  // list realtor 
+  // list realtor
 
   it("Should be able to list a realtor", async () => {
     const responseRealtor = await request(app)
@@ -94,9 +90,16 @@ describe("Succes Routes", () => {
     expect(responseRealtor.body).toHaveLength(1);
   });
 
-  // update realtor 
+  // update realtor
 
   it("Should be able to update a realtor", async () => {
+    const updatedRealtor: IRealtors = {
+      name: "Samu",
+      email: "chriseuamomarvael@mail.com",
+      phone_number: "1234567890122",
+      password: "marvelS2",
+      agency_id: id,
+    };
     const response = await request(app)
       .patch(`/realtor/${realtorCreated.id}`)
       .send(updatedRealtor)
@@ -106,7 +109,7 @@ describe("Succes Routes", () => {
     expect(response.body.name).toBe("Samu");
   });
 
-  // delete realtor 
+  // delete realtor
 
   it("Should be able to delete a realtor", async () => {
     const response = await request(app)

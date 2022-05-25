@@ -10,6 +10,17 @@ import { CreateProperty } from "../../../interfaces/properties";
 import CreatePropertyService from "../../../services/properties/createProperty.service";
 import ListSalesService from "../../../services/sales/listSales.service";
 import ShowSaleService from "../../../services/sales/showSale.service";
+import {
+  IAgency,
+  IAgencyExtId,
+  IAgencyLogin,
+  IAgencyToken,
+} from "../../../interfaces/agency";
+import request from "supertest";
+import app from "../../../app";
+import CreateAgencyService from "../../../services/agency/createAgency.service";
+import LoginAgencyService from "../../../services/agency/agencyLogin.service";
+import { Realtor } from "../../../entities/realtor.entity";
 
 describe("Sales Services", () => {
   beforeAll(async () => {
@@ -37,18 +48,20 @@ describe("Sales Services", () => {
     intention: "comprar",
   };
 
-  const realtor1: IRealtors = {
-    name: "vitoria",
-    email: "vitoria@mail.com",
+  const agency: IAgency = {
+    name: "nelton",
+    email: "nelton@mail.com",
     phone_number: "1234567890122",
-    password: "vitoria123",
+    password: "12345678",
   };
 
-  const realtor2: IRealtors = {
-    name: "cleitinho",
-    email: "cleitinho@mail.com",
-    phone_number: "1234567890122",
-    password: "cleitinho123",
+  let agencyId: IAgencyExtId;
+
+  const createAgency = async () => {
+    const newAgency = await CreateAgencyService.execute(agency);
+
+    agencyId = newAgency;
+    return agencyId;
   };
 
   let clientCreated: IClient;
@@ -68,9 +81,16 @@ describe("Sales Services", () => {
     return realtorCreated;
   };
 
-  let createdProperty: Property;
   const instanceProperty = async () => {
+    const agency = await createAgency();
     const client = await createClient(client1);
+    const realtor1: IRealtors = {
+      name: "vitoria",
+      email: "vitoria@mail.com",
+      phone_number: "1234567890122",
+      password: "vitoria123",
+      agency_id: agency.id,
+    };
     const realtor = await createRealtor(realtor1);
 
     const property: CreateProperty = {
@@ -93,9 +113,17 @@ describe("Sales Services", () => {
   };
 
   it("Should be able to create a new Sales", async () => {
-    const client = await createClient(client2);
-    const realtor = await createRealtor(realtor2);
     const property = await instanceProperty();
+
+    const client = await createClient(client2);
+    const realtor2: IRealtors = {
+      name: "cleitinho",
+      email: "cleitinho@mail.com",
+      phone_number: "1234567890122",
+      password: "cleitinho123",
+      agency_id: agencyId.id,
+    };
+    const realtor = await createRealtor(realtor2);
 
     const newProperty = await CreatePropertyService.execute(property);
 
