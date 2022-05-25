@@ -123,7 +123,7 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 > {
 >   "name": "John",
 >   "email": "example@gmail.com",
->   "phone_number": 125463348,
+>   "phone_number": 125463348
 > }
 > ```
 
@@ -147,10 +147,10 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 
 > ```json
 > {
->  "name":"Ivan Ilitch",
->	"email":"ivan@mail.com",
->	"phone_number":"1234578901",
->	"intention":"comprar"
+>   "name": "Ivan Ilitch",
+>   "email": "ivan@mail.com",
+>   "phone_number": "1234578901",
+>   "intention": "comprar"
 > }
 > ```
 
@@ -158,72 +158,71 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 
 > ```json
 > {
->	"id": "38aaa48e-24da-45f4-a9a6-2aa7ceb84546",
->	"name": "Ivan Ilitch",
->	"phone_number": "1234578901",
->	"email": "ivan@mail.com",
->	"intention": "comprar",
->	"createdAt": "2022-05-23T13:00:48.780Z",
->	"updatedAt": "2022-05-23T13:00:48.780Z",
->	"properties": [],
->	"buyers": []
+>   "id": "38aaa48e-24da-45f4-a9a6-2aa7ceb84546",
+>   "name": "Ivan Ilitch",
+>   "phone_number": "1234578901",
+>   "email": "ivan@mail.com",
+>   "intention": "comprar",
+>   "createdAt": "2022-05-23T13:00:48.780Z",
+>   "updatedAt": "2022-05-23T13:00:48.780Z",
+>   "properties": [],
+>   "buyers": []
 > }
 > ```
 
 `GET /clients - retorna uma lista com os clients cadastrados - FORMATO DA REPOSTA - STATUS 200`
 
 > ```json
->[
->	{
->		"id": "daa2282f-a5b2-4ffc-bb47-2d7ebb440413",
->		"name": "jhonny",
->		"phone_number": "1234578901",
->		"email": "jhonny@mail.com",
->		"intention": "comprar",
->		"createdAt": "2022-05-19T21:39:19.681Z",
->		"updatedAt": "2022-05-19T21:39:19.681Z",
->		"properties": [],
->		"buyers": []
->	},
->	{
->		"id": "9dd23373-84b4-4e96-ae30-dd29020189b2",
->		"name": "Ivan Ilitch",
->		"phone_number": "1234578901",
->		"email": "ivan@mail.com",
->		"intention": "comprar",
->		"createdAt": "2022-05-23T13:00:48.780Z",
->		"updatedAt": "2022-05-23T13:00:48.780Z",
->		"properties": [],
->		"buyers": []
->	}
->]
+> [
+>   {
+>     "id": "daa2282f-a5b2-4ffc-bb47-2d7ebb440413",
+>     "name": "jhonny",
+>     "phone_number": "1234578901",
+>     "email": "jhonny@mail.com",
+>     "intention": "comprar",
+>     "createdAt": "2022-05-19T21:39:19.681Z",
+>     "updatedAt": "2022-05-19T21:39:19.681Z",
+>     "properties": [],
+>     "buyers": []
+>   },
+>   {
+>     "id": "9dd23373-84b4-4e96-ae30-dd29020189b2",
+>     "name": "Ivan Ilitch",
+>     "phone_number": "1234578901",
+>     "email": "ivan@mail.com",
+>     "intention": "comprar",
+>     "createdAt": "2022-05-23T13:00:48.780Z",
+>     "updatedAt": "2022-05-23T13:00:48.780Z",
+>     "properties": [],
+>     "buyers": []
+>   }
+> ]
 > ```
-
 
 `PATCH /clients/:id - Edita qualquer campo do Client pelo id - FORMATO DA REQUESIÇÃO`
 
 > ```json
 > {
->	 "name": "Dostoiévski",
->	 "intention": "comprar",
+>   "name": "Dostoiévski",
+>   "intention": "comprar"
 > }
 > ```
-`PATCH /clients/:id - Edita qualquer campo do Client pelo id - FORMATO DA RESPOSTA - STATUS 200`
+>
+> `PATCH /clients/:id - Edita qualquer campo do Client pelo id - FORMATO DA RESPOSTA - STATUS 200`
 
 > ```json
 > {
->	"id": "38aaa48e-24da-45f4-a9a6-2aa7ceb84546",
->	"name": "Dostoiévski",
->	"phone_number": "1234578901",
->	"email": "ivan@mail.com",
->	"intention": "vender",
->	"createdAt": "2022-05-23T13:53:38.510Z",
->	"updatedAt": "2022-05-23T13:56:48.932Z",
->	"properties": [],
->	"buyers": []
+>   "id": "38aaa48e-24da-45f4-a9a6-2aa7ceb84546",
+>   "name": "Dostoiévski",
+>   "phone_number": "1234578901",
+>   "email": "ivan@mail.com",
+>   "intention": "vender",
+>   "createdAt": "2022-05-23T13:53:38.510Z",
+>   "updatedAt": "2022-05-23T13:56:48.932Z",
+>   "properties": [],
+>   "buyers": []
 > }
 > ```
-
 
 ---
 
@@ -291,24 +290,11 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 >   "description": "Apartamento novo, em otima localidade!",
 >   "client_seller": {
 >     "id": "9fa879ba-19e2-4ac8-bfa8-2b1f8e6cc5ee",
->     "name": "Carlos Santos",
->     "phone_number": "11989224002",
->     "email": "carlos@mail.com",
->     "intention": "Vender",
->     "createdAt": "2022-05-20T16:13:48.299Z",
->     "updatedAt": "2022-05-20T16:13:48.299Z",
->     "properties": [],
->     "buyers": []
+>     "name": "Carlos Santos"
 >   },
 >   "realtor_creator": {
 >     "id": "cc947d60-e04a-4a22-ab27-9df8f32f92e7",
->     "name": "Andrey Silva",
->     "phone_number": "11940028922",
->     "email": "andrey@mail.com",
->     "password": "$2a$10$T0PcVgJVBSRO.kkQ.y/RAO6Nd32qokuGa9R9mQgUm6Q6puETRsGii",
->     "createdAt": "2022-05-20T16:13:17.871Z",
->     "updatedAt": "2022-05-20T16:13:17.871Z",
->     "properties_created": []
+>     "name": "Andrey Silva"
 >   },
 >   "bathroom_number": null,
 >   "bedroom_number": null,
@@ -343,13 +329,19 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 >   "bathroom_menor": "Busca por quantidade de banheiros iguais ou menores que o indicado",
 >   "bathroom_maior": "Busca por quantidade de banheiros iguais ou maiores que o indicado",
 >   "bedroom_menor": "Busca por quantidade de quartos iguais ou menores que o indicado",
->   "bedroom_maior": "Busca por quantidade de quartos iguais ou maiores que o indicado"
+>   "bedroom_maior": "Busca por quantidade de quartos iguais ou maiores que o indicado",
+>   "parking_spaces_menor": "Busca por quantidade de vagas de estacionamento iguais ou menores que o indicado",
+>   "parking_spaces_maior": "Busca por quantidade de vagas de estacionamento iguais ou maiores que o indicado",
+>   "elevator_menor": "Busca por quantidade de elevadores iguais ou menores que o indicado",
+>   "elevator_maior": "Busca por quantidade de elevadores iguais ou maiores que o indicado"
 > }
 > ```
 
 > ```json
 > [
 >   {
+>     "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
+>     "type": "Apartamento",
 >     "street": "Rua Exemplo",
 >     "city": "Cidade Exemplo",
 >     "state": "Estado Exemplo",
@@ -357,91 +349,9 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 >     "country": "País Exemplo",
 >     "area": 75,
 >     "complement": "Andar 2, numero 5",
->     "type": "Apartamento",
+>     "availability": true,
 >     "acquisition_type": "Venda",
 >     "price": "420000.00",
->     "description": "Apartamento novo, em otima localidade!",
->     "client_seller": {
->       "id": "9fa879ba-19e2-4ac8-bfa8-2b1f8e6cc5ee",
->       "name": "Carlos Santos",
->       "phone_number": "11989224002",
->       "email": "carlos@mail.com",
->       "intention": "Vender",
->       "createdAt": "2022-05-20T16:13:48.299Z",
->       "updatedAt": "2022-05-20T16:13:48.299Z",
->       "properties": [
->         {
->           "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
->           "type": "Apartamento",
->           "street": "Rua Exemplo",
->           "city": "Cidade Exemplo",
->           "state": "Estado Exemplo",
->           "postal_code": "00011122",
->           "country": "País Exemplo",
->           "area": 75,
->           "complement": "Andar 2, numero 5",
->           "availability": true,
->           "acquisition_type": "Venda",
->           "price": "420000.00",
->           "bathroom_number": null,
->           "bedroom_number": null,
->           "parking_spaces": null,
->           "elevator": null,
->           "party_hall": false,
->           "party_area": false,
->           "gtill": false,
->           "swimming_pool": false,
->           "gym": false,
->           "playground": false,
->           "sports_court": false,
->           "description": "Apartamento novo, em otima localidade!",
->           "createdAt": "2022-05-20T16:25:57.537Z",
->           "updatedAt": "2022-05-20T16:25:57.537Z",
->           "image": []
->         }
->       ],
->       "buyers": []
->     },
->     "realtor_creator": {
->       "id": "cc947d60-e04a-4a22-ab27-9df8f32f92e7",
->       "name": "Andrey Silva",
->       "phone_number": "11940028922",
->       "email": "andrey@mail.com",
->       "password": "$2a$10$T0PcVgJVBSRO.kkQ.y/RAO6Nd32qokuGa9R9mQgUm6Q6puETRsGii",
->       "createdAt": "2022-05-20T16:13:17.871Z",
->       "updatedAt": "2022-05-20T16:13:17.871Z",
->       "properties_created": [
->         {
->           "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
->           "type": "Apartamento",
->           "street": "Rua Exemplo",
->           "city": "Cidade Exemplo",
->           "state": "Estado Exemplo",
->           "postal_code": "00011122",
->           "country": "País Exemplo",
->           "area": 75,
->           "complement": "Andar 2, numero 5",
->           "availability": true,
->           "acquisition_type": "Venda",
->           "price": "420000.00",
->           "bathroom_number": null,
->           "bedroom_number": null,
->           "parking_spaces": null,
->           "elevator": null,
->           "party_hall": false,
->           "party_area": false,
->           "gtill": false,
->           "swimming_pool": false,
->           "gym": false,
->           "playground": false,
->           "sports_court": false,
->           "description": "Apartamento novo, em otima localidade!",
->           "createdAt": "2022-05-20T16:25:57.537Z",
->           "updatedAt": "2022-05-20T16:25:57.537Z",
->           "image": []
->         }
->       ]
->     },
 >     "bathroom_number": null,
 >     "bedroom_number": null,
 >     "parking_spaces": null,
@@ -453,11 +363,18 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 >     "gym": false,
 >     "playground": false,
 >     "sports_court": false,
->     "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
->     "availability": true,
+>     "description": "Apartamento novo, em otima localidade!",
 >     "createdAt": "2022-05-20T16:25:57.537Z",
 >     "updatedAt": "2022-05-20T16:25:57.537Z",
->     "image": []
+>     "image": [],
+>     "client_seller": {
+>       "id": "9fa879ba-19e2-4ac8-bfa8-2b1f8e6cc5ee",
+>       "name": "Carlos Santos"
+>     },
+>     "realtor_creator": {
+>       "id": "cc947d60-e04a-4a22-ab27-9df8f32f92e7",
+>       "name": "Andrey Silva"
+>     }
 >   }
 > ]
 > ```
@@ -481,7 +398,7 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 >     "elevator": null,
 >     "party_hall": false,
 >     "party_area": false,
->     "gtill": false,
+>     "grill": false,
 >     "swimming_pool": false,
 >     "gym": false,
 >     "playground": false,
@@ -496,6 +413,8 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 
 > ```json
 > {
+>   "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
+>   "type": "Apartamento",
 >   "street": "Rua Exemplo",
 >   "city": "Cidade Exemplo",
 >   "state": "Estado Exemplo",
@@ -503,91 +422,9 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 >   "country": "País Exemplo",
 >   "area": 75,
 >   "complement": "Andar 2, numero 5",
->   "type": "Apartamento",
+>   "availability": true,
 >   "acquisition_type": "Venda",
 >   "price": "420000.00",
->   "description": "Apartamento novo, em otima localidade!",
->   "client_seller": {
->     "id": "9fa879ba-19e2-4ac8-bfa8-2b1f8e6cc5ee",
->     "name": "Carlos Santos",
->     "phone_number": "11989224002",
->     "email": "carlos@mail.com",
->     "intention": "Vender",
->     "createdAt": "2022-05-20T16:13:48.299Z",
->     "updatedAt": "2022-05-20T16:13:48.299Z",
->     "properties": [
->       {
->         "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
->         "type": "Apartamento",
->         "street": "Rua Exemplo",
->         "city": "Cidade Exemplo",
->         "state": "Estado Exemplo",
->         "postal_code": "00011122",
->         "country": "País Exemplo",
->         "area": 75,
->         "complement": "Andar 2, numero 5",
->         "availability": true,
->         "acquisition_type": "Venda",
->         "price": "420000.00",
->         "bathroom_number": null,
->         "bedroom_number": null,
->         "parking_spaces": null,
->         "elevator": null,
->         "party_hall": false,
->         "party_area": false,
->         "gtill": false,
->         "swimming_pool": false,
->         "gym": false,
->         "playground": false,
->         "sports_court": false,
->         "description": "Apartamento novo, em otima localidade!",
->         "createdAt": "2022-05-20T16:25:57.537Z",
->         "updatedAt": "2022-05-20T16:25:57.537Z",
->         "image": []
->       }
->     ],
->     "buyers": []
->   },
->   "realtor_creator": {
->     "id": "cc947d60-e04a-4a22-ab27-9df8f32f92e7",
->     "name": "Andrey Silva",
->     "phone_number": "11940028922",
->     "email": "andrey@mail.com",
->     "password": "$2a$10$T0PcVgJVBSRO.kkQ.y/RAO6Nd32qokuGa9R9mQgUm6Q6puETRsGii",
->     "createdAt": "2022-05-20T16:13:17.871Z",
->     "updatedAt": "2022-05-20T16:13:17.871Z",
->     "properties_created": [
->       {
->         "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
->         "type": "Apartamento",
->         "street": "Rua Exemplo",
->         "city": "Cidade Exemplo",
->         "state": "Estado Exemplo",
->         "postal_code": "00011122",
->         "country": "País Exemplo",
->         "area": 75,
->         "complement": "Andar 2, numero 5",
->         "availability": true,
->         "acquisition_type": "Venda",
->         "price": "420000.00",
->         "bathroom_number": null,
->         "bedroom_number": null,
->         "parking_spaces": null,
->         "elevator": null,
->         "party_hall": false,
->         "party_area": false,
->         "gtill": false,
->         "swimming_pool": false,
->         "gym": false,
->         "playground": false,
->         "sports_court": false,
->         "description": "Apartamento novo, em otima localidade!",
->         "createdAt": "2022-05-20T16:25:57.537Z",
->         "updatedAt": "2022-05-20T16:25:57.537Z",
->         "image": []
->       }
->     ]
->   },
 >   "bathroom_number": null,
 >   "bedroom_number": null,
 >   "parking_spaces": null,
@@ -599,11 +436,18 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 >   "gym": false,
 >   "playground": false,
 >   "sports_court": false,
->   "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
->   "availability": true,
+>   "description": "Apartamento novo, em otima localidade!",
 >   "createdAt": "2022-05-20T16:25:57.537Z",
 >   "updatedAt": "2022-05-20T16:25:57.537Z",
->   "image": []
+>   "image": [],
+>   "client_seller": {
+>     "id": "9fa879ba-19e2-4ac8-bfa8-2b1f8e6cc5ee",
+>     "name": "Carlos Santos"
+>   },
+>   "realtor_creator": {
+>     "id": "cc947d60-e04a-4a22-ab27-9df8f32f92e7",
+>     "name": "Andrey Silva"
+>   }
 > }
 > ```
 
@@ -654,6 +498,8 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 
 > ```json
 > {
+>   "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
+>   "type": "Apartamento",
 >   "street": "Rua Exemplo",
 >   "city": "Cidade Exemplo",
 >   "state": "Estado Exemplo",
@@ -661,91 +507,9 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 >   "country": "País Exemplo",
 >   "area": 75,
 >   "complement": "Andar 2, numero 5",
->   "type": "Apartamento",
+>   "availability": true,
 >   "acquisition_type": "Venda",
 >   "price": "420000.00",
->   "description": "Apartamento novo, em otima localidade!",
->   "client_seller": {
->     "id": "9fa879ba-19e2-4ac8-bfa8-2b1f8e6cc5ee",
->     "name": "Carlos Santos",
->     "phone_number": "11989224002",
->     "email": "carlos@mail.com",
->     "intention": "Vender",
->     "createdAt": "2022-05-20T16:13:48.299Z",
->     "updatedAt": "2022-05-20T16:13:48.299Z",
->     "properties": [
->       {
->         "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
->         "type": "Apartamento",
->         "street": "Rua Exemplo",
->         "city": "Cidade Exemplo",
->         "state": "Estado Exemplo",
->         "postal_code": "00011122",
->         "country": "País Exemplo",
->         "area": 75,
->         "complement": "Andar 2, numero 5",
->         "availability": true,
->         "acquisition_type": "Venda",
->         "price": "420000.00",
->         "bathroom_number": 2,
->         "bedroom_number": 2,
->         "parking_spaces": 2,
->         "elevator": 2,
->         "party_hall": true,
->         "party_area": false,
->         "gtill": false,
->         "swimming_pool": true,
->         "gym": false,
->         "playground": false,
->         "sports_court": false,
->         "description": "Apartamento novo, em otima localidade!",
->         "createdAt": "2022-05-20T16:25:57.537Z",
->         "updatedAt": "2022-05-20T16:25:57.537Z",
->         "image": []
->       }
->     ],
->     "buyers": []
->   },
->   "realtor_creator": {
->     "id": "cc947d60-e04a-4a22-ab27-9df8f32f92e7",
->     "name": "Andrey Silva",
->     "phone_number": "11940028922",
->     "email": "andrey@mail.com",
->     "password": "$2a$10$T0PcVgJVBSRO.kkQ.y/RAO6Nd32qokuGa9R9mQgUm6Q6puETRsGii",
->     "createdAt": "2022-05-20T16:13:17.871Z",
->     "updatedAt": "2022-05-20T16:13:17.871Z",
->     "properties_created": [
->       {
->         "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
->         "type": "Apartamento",
->         "street": "Rua Exemplo",
->         "city": "Cidade Exemplo",
->         "state": "Estado Exemplo",
->         "postal_code": "00011122",
->         "country": "País Exemplo",
->         "area": 75,
->         "complement": "Andar 2, numero 5",
->         "availability": true,
->         "acquisition_type": "Venda",
->         "price": "420000.00",
->         "bathroom_number": 2,
->         "bedroom_number": 2,
->         "parking_spaces": 2,
->         "elevator": 2,
->         "party_hall": true,
->         "party_area": false,
->         "gtill": false,
->         "swimming_pool": true,
->         "gym": false,
->         "playground": false,
->         "sports_court": false,
->         "description": "Apartamento novo, em otima localidade!",
->         "createdAt": "2022-05-20T16:25:57.537Z",
->         "updatedAt": "2022-05-20T16:25:57.537Z",
->         "image": []
->       }
->     ]
->   },
 >   "bathroom_number": 2,
 >   "bedroom_number": 2,
 >   "parking_spaces": 2,
@@ -757,11 +521,18 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 >   "gym": false,
 >   "playground": false,
 >   "sports_court": false,
->   "id": "841f59d0-d39a-4fe7-8191-ffbb50538647",
->   "availability": true,
+>   "description": "Apartamento novo, em otima localidade!",
 >   "createdAt": "2022-05-20T16:25:57.537Z",
->   "updatedAt": "2022-05-20T16:25:57.537Z",
->   "image": []
+>   "updatedAt": "2022-05-25T04:34:22.672Z",
+>   "image": [],
+>   "client_seller": {
+>     "id": "9fa879ba-19e2-4ac8-bfa8-2b1f8e6cc5ee",
+>     "name": "Carlos Santos"
+>   },
+>   "realtor_creator": {
+>     "id": "cc947d60-e04a-4a22-ab27-9df8f32f92e7",
+>     "name": "Andrey Silva"
+>   }
 > }
 > ```
 
