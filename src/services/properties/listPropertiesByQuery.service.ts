@@ -78,17 +78,17 @@ export default class ListPropertiesByQueryService {
         : false;
       element === "price"
         ? (properties = properties.filter(
-            ({ price }) => price === Number(querys.price)
+            ({ price }) => Number(price) === Number(querys.price)
           ))
         : false;
       element === "price_menor"
         ? (properties = properties.filter(
-            ({ price }) => price <= Number(querys.price_menor)
+            ({ price }) => Number(price) <= Number(querys.price_menor)
           ))
         : false;
       element === "price_maior"
         ? (properties = properties.filter(
-            ({ price }) => price >= Number(querys.price_maior)
+            ({ price }) => Number(price) >= Number(querys.price_maior)
           ))
         : false;
       element === "area"
@@ -111,16 +111,16 @@ export default class ListPropertiesByQueryService {
             ({ bathroom_number }) => bathroom_number === Number(querys.bathroom)
           ))
         : false;
-      element === "bathroom_maior"
-        ? (properties = properties.filter(
-            ({ bathroom_number }) =>
-              bathroom_number <= Number(querys.bathroom_maior)
-          ))
-        : false;
       element === "bathroom_menor"
         ? (properties = properties.filter(
             ({ bathroom_number }) =>
-              bathroom_number >= Number(querys.bathroom_menor)
+              bathroom_number <= Number(querys.bathroom_menor)
+          ))
+        : false;
+      element === "bathroom_maior"
+        ? (properties = properties.filter(
+            ({ bathroom_number }) =>
+              bathroom_number >= Number(querys.bathroom_maior)
           ))
         : false;
       element === "bedroom"
@@ -138,6 +138,74 @@ export default class ListPropertiesByQueryService {
         ? (properties = properties.filter(
             ({ bedroom_number }) =>
               bedroom_number >= Number(querys.bedroom_maior)
+          ))
+        : false;
+      element === "parking_spaces"
+        ? (properties = properties.filter(
+            ({ parking_spaces }) =>
+              parking_spaces === Number(querys.parking_spaces)
+          ))
+        : false;
+      element === "parking_spaces_menor"
+        ? (properties = properties.filter(
+            ({ parking_spaces }) =>
+              parking_spaces <= Number(querys.parking_spaces_menor)
+          ))
+        : false;
+      element === "parking_spaces_maior"
+        ? (properties = properties.filter(
+            ({ parking_spaces }) =>
+              parking_spaces >= Number(querys.parking_spaces_maior)
+          ))
+        : false;
+      element === "elevator"
+        ? (properties = properties.filter(
+            ({ elevator }) => elevator === Number(querys.elevator)
+          ))
+        : false;
+      element === "elevator_menor"
+        ? (properties = properties.filter(
+            ({ elevator }) => elevator <= Number(querys.elevator_menor)
+          ))
+        : false;
+      element === "elevator_maior"
+        ? (properties = properties.filter(
+            ({ elevator }) => elevator >= Number(querys.elevator_maior)
+          ))
+        : false;
+      element === "party_hall"
+        ? (properties = properties.filter(({ party_hall }) =>
+            querys.party_hall === "true" ? party_hall : !party_hall
+          ))
+        : false;
+      element === "party_area"
+        ? (properties = properties.filter(({ party_area }) =>
+            querys.party_area === "true" ? party_area : !party_area
+          ))
+        : false;
+      element === "gtill"
+        ? (properties = properties.filter(({ gtill }) =>
+            querys.gtill === "true" ? gtill : !gtill
+          ))
+        : false;
+      element === "swimming_pool"
+        ? (properties = properties.filter(({ swimming_pool }) =>
+            querys.swimming_pool === "true" ? swimming_pool : !swimming_pool
+          ))
+        : false;
+      element === "gym"
+        ? (properties = properties.filter(({ gym }) =>
+            querys.gym === "true" ? gym : !gym
+          ))
+        : false;
+      element === "playground"
+        ? (properties = properties.filter(({ playground }) =>
+            querys.playground === "true" ? playground : !playground
+          ))
+        : false;
+      element === "sports_court"
+        ? (properties = properties.filter(({ sports_court }) =>
+            querys.sports_court === "true" ? sports_court : !sports_court
           ))
         : false;
     });
