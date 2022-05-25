@@ -7,11 +7,6 @@ import UpdateSaleService from "../services/sales/updateSales.service"
 export default class SalesController {
   public static async store(req: Request, res: Response) {
     let data = { ...req.body }
-    const { id_property } = req.params
-
-    if (id_property) {
-      data = { ...data, id_property }
-    }
 
     const newSale = await CreateSaleService.execute(data)
 
