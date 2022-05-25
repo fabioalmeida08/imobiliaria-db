@@ -31,7 +31,7 @@ export interface ReturnedPropertyList {
   party_hall: boolean;
   party_area: boolean;
   gtill: boolean;
-  swimming_pool?: boolean;
+  swimming_pool: boolean;
   gym: boolean;
   playground: boolean;
   sports_court: boolean;
@@ -106,7 +106,7 @@ export default class ListPropertiesByQueryService {
             ({ area }) => area >= Number(querys.area_maior)
           ))
         : false;
-      element === "bathroom"
+      element === "bathroom_number"
         ? (properties = properties.filter(
             ({ bathroom_number }) => bathroom_number === Number(querys.bathroom)
           ))
@@ -123,7 +123,7 @@ export default class ListPropertiesByQueryService {
               bathroom_number >= Number(querys.bathroom_maior)
           ))
         : false;
-      element === "bedroom"
+      element === "bedroom_number"
         ? (properties = properties.filter(
             ({ bedroom_number }) => bedroom_number === Number(querys.bedroom)
           ))
