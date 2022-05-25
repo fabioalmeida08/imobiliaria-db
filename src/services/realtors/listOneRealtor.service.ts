@@ -10,7 +10,7 @@ export default class ListOneRealtorService {
     const findRealtor = findRealtors.find((user) => user.id === id);
   
     if(!findRealtor){
-      throw new AppError("Realtor not found", 4004)
+      throw new AppError("Realtor not found", 404)
     }
     return findRealtor;
   }

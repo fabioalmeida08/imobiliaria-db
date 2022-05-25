@@ -1,6 +1,7 @@
 import { AppDataSource } from '../../data-source'
 import { Images } from '../../entities/images.entity'
 import { Property } from '../../entities/property.entity'
+import AppError from '../../errors/appError'
 
 export default class CreateImageService {
   public static async execute(image_url: string[], property_id: string) {
@@ -14,7 +15,7 @@ export default class CreateImageService {
     })
 
     if (!property) {
-      throw new Error('Property not find.')
+      throw new AppError('Property not find.')
     }
 
     let arrayFor = []

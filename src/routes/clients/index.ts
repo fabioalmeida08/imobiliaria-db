@@ -10,7 +10,7 @@ const clientRoute = Router()
 clientRoute
   .route('/')
   .get(ClientController.index)
-  .post(expressYupMiddleware({schemaValidator:clientValidator}), verifyClientEmailMiddleware,ClientController.store)
+  .post(expressYupMiddleware({schemaValidator:clientValidator}), AcessAuthMiddleware, verifyClientEmailMiddleware,ClientController.store)
 
 clientRoute
   .route('/:id')

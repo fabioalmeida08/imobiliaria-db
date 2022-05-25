@@ -92,8 +92,8 @@ describe("Succes Routes", () => {
   // create client
 
   it("Should create a new client", async () => {
-    const response = await request(app).post("/clients")/* .send(client).set("Authorization", `Bearer ${token}`) */;
-
+    const response = await request(app).post("/clients").auth(`${token}`, { type: 'bearer' }).send(client);
+    console.log(response.body)
     id = response.body.id;
 
     expect(response.status).toBe(201);
