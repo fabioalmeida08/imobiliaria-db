@@ -10,6 +10,7 @@ import { ReturnedPropertyList } from '../../../services/properties/listPropertie
 import { CreateProperty, testIdProperty } from '../../../interfaces/properties';
 import CreatePropertyService from '../../../services/properties/createProperty.service';
 import { ICreateSale, ISale } from '../../../interfaces/sales';
+import { IAgency, IAgencyExtId, IAgencyLogin, IAgencyToken } from '../../../interfaces/agency';
 
 describe("Succes Routes", () => {
 
@@ -20,6 +21,8 @@ describe("Succes Routes", () => {
     await AppDataSource.dropDatabase();
     await AppDataSource.destroy().catch((err) => console.log(err));
   });
+
+  // client
 
   let clientCreated1: IClient;
   const client1: ICreateClient = {
@@ -37,6 +40,9 @@ describe("Succes Routes", () => {
   };
 
   let clientCreated2: IClient;
+
+  // create client
+
   const createClient = async (client: ICreateClient, clientCreated: IClient) => {
     const newClient = await CreateClientService.execute(client);
     clientCreated = newClient;
@@ -44,6 +50,7 @@ describe("Succes Routes", () => {
     return clientCreated;
   };
 
+  // realtor
 
   let realtorCreated1: IRealtorsExtId;
   let realtorCreated2: IRealtorsExtId;
@@ -77,7 +84,26 @@ describe("Succes Routes", () => {
   }
   let realtor1Token: Token;
   let realtor2Token: Token;
-  let agencyToken: Token;
+
+  // agency
+
+  const agency: IAgency = {
+    name: "nelton",
+    email: "nelton@mail.com",
+    phone_number: "1234567890122",
+    password: "12345678"
+  };
+
+  const login: IAgencyLogin ={
+      email: "nelton@mail.com",
+      password: "12345678"
+  }
+  
+  let agencyId: IAgencyExtId;
+
+  let agencyToken: IAgencyToken;
+
+  // create and login realtor
 
   const createRealtor = async (realtor: IRealtors, realtorCreated: IRealtorsExtId, Login: ILoginRealtor, realtorToken: Token) => {
 
@@ -91,6 +117,8 @@ describe("Succes Routes", () => {
 
     return realtorCreated;
   };
+
+  // create property
 
   let proprietyTest: testIdProperty;
   let createdProperty: ReturnedPropertyList;
@@ -122,6 +150,26 @@ describe("Succes Routes", () => {
   let sales: ICreateSale;
   let createSales: ISale;
 
+  /// Agency test 
+  
+  it("Should create a new agency", async () => {
+    const response = await request(app).post("/agency").send(agency);
+    
+    expect(response.status).toBe(201);
+    expect(response.body).toHaveProperty("id");
+    expect(response.body).toHaveProperty("createdAt");
+  });
+  
+  it("Should login agency", async () => {
+    const response = await request(app).post("/agency/login").send(login);
+    agencyToken = response.body.accessToken
+    
+    expect(response.status).toBe(200);
+    expect(response.body).toBeTruthy();
+  })
+
+  // create sales
+
   it("Should be able to create a new Sales", async () => {
     const property = await instanceProperty();
     const client = await createClient(client2, clientCreated2);
@@ -140,7 +188,7 @@ describe("Succes Routes", () => {
 
     const response = await request(app)
       .post("/sales")
-      //.set("Authorization", `Bearer ${realtor1Token.accessToken}`)
+      .set("Authorization", `Bearer ${agencyToken}`)
       .send(sales);
 
     createSales = response.body;
@@ -150,9 +198,12 @@ describe("Succes Routes", () => {
     expect(response.body).toHaveProperty("createdAt");
   });
 
-  it("Should return a list of sales with selected elements", async () => {
+  // list sales
+
+  it("Should return a list of sales with all elements", async () => {
     const response = await request(app)
-      .get("/sales");
+      .get("/sales")
+      .set("Authorization", `Bearer ${agencyToken}`);
 
     expect(response.status).toBe(200);
     expect(response.body).toBeTruthy();
@@ -160,20 +211,24 @@ describe("Succes Routes", () => {
     expect(Number(response.body[0].selling_value)).toBe(300000);
   });
 
-  it("Should return a list of sales with all elements", async () => {
+  // show sales
+
+  it("Should return a list of sales with selected elements", async () => {
     const response = await request(app)
       .get(`/sales/${createSales.id}`)
-      // .set("Authorization", `Bearer ${realtor1Token.accessToken}`);
+      .set("Authorization", `Bearer ${agencyToken}`);
 
     expect(response.status).toBe(200);
     expect(response.body).toBeTruthy();
     expect(Number(response.body.selling_value)).toBe(300000);
   });
 
+  // update sales
+
   it("Should return the updated sales", async () => {
     const response = await request(app)
       .patch(`/sales/${createSales.id}`)
-      //.set("Authorization", `Bearer ${realtor1Token.accessToken}`)
+      .set("Authorization", `Bearer ${agencyToken}`)
       .send({ description: "Novo test novo test novo test" });
 
     expect(response.status).toBe(200);

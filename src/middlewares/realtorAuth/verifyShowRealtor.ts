@@ -22,19 +22,19 @@ const AcessAuthMiddleware = async (
    }
   const secret = String(process.env.JWT_SECRET_KEY)
 
-    const decoded = verify(verifyToken, secret);
+  const decoded = verify(verifyToken, secret);
 
   const { sub } = decoded;
 
   const agencyRepository = AppDataSource.getRepository(Agency);
   const agency = await agencyRepository.findOne({
     where: {
-      id: sub as string,
+      id: String(sub),
     },
   });
 
   if (agency) {
-    next();
+    return next();
   }
 
   const realtorRepository = AppDataSource.getRepository(Realtor);
@@ -47,6 +47,6 @@ const AcessAuthMiddleware = async (
   if (!agency && !realtor) {
      throw new AppError("Invalid token", 401);
   }
-  next();
+  return next();
 };
 export default AcessAuthMiddleware;

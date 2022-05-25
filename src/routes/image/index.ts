@@ -2,6 +2,7 @@ import { Router } from 'express'
 import { uploadImage } from '../../services/firebase/firebase'
 import multer from 'multer'
 import ImageController from '../../controllers/image.controller'
+import AcessAuthMiddleware from "../../middlewares/realtorAuth/verifyShowRealtor";
 
 const imageRoutes = Router()
 
@@ -14,9 +15,9 @@ const Multer = multer({
 
 imageRoutes
   .route('/')
-  .post(Multer.array('image', 4), uploadImage, ImageController.store)
+  .post(Multer.array('image', 4), uploadImage, AcessAuthMiddleware, ImageController.store)
 
-imageRoutes.route('/:image_id').delete(ImageController.delete)
+imageRoutes.route('/:image_id').delete(AcessAuthMiddleware, ImageController.delete)
 
-imageRoutes.route('/:property_id').get(ImageController.index)
+imageRoutes.route('/:property_id').get(AcessAuthMiddleware, ImageController.index)
 export default imageRoutes

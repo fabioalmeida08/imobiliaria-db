@@ -38,6 +38,7 @@ describe("Succes Routes", () => {
   let token: IAgencyToken;
 
   // realtor
+  
   const realtor: IRealtors = {
     name: "Chris",
     email: "chriseuamomarvael@mail.com",
@@ -51,9 +52,9 @@ describe("Succes Routes", () => {
     password: "marvelS2",
   };
   let realtorCreated: IRealtorsExtId;
-
-  /// Agency test
-
+ 
+  // Agency test 
+  
   it("Should create a new agency", async () => {
     const response = await request(app).post("/agency").send(agency);
 
@@ -73,7 +74,7 @@ describe("Succes Routes", () => {
     expect(response.body).toBeTruthy();
   });
 
-  /// create realtor
+  // create realtor
 
   it("Should be able to create a new realtor", async () => {
     const newRealtor = await CreateRealtorService.execute(realtor);
@@ -82,7 +83,8 @@ describe("Succes Routes", () => {
     expect(newRealtor).toHaveProperty("id");
   });
 
-  /// Realtor test create
+  // list realtor 
+
   it("Should be able to list a realtor", async () => {
     const responseRealtor = await request(app)
       .get("/realtor")
@@ -91,6 +93,8 @@ describe("Succes Routes", () => {
     expect(responseRealtor.status).toBe(200);
     expect(responseRealtor.body).toHaveLength(1);
   });
+
+  // update realtor 
 
   it("Should be able to update a realtor", async () => {
     const response = await request(app)
@@ -101,6 +105,8 @@ describe("Succes Routes", () => {
     expect(response.status).toBe(200);
     expect(response.body.name).toBe("Samu");
   });
+
+  // delete realtor 
 
   it("Should be able to delete a realtor", async () => {
     const response = await request(app)

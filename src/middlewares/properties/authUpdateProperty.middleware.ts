@@ -37,7 +37,7 @@ const authUpdatePropertyMiddleware = async (
   });
 
   if (agency) {
-    next();
+    return next();
   }
 
   const realtorRepository = AppDataSource.getRepository(Realtor);
@@ -63,7 +63,7 @@ const authUpdatePropertyMiddleware = async (
     });
   }
 
-  next();
+  return next();
 };
 
 export default authUpdatePropertyMiddleware;

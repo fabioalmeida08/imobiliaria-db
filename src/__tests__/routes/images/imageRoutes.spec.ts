@@ -11,6 +11,7 @@ import CreatePropertyService from '../../../services/properties/createProperty.s
 import path from 'path'
 import CreateImageService from '../../../services/image/createImage.service'
 import { ReturnedPropertyList } from '../../../services/properties/listPropertiesByQuery.service'
+import { IAgency, IAgencyExtId, IAgencyLogin, IAgencyToken } from '../../../interfaces/agency'
 
 beforeAll(async () => {
   await AppDataSource.initialize().catch((err) => console.log(err))
@@ -22,6 +23,9 @@ afterAll(async () => {
 })
 
 describe('Succes Routes', () => {
+
+  // create client
+
   let clientCreated: IClient
   const createClient = async () => {
     const client: ICreateClient = {
@@ -37,6 +41,8 @@ describe('Succes Routes', () => {
 
     return clientCreated
   }
+
+  // realtor
 
   let realtorCreated: IRealtorsExtId
   interface Token {
@@ -64,6 +70,8 @@ describe('Succes Routes', () => {
 
     return realtorCreated
   }
+
+  // property
 
   let createdProperty: ReturnedPropertyList
   const instanceProperty = async () => {
@@ -93,6 +101,45 @@ describe('Succes Routes', () => {
     return createdProperty
   }
 
+   // agency
+
+   const agency: IAgency = {
+    name: "Gorimar",
+    email: "gorimar54@mail.com",
+    phone_number: "1234567890122",
+    password: "12345678"
+  };
+
+  const login: IAgencyLogin ={
+      email: "gorimar54@mail.com",
+      password: "12345678"
+  }
+  
+  let agencyId: IAgencyExtId;
+
+  let token: IAgencyToken;
+
+  /// Agency test 
+  
+  it("Should create a new agency", async () => {
+    const response = await request(app).post("/agency").send(agency);
+    
+    expect(response.status).toBe(201);
+    expect(response.body).toHaveProperty("id");
+    expect(response.body).toHaveProperty("createdAt");
+  });
+  
+  it("Should login agency", async () => {
+    const response = await request(app).post("/agency/login").send(login);
+    token = response.body.accessToken
+    agencyId = response.body.id
+    
+    expect(response.status).toBe(200);
+    expect(response.body).toBeTruthy();
+  })
+
+  // create image
+
   it('Should be able to add image a property', async () => {
     const image = path.resolve(__dirname, '../../imagesTest/imageBotanico.jpg')
     let property = await instanceProperty()
@@ -101,18 +148,23 @@ describe('Succes Routes', () => {
       .post('/image')
       .attach('image', image)
       .field('property_id', property.id)
+      .auth(`${token}`, { type: 'bearer' })
 
     expect(response.status).toBe(201)
     expect(response.body[0]).toHaveProperty('image_id')
     expect(response.body).toBeTruthy()
   })
 
+  // list image for id property
+
   it('Should be property image list', async () => {
-    const response = await request(app).get(`/image/${createdProperty.id}`)
+    const response = await request(app).get(`/image/${createdProperty.id}`).auth(`${token}`, { type: 'bearer' })
 
     expect(response.status).toBe(200)
     expect(response.body).toHaveLength(1)
   })
+
+  //delete image for id img
 
   it('Should be delete property image by id', async () => {
     const img_url = [
@@ -123,9 +175,11 @@ describe('Succes Routes', () => {
       createdProperty.id
     )
 
-    const response = await request(app).delete(
-      `/image/${createImage[0].image_id}`
-    )
+    const response = await request(app)
+      .delete(
+        `/image/${createImage[0].image_id}`
+      )
+      .auth(`${token}`, { type: 'bearer' })
 
     expect(response.status).toBe(204)
   })
