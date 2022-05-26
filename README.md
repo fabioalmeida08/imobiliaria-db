@@ -32,7 +32,9 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 >   "name": "John",
 >   "email": "example@gmail.com",
 >   "phone_number": 125463348,
->   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
+>   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d",
+>   "createdAt": "2022-05-25T23:30:44.844Z",
+>	 "updatedAt": "2022-05-25T23:31:31.243Z",
 > }
 > ```
 
@@ -64,6 +66,25 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 >   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
 > }
 > ```
+
+`PATCH /agency/:id - update Agencia - FORMATO DA REQUISIÇÃO - STATUS 200`
+
+> ```json
+> {
+>   "name": "Gil",
+> }
+> ```
+
+`PATCH /agency/:id - update Agencia - FORMATO DA REPOSTA - STATUS 200`
+
+> ```json
+> {
+>   "name": "Gil",
+>   "email": "example@gmail.com",
+>   "phone_number": 125463348,
+>   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
+> }
+> `
 
 <h3>Realtor</h3>
  Rota para o corretor, nela poderá, ler a lista de seus clientes, ler a lista de vendas efetivadas por ele.
