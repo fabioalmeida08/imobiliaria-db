@@ -19,7 +19,7 @@
   <img align="center" alt="firebase" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain-wordmark.svg" />
  </div>
  
-   -------
+   ---
 
 <div align="center" style="display: inline_block" height="100">Desenvolvedores:</div>
       <div align="center">
