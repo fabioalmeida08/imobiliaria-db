@@ -108,7 +108,8 @@ export default class ListPropertiesByQueryService {
         : false;
       element === "bathroom_number"
         ? (properties = properties.filter(
-            ({ bathroom_number }) => bathroom_number === Number(querys.bathroom)
+            ({ bathroom_number }) =>
+              bathroom_number === Number(querys.bathroom_number)
           ))
         : false;
       element === "bathroom_menor"
@@ -125,7 +126,8 @@ export default class ListPropertiesByQueryService {
         : false;
       element === "bedroom_number"
         ? (properties = properties.filter(
-            ({ bedroom_number }) => bedroom_number === Number(querys.bedroom)
+            ({ bedroom_number }) =>
+              bedroom_number === Number(querys.bedroom_number)
           ))
         : false;
       element === "bedroom_menor"
@@ -206,6 +208,11 @@ export default class ListPropertiesByQueryService {
       element === "sports_court"
         ? (properties = properties.filter(({ sports_court }) =>
             querys.sports_court === "true" ? sports_court : !sports_court
+          ))
+        : false;
+      element === "availability"
+        ? (properties = properties.filter(({ availability }) =>
+            querys.availability === "true" ? availability : !availability
           ))
         : false;
     });

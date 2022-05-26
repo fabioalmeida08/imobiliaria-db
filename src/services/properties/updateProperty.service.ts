@@ -37,6 +37,8 @@ export default class UpdatePropertyService {
       : property.complement;
     data.availability
       ? (property.availability = data.availability)
+      : data.availability === false
+      ? (property.availability = data.availability)
       : property.availability;
     data.type ? (property.type = data.type) : property.type;
     data.acquisition_type
@@ -55,19 +57,37 @@ export default class UpdatePropertyService {
     data.elevator ? (property.elevator = data.elevator) : property.elevator;
     data.party_hall
       ? (property.party_hall = data.party_hall)
+      : data.party_hall === false
+      ? (property.party_hall = data.party_hall)
       : property.party_hall;
     data.party_area
       ? (property.party_area = data.party_area)
+      : data.party_area === false
+      ? (property.party_area = data.party_area)
       : property.party_area;
-    data.gtill ? (property.gtill = data.gtill) : property.gtill;
+    data.gtill
+      ? (property.gtill = data.gtill)
+      : data.gtill === false
+      ? (property.gtill = data.gtill)
+      : property.gtill;
     data.swimming_pool
       ? (property.swimming_pool = data.swimming_pool)
+      : data.swimming_pool === false
+      ? (property.swimming_pool = data.swimming_pool)
       : property.swimming_pool;
-    data.gym ? (property.gym = data.gym) : property.gym;
+    data.gym
+      ? (property.gym = data.gym)
+      : data.gym === false
+      ? (property.gym = data.gym)
+      : property.gym;
     data.playground
+      ? (property.playground = data.playground)
+      : data.playground === false
       ? (property.playground = data.playground)
       : property.playground;
     data.sports_court
+      ? (property.sports_court = data.sports_court)
+      : data.sports_court === false
       ? (property.sports_court = data.sports_court)
       : property.sports_court;
     data.description
