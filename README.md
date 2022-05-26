@@ -8,7 +8,34 @@
     
 ##
 
+---
+
+<h2 align="center"> Desenvolvido com:</h2>
+<div align="center" style="display: inline_block">
+  <img align="center" alt="Typescript" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg">
+  <img align="center" alt="Node" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg">
+  <img align="center" alt="postgresql" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg">
+  <img align="center" alt="docker" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/docker/docker-original-wordmark.svg">
+  <img align="center" alt="firebase" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain-wordmark.svg" />
+ </div>
+ 
+   -------
+
+<div align="center" style="display: inline_block" height="100">Desenvolvedores:</div>
+      <div align="center">
+      <h6> Christian Brandolini Chequetto Resende - DEV</h6>
+      <h6>Daniele Calixto Barros - DEV</h6>
+      <h6>Fábio Almeida - TL</h6>
+      <h6>Guilherme Lopreti Silva - PO</h6>
+      <h6>Igo Santana de Lima - SM</h6>
+      <h6>João Henrique Pereira Neto - DEV</h6></div>
+</div>
+
+    -------
+
  <h2  align="center">Rotas</h2>
+
+    -------
  
 <h3>Agency</h3>
 
@@ -84,7 +111,9 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 >   "phone_number": 125463348,
 >   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
 > }
-> `
+> ```
+
+    -------
 
 <h3>Realtor</h3>
  Rota para o corretor, nela poderá, ler a lista de seus clientes, ler a lista de vendas efetivadas por ele.
@@ -150,7 +179,8 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 
 `DELETE /realtor/:id - deletar corretor - FORMATO DA REQUISIÇÂO - STATUS 202`
 
----
+    -------
+
 
 <h3>Client</h3>
 
@@ -245,7 +275,8 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 > }
 > ```
 
----
+    -------
+
 
 <h3>Properties</h3>
 
@@ -561,26 +592,7 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 
 <h4>Necessário token de autorização da imobiliária</h4>
 
+    -------
+
 <h3>Sales</h3>
 
----
-
-<h2 align="center"> Desenvolvido com:</h2>
-<div align="center" style="display: inline_block">
-  <img align="center" alt="Typescript" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg">
-  <img align="center" alt="Node" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg">
-  <img align="center" alt="postgresql" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg">
-  <img align="center" alt="docker" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/docker/docker-original-wordmark.svg">
- </div>
- 
-   -------
-
-<div align="center" style="display: inline_block" height="100">Desenvolvedores:</div>
-      <div align="center">
-      <h6> Christian Brandolini Chequetto Resende - DEV</h6>
-      <h6>Daniele Calixto Barros - DEV</h6>
-      <h6>Fábio Almeida - TL</h6>
-      <h6>Guilherme Lopreti Silva - PO</h6>
-      <h6>Igo Santana de Lima - SM</h6>
-      <h6>João Henrique Pereira Neto - DEV</h6></div>
-</div>
