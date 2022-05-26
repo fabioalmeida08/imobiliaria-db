@@ -544,6 +544,44 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 
 ---
 
+<h3>Images</h3>
+
+`POST /image - Enviar as imagens - FORMATO DA REQUISIÇÃO`
+
+<h4>Necessário token de autorização da imobiliária ou corretor.</h4>
+<p>OBS: Poder ser enviado no máximo 4 files por requisição.</p>
+
+> ```Form-data
+>
+>  {
+>    "image": File,
+>   "property_id": "d8f52557-5cae-480a-8571-0756516f20a6",
+> }
+> ```
+
+`POST /image - Enviar imagens - FORMATO DA RESPOSTA - STATUS 201`
+
+> ```json
+> {
+>   "image_id": "84bbc9c7-3cfd-4318-aa89-29604d80ab26",
+>   "image_url": "https://storage.googleapis.com/capstone-m4-9d18d.appspot.com/1653415804087.webp"
+> }
+> ```
+
+`Get /image/:propety_id - Retorna todas as imagens de uma propriedade - FORMATO DA RESPOSTA`
+
+> ```json
+>
+> 	{
+> 		"id": "84bbc9c7-3cfd-4318-aa89-29604d80ab26",
+> 		"img_url": "https://storage.googleapis.com/capstone-m4-9d18d.appspot.com/1653415804080.jpg",
+> 		"createdAt": "2022-05-24T18:10:04.175Z",
+> 		"updatedAt": "2022-05-24T18:10:04.175Z"
+> 	},
+> ```
+
+`DELETE /image/:image_id - Deleta imagem - REPOSTA STATUS 204`
+
 <h2 align="center"> Desenvolvido com:</h2>
 <div align="center" style="display: inline_block">
   <img align="center" alt="Typescript" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg">
