@@ -123,6 +123,7 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 
  Rota para o corretor, nela poderá, ler a lista de seus clientes, ler a lista de vendas efetivadas por ele.
  
+   <h4>Necessário token de autorização</h4>
  `POST /realtor - Criar corretor - FORMATO DA REQUISIÇÃO - STATUS 201`
 > ```json
 >  {
@@ -160,7 +161,7 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 >   "accessToken": "d14w56q1w56q1dq7-wqd4d4s1adsa-dwq4dqw44w4dqqw4dqw54"
 > }
 > ```
-
+<h4>Necessário token de autorização</h4>
 `GET /realtor/:id - visualizar corretor - FORMATO DA REPOSTA - STATUS 200`
 
 > ```json
@@ -171,7 +172,7 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 >   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
 > }
 > ```
-
+<h4>Necessário token de autorização</h4>
 `PATCH /realtor/:id - atualizar corretor - FORMATO DA REQUISIÇÃO - STATUS 202`
 
 > ```json
@@ -181,7 +182,7 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 >   "phone_number": 125463348
 > }
 > ```
-
+<h4>Necessário token de autorização</h4>
 `DELETE /realtor/:id - deletar corretor - FORMATO DA REQUISIÇÂO - STATUS 202`
 
 </div>
