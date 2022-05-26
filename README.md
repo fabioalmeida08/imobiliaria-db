@@ -37,7 +37,7 @@
 <h3>Agency</h3>
 </div>
 
-<div align="left" style="display: inline_block"> 
+<div align="left" style="display: inline_block">
 
 Rota da imobiliaria, pode criar apenas um usuário (por enquanto), lista, atualizar, e fazer login. Com o token do login poderá, ler a lista de clientes, ler a listas de corretores, atribuir os corretores aos clientes, ver a lista de vendas, entre outros.
 
@@ -61,7 +61,7 @@ Rota da imobiliaria, pode criar apenas um usuário (por enquanto), lista, atuali
 >   "phone_number": 125463348,
 >   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d",
 >   "createdAt": "2022-05-25T23:30:44.844Z",
->	 "updatedAt": "2022-05-25T23:31:31.243Z",
+>   "updatedAt": "2022-05-25T23:31:31.243Z"
 > }
 > ```
 
@@ -104,7 +104,7 @@ Rota da imobiliaria, pode criar apenas um usuário (por enquanto), lista, atuali
 
 > ```json
 > {
->   "name": "Gil",
+>   "name": "Gil"
 > }
 > ```
 
@@ -130,18 +130,25 @@ Rota da imobiliaria, pode criar apenas um usuário (por enquanto), lista, atuali
 <h3>Realtor</h3>
 </div>
 
-<div align="left" style="display: inline_block"> 
+<div align="left" style="display: inline_block">
+
+Rota para o corretor, nela poderá, ler a lista de seus clientes, ler a lista de vendas efetivadas por ele.
+
+`POST /realtor - Criar corretor - FORMATO DA REQUISIÇÃO - STATUS 201`
+
 
  Rota para o corretor, nela poderá, ler a lista de seus clientes, ler a lista de vendas efetivadas por ele.
  
+ <h4>Necessário token de autorização</h4>
  `POST /realtor - Criar corretor - FORMATO DA REQUISIÇÃO - STATUS 201`
+
 > ```json
->  {
->    "name": "John",
->    "email": "example@gmail.com",
->    "phone_number": 125463348,
->    "password" : "asd132"
->  }
+> {
+>   "name": "John",
+>   "email": "example@gmail.com",
+>   "phone_number": 125463348,
+>   "password": "asd132"
+> }
 > ```
 
 `POST /realtor - Criar corretor - FORMATO DA RESPOSTA - STATUS 200`
@@ -171,7 +178,7 @@ Rota da imobiliaria, pode criar apenas um usuário (por enquanto), lista, atuali
 >   "accessToken": "d14w56q1w56q1dq7-wqd4d4s1adsa-dwq4dqw44w4dqqw4dqw54"
 > }
 > ```
-
+<h4>Necessário token de autorização</h4>
 `GET /realtor/:id - visualizar corretor - FORMATO DA REPOSTA - STATUS 200`
 
 > ```json
@@ -182,7 +189,7 @@ Rota da imobiliaria, pode criar apenas um usuário (por enquanto), lista, atuali
 >   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
 > }
 > ```
-
+<h4>Necessário token de autorização</h4>
 `PATCH /realtor/:id - atualizar corretor - FORMATO DA REQUISIÇÃO - STATUS 202`
 
 > ```json
@@ -192,7 +199,7 @@ Rota da imobiliaria, pode criar apenas um usuário (por enquanto), lista, atuali
 >   "phone_number": 125463348
 > }
 > ```
-
+<h4>Necessário token de autorização</h4>
 `DELETE /realtor/:id - deletar corretor - FORMATO DA REQUISIÇÂO - STATUS 202`
 
 </div>
@@ -201,7 +208,7 @@ Rota da imobiliaria, pode criar apenas um usuário (por enquanto), lista, atuali
 <h3>Client</h3>
 </div>
 
-<div align="left" style="display: inline_block"> 
+<div align="left" style="display: inline_block">
 
 `POST /clients - Criar um Client - FORMATO DA REQUISIÇÃO`
 
@@ -300,7 +307,7 @@ Rota da imobiliaria, pode criar apenas um usuário (por enquanto), lista, atuali
 <h3>Properties</h3>
 </div>
 
-<div align="left" style="display: inline_block"> 
+<div align="left" style="display: inline_block">
 
 Rota para a criação, listagem, atualização e deleção de propriedades.
 
@@ -614,12 +621,52 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 
 <h4>Necessário token de autorização da imobiliária</h4>
 
-</div>
-
 <div align="center" style="display: inline_block">
 <h3>Sales</h3>
 </div>
 
-<div align="left" style="display: inline_block"> 
+<div align="left" style="display: inline_block">
 
 </div>
+
+---
+
+<h3>Images</h3>
+
+<div align="left" style="display: inline_block">
+
+`POST /image - Enviar as imagens - FORMATO DA REQUISIÇÃO`
+
+<h4>Necessário token de autorização da imobiliária ou corretor.</h4>
+<p>OBS: Poder ser enviado no máximo 4 files por requisição.</p>
+
+> ```Form-data
+>
+>  {
+>    "image": File,
+>   "property_id": "d8f52557-5cae-480a-8571-0756516f20a6",
+> }
+> ```
+
+`POST /image - Enviar imagens - FORMATO DA RESPOSTA - STATUS 201`
+
+> ```json
+> {
+>   "image_id": "84bbc9c7-3cfd-4318-aa89-29604d80ab26",
+>   "image_url": "https://storage.googleapis.com/capstone-m4-9d18d.appspot.com/1653415804087.webp"
+> }
+> ```
+
+`Get /image/:propety_id - Retorna todas as imagens de uma propriedade - FORMATO DA RESPOSTA`
+
+> ```json
+>
+> 	{
+> 		"id": "84bbc9c7-3cfd-4318-aa89-29604d80ab26",
+> 		"img_url": "https://storage.googleapis.com/capstone-m4-9d18d.appspot.com/1653415804080.jpg",
+> 		"createdAt": "2022-05-24T18:10:04.175Z",
+> 		"updatedAt": "2022-05-24T18:10:04.175Z"
+> 	},
+> ```
+
+`DELETE /image/:image_id - Deleta imagem - REPOSTA STATUS 204`
