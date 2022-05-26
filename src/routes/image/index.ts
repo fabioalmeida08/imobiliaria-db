@@ -17,8 +17,8 @@ const Multer = multer({
 imageRoutes
   .route('/')
   .post(
-    authImageMiddleware,
     Multer.array('image', 4),
+    authImageMiddleware,
     uploadImage,
     ImageController.store
   )
