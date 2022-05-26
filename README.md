@@ -610,6 +610,93 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 
 <div align="left" style="display: inline_block">
 
+Rota que permite criar, atualizar e listar vendas, pela imobiliária ou pelos corretores.
+
+`POST /sale - Criar Venda - FORMATO DA REQUISIÇÃO - STATUS 201`
+
+> ```json
+> {
+>   "selling_value": 100000.0,
+>   "down_payment": 20000.0,
+>   "description": "Casa moderna em bairro nobre",
+>   "realtors": [
+>     "asdhu13sa-sdh98723-asd9899f-sdf4g5d",
+>     "841f59d0-d39a-4fe7-8191-ffbb50538647"
+>   ],
+>   "client_buyer": "cc947d60-e04a-4a22-ab27-9df8f32f92e7",
+>   "property": "9fa879ba-19e2-4ac8-bfa8-2b1f8e6cc5ee"
+> }
+> ```
+
+`POST /sales - Criar Venda - FORMATO DA RESPOSTA - STATUS 200`
+
+> ```json
+> {
+>   "selling_value": 100000.0,
+>   "down_payment": 20000.0,
+>   "description": "Casa moderna em bairro nobre",
+>   "realtors": [
+>     "asdhu13sa-sdh98723-asd9899f-sdf4g5d",
+>     "841f59d0-d39a-4fe7-8191-ffbb50538647"
+>   ],
+>   "client_buyer": "cc947d60-e04a-4a22-ab27-9df8f32f92e7",
+>   "property": "9fa879ba-19e2-4ac8-bfa8-2b1f8e6cc5ee",
+>   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d",
+>   "createdAt": "2022-05-25T23:30:44.844Z",
+>   "updatedAt": "2022-05-25T23:30:44.844Z"
+> }
+> ```
+
+`GET /sales - Listar Vendas - FORMATO DA RESPOSTA COM AUTORIZAÇÃO - STATUS 200`
+
+> ```json
+> [
+>   {
+>     "selling_value": 100000.0,
+>     "down_payment": 20000.0,
+>     "description": "Casa moderna em bairro nobre",
+>     "realtors": [
+>       "asdhu13sa-sdh98723-asd9899f-sdf4g5d",
+>       "841f59d0-d39a-4fe7-8191-ffbb50538647"
+>     ],
+>     "client_buyer": "cc947d60-e04a-4a22-ab27-9df8f32f92e7",
+>     "property": "9fa879ba-19e2-4ac8-bfa8-2b1f8e6cc5ee",
+>     "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d",
+>     "createdAt": "2022-05-25T23:30:44.844Z",
+>     "updatedAt": "2022-05-25T23:30:44.844Z"
+>   }
+> ]
+> ```
+
+`GET /sales/:id - Visualizar Venda - FORMATO DA RESPOSTA COM AUTORIZAÇÃO - STATUS 200`
+
+> ```json
+> {
+>   "selling_value": 100000.0,
+>   "down_payment": 20000.0,
+>   "description": "Casa moderna em bairro nobre",
+>   "realtors": [
+>     "asdhu13sa-sdh98723-asd9899f-sdf4g5d",
+>     "841f59d0-d39a-4fe7-8191-ffbb50538647"
+>   ],
+>   "client_buyer": "cc947d60-e04a-4a22-ab27-9df8f32f92e7",
+>   "property": "9fa879ba-19e2-4ac8-bfa8-2b1f8e6cc5ee",
+>   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d",
+>   "createdAt": "2022-05-25T23:30:44.844Z",
+>   "updatedAt": "2022-05-25T23:30:44.844Z"
+> }
+> ```
+
+`PATCH /sales/:id - Atualizar Venda - FORMATO DA REQUISIÇÃO - STATUS 200`
+
+> ```json
+> {
+>   "selling_value": 200000.0,
+>   "down_payment": 50000.0,
+>   "description": "Casa reformada em bairro familiar"
+> }
+> ```
+
 </div>
 
 ---
