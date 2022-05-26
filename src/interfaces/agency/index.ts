@@ -1,3 +1,5 @@
+import { IdName } from "../../services/properties/listPropertiesByQuery.service"
+
 export interface IAgency {
     name:string
     email:string
@@ -19,3 +21,7 @@ export interface IAgencyToken{
 }
 
 export interface IUpdatedAgency extends Partial<IAgency>{}
+
+export interface IReturnAgency extends IAgencyExtId {
+  realtors: IdName[]
+}

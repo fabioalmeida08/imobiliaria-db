@@ -45,6 +45,7 @@ export class Realtor {
   })
   updatedAt: Date
 
+  @Exclude()
   @ManyToOne((type) => Agency, (agency) => agency.realtors)
   agency: Agency
 

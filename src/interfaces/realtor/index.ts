@@ -33,3 +33,7 @@ export interface IRealtorToken {
 export interface IRealtorsId {
   id: string;
 }
+
+export interface IReturnRealtor extends IRealtorsTwo{
+  properties_created: object[]
+}
