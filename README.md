@@ -90,8 +90,14 @@ Rota da imobiliaria, pode criar apenas um usuário (por enquanto), lista, atuali
 >   "name": "John",
 >   "email": "example@gmail.com",
 >   "phone_number": 125463348,
->   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
+>   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d",
+>   "createdAt": "2022-05-26T13:09:14.783Z",
+>   "updatedAt": "2022-05-26T13:09:14.783Z",
+> 	 "realtors": [
+>        "..."
+>    ]
 > }
+
 > ```
 
 `PATCH /agency/:id - update Agencia - FORMATO DA REQUISIÇÃO - STATUS 200`
@@ -109,7 +115,12 @@ Rota da imobiliaria, pode criar apenas um usuário (por enquanto), lista, atuali
 >   "name": "Gil",
 >   "email": "example@gmail.com",
 >   "phone_number": 125463348,
->   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
+>   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d",
+>   "createdAt": "2022-05-26T13:09:14.783Z",
+>   "updatedAt": "2022-05-26T18:22:35.783Z",
+> 	 "realtors": [
+>        "..."
+>    ]
 > }
 > ```
 
