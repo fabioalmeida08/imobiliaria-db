@@ -595,4 +595,3 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
     -------
 
 <h3>Sales</h3>
-
