@@ -35,6 +35,9 @@
 
 <div align="center" style="display: inline_block"> 
 <h3>Agency</h3>
+</div>
+
+<div align="left" style="display: inline_block"> 
 
 Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a listas de corretores, atribuir os corretores aos clientes. ADM
 
