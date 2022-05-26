@@ -21,7 +21,7 @@ export default class RealtorsController {
 
   public static async index(req: Request, res: Response) {
     const listRealtor = await ListRealtorService.execute();
-    return res.status(200).json(listRealtor);
+    return res.status(200).json(instanceToPlain(listRealtor));
   }
 
   public static async show(req: Request, res: Response) {
@@ -29,7 +29,7 @@ export default class RealtorsController {
 
     const getRealtor = await ListOneRealtorService.execute(id);
 
-    return res.status(200).json(getRealtor);
+    return res.status(200).json(instanceToPlain(getRealtor));
   }
 
   public static async update(req: Request, res: Response) {
@@ -37,7 +37,7 @@ export default class RealtorsController {
     const id = req.params.id;
     data.id = id;
     const updateRealtor = await UpdateRealtorService.execute(data);
-    return res.status(200).json(updateRealtor);
+    return res.status(200).json(instanceToPlain(updateRealtor));
   }
 
   public static async delete(req: Request, res: Response) {
