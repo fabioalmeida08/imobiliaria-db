@@ -35,6 +35,9 @@
 
 <div align="center" style="display: inline_block"> 
 <h3>Agency</h3>
+</div>
+
+<div align="left" style="display: inline_block"> 
 
 Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a listas de corretores, atribuir os corretores aos clientes. ADM
 
@@ -111,9 +114,13 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 > ```
 
 </div>
-<div align="center" style="display: inline_block">
 
+<div align="center" style="display: inline_block">
 <h3>Realtor</h3>
+</div>
+
+<div align="left" style="display: inline_block"> 
+
  Rota para o corretor, nela poderá, ler a lista de seus clientes, ler a lista de vendas efetivadas por ele.
  
  `POST /realtor - Criar corretor - FORMATO DA REQUISIÇÃO - STATUS 201`
@@ -178,9 +185,12 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 `DELETE /realtor/:id - deletar corretor - FORMATO DA REQUISIÇÂO - STATUS 202`
 
 </div>
-<div align="center" style="display: inline_block">
 
+<div align="center" style="display: inline_block">
 <h3>Client</h3>
+</div>
+
+<div align="left" style="display: inline_block"> 
 
 `POST /clients - Criar um Client - FORMATO DA REQUISIÇÃO`
 
@@ -274,9 +284,12 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 > ```
 
 </div>
-<div align="center" style="display: inline_block">
 
+<div align="center" style="display: inline_block">
 <h3>Properties</h3>
+</div>
+
+<div align="left" style="display: inline_block"> 
 
 Rota para a criação, listagem, atualização e deleção de propriedades.
 
@@ -591,8 +604,11 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 <h4>Necessário token de autorização da imobiliária</h4>
 
 </div>
-<div align="center" style="display: inline_block">
 
+<div align="center" style="display: inline_block">
 <h3>Sales</h3>
+</div>
+
+<div align="left" style="display: inline_block"> 
 
 </div>
