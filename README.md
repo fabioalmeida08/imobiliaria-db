@@ -39,7 +39,7 @@
 
 <div align="left" style="display: inline_block">
 
-Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a listas de corretores, atribuir os corretores aos clientes. ADM
+Rota da imobiliaria, pode criar apenas um usuário (por enquanto), lista, atualizar, e fazer login. Com o token do login poderá, ler a lista de clientes, ler a listas de corretores, atribuir os corretores aos clientes, ver a lista de vendas, entre outros.
 
 `POST /agency - Criar Agencia - FORMATO DA REQUISIÇÃO - STATUS 201`
 
@@ -90,8 +90,14 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 >   "name": "John",
 >   "email": "example@gmail.com",
 >   "phone_number": 125463348,
->   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
+>   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d",
+>   "createdAt": "2022-05-26T13:09:14.783Z",
+>   "updatedAt": "2022-05-26T13:09:14.783Z",
+> 	 "realtors": [
+>        "..."
+>    ]
 > }
+
 > ```
 
 `PATCH /agency/:id - update Agencia - FORMATO DA REQUISIÇÃO - STATUS 200`
@@ -109,7 +115,12 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 >   "name": "Gil",
 >   "email": "example@gmail.com",
 >   "phone_number": 125463348,
->   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d"
+>   "id": "asdhu13sa-sdh98723-asd9899f-sdf4g5d",
+>   "createdAt": "2022-05-26T13:09:14.783Z",
+>   "updatedAt": "2022-05-26T18:22:35.783Z",
+> 	 "realtors": [
+>        "..."
+>    ]
 > }
 > ```
 
@@ -659,25 +670,3 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 > ```
 
 `DELETE /image/:image_id - Deleta imagem - REPOSTA STATUS 204`
-
-<h2 align="center"> Desenvolvido com:</h2>
-<div align="center" style="display: inline_block">
-  <img align="center" alt="Typescript" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg">
-  <img align="center" alt="Node" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg">
-  <img align="center" alt="postgresql" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg">
-  <img align="center" alt="docker" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/docker/docker-original-wordmark.svg">
- </div>
- 
-   -------
-
-<div align="center" style="display: inline_block" height="100">Desenvolvedores:</div>
-      <div align="center">
-      <h6> Christian Brandolini Chequetto Resende - DEV</h6>
-      <h6>Daniele Calixto Barros - DEV</h6>
-      <h6>Fábio Almeida - TL</h6>
-      <h6>Guilherme Lopreti Silva - PO</h6>
-      <h6>Igo Santana de Lima - SM</h6>
-      <h6>João Henrique Pereira Neto - DEV</h6></div>
-</div>
-
-</div>
