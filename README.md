@@ -31,11 +31,11 @@
       <h6>João Henrique Pereira Neto - DEV</h6></div>
 </div>
 
-    -------
+    ---
 
  <h2  align="center">Rotas</h2>
 
-    -------
+    ---
  
 <h3>Agency</h3>
 
@@ -113,7 +113,7 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 > }
 > ```
 
-    -------
+    ---
 
 <h3>Realtor</h3>
  Rota para o corretor, nela poderá, ler a lista de seus clientes, ler a lista de vendas efetivadas por ele.
@@ -179,8 +179,7 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 
 `DELETE /realtor/:id - deletar corretor - FORMATO DA REQUISIÇÂO - STATUS 202`
 
-    -------
-
+    ---
 
 <h3>Client</h3>
 
@@ -275,8 +274,7 @@ Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a li
 > }
 > ```
 
-    -------
-
+    ---
 
 <h3>Properties</h3>
 
@@ -592,6 +590,6 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 
 <h4>Necessário token de autorização da imobiliária</h4>
 
-    -------
+    ---
 
 <h3>Sales</h3>
