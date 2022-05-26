@@ -17,10 +17,10 @@ export default class ListRealtorService {
         throw new AppError("Something is wrong", 400)
       }
 
-      let listProperties:IRealtorsId[] = [];
-
       const returnRealtor: IReturnRealtor[] = findRealtors.map((realtoList)=>{
    
+        let listProperties:IRealtorsId[] = [];
+
         realtoList.properties_created.forEach((item)=>{
           listProperties = [ ...listProperties,
             {
@@ -36,8 +36,6 @@ export default class ListRealtorService {
 
          return realtorReturn
       })
-   
-   
    
     return returnRealtor
   }

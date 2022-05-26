@@ -8,10 +8,10 @@ export default class ListAllAgencyService {
     const AgencyRepo = AppDataSource.getRepository(Agency)
     const allAgency = await AgencyRepo.find()
 
-    let listRealtor:IdName[] = [];
-
     const returnAgency: IReturnAgency[] = allAgency.map((agency)=>{
 
+      let listRealtor:IdName[] = [];
+      
         agency.realtors.forEach((item)=>{
           listRealtor = [ ...listRealtor,
           {
