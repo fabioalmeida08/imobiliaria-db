@@ -1,3 +1,4 @@
+import { Exclude } from "class-transformer";
 import {
   Entity,
   Column,
@@ -23,6 +24,7 @@ export class Agency {
   @Column({ type: "varchar", width: 256, nullable: false })
   email: string;
 
+  @Exclude()
   @Column({ type: "varchar", width: 256, nullable: false })
   password: string;
 

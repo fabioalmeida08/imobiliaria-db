@@ -1,3 +1,4 @@
+import { instanceToPlain } from "class-transformer";
 import { Request, Response } from "express";
 import LoginAgencyService from "../services/agency/agencyLogin.service";
 import CreateAgencyService from "../services/agency/createAgency.service";
@@ -9,7 +10,7 @@ export default class AgencyController {
     public static async store(req: Request, res: Response) {
       const data = req.body;
       const createAgency = await CreateAgencyService.execute(data);
-      return res.status(201).json(createAgency);
+      return res.status(201).json(instanceToPlain(createAgency));
     }
   
     public static async show(req: Request, res: Response) {
@@ -17,13 +18,13 @@ export default class AgencyController {
   
       const getAgency = await ListOneAgencyService.execute(id);
   
-      return res.status(200).json(getAgency)
+      return res.status(200).json(instanceToPlain(getAgency))
     }
 
     public static async index(req: Request, res: Response) {
      // const authToken = req.headers.authorization
       const listAgency = await ListAllAgencyService.execute();
-      return res.status(200).json(listAgency);
+      return res.status(200).json(instanceToPlain(listAgency));
     }
 
     public static async update(req: Request, res: Response) {
@@ -31,7 +32,7 @@ export default class AgencyController {
      const id = req.params.id
       data.id = id
       const updateAgency = await UpdateAgencyService.execute(data);
-      return res.status(200).json(updateAgency)
+      return res.status(200).json(instanceToPlain(updateAgency))
     }
   
     public static async login(req: Request, res: Response) {
