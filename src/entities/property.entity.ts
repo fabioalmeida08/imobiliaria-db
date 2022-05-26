@@ -14,7 +14,6 @@ import { Exclude } from 'class-transformer'
 
 @Entity()
 export class Property {
-  @Exclude()
   @PrimaryGeneratedColumn('uuid')
   readonly id: string
 

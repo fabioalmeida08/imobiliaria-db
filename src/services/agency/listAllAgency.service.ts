@@ -10,7 +10,7 @@ export default class ListAllAgencyService {
 
     let listRealtor:IdName[] = [];
 
-   const returnAgency: IReturnAgency[] = allAgency.map((agency)=>{
+    const returnAgency: IReturnAgency[] = allAgency.map((agency)=>{
 
         agency.realtors.forEach((item)=>{
           listRealtor = [ ...listRealtor,
