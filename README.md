@@ -39,7 +39,7 @@
 
 <div align="left" style="display: inline_block"> 
 
-Rota pela imobiliaria, nela poderá atualizar, ler a lista de clientes, ler a listas de corretores, atribuir os corretores aos clientes. ADM
+Rota da imobiliaria, pode criar apenas um usuário (por enquanto), lista, atualizar, e fazer login. Com o token do login poderá, ler a lista de clientes, ler a listas de corretores, atribuir os corretores aos clientes, ver a lista de vendas, entre outros.
 
 `POST /agency - Criar Agencia - FORMATO DA REQUISIÇÃO - STATUS 201`
 
