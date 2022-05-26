@@ -127,7 +127,7 @@ describe("Succes Routes", () => {
 
     expect(response.status).toBe(200);
     expect(response.body).toBeTruthy();
-    expect(Object.keys(response.body[0]).length).toBe(21);
+    expect(Object.keys(response.body[0]).length).toBe(22);
     expect(Number(response.body[0].price)).toBe(300000);
   });
 
@@ -148,7 +148,7 @@ describe("Succes Routes", () => {
 
     expect(response.status).toBe(200);
     expect(response.body).toBeTruthy();
-    expect(Object.keys(response.body).length).toBe(21);
+    expect(Object.keys(response.body).length).toBe(22);
   });
 
   it("Should return one property with all elements", async () => {
@@ -166,7 +166,7 @@ describe("Succes Routes", () => {
       street: "Rua teste 2",
       city: "Cidade teste 2",
       state: "Estado teste 2",
-      postal_code: "87654321",
+      postal_code: "87654322",
       country: "Pais teste 2",
       area: 45,
       complement: "Complemento teste 2",
@@ -185,7 +185,7 @@ describe("Succes Routes", () => {
     expect(response.status).toBe(200);
     expect(response.body).toBeTruthy();
     expect(Number(response.body[0].price)).toBeLessThanOrEqual(250000);
-    expect(Object.keys(response.body[0]).length).toBe(21);
+    expect(Object.keys(response.body[0]).length).toBe(22);
   });
 
   it("Should return the updated property", async () => {
