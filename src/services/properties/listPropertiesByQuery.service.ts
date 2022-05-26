@@ -210,6 +210,11 @@ export default class ListPropertiesByQueryService {
             querys.sports_court === "true" ? sports_court : !sports_court
           ))
         : false;
+      element === "availability"
+        ? (properties = properties.filter(({ availability }) =>
+            querys.availability === "true" ? availability : !availability
+          ))
+        : false;
     });
 
     if (!id) {
