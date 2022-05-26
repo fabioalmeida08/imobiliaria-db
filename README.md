@@ -8,8 +8,6 @@
     
 ##
 
----
-
 <h2 align="center"> Desenvolvido com:</h2>
 <div align="center" style="display: inline_block">
   <img align="center" alt="Typescript" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg">
@@ -19,7 +17,7 @@
   <img align="center" alt="firebase" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain-wordmark.svg" />
  </div>
  
-   -------
+   ##
 
 <div align="center" style="display: inline_block" height="100">Desenvolvedores:</div>
       <div align="center">
