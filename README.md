@@ -628,7 +628,6 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 <h5>FormData</h5>
 
 > ```json
->
 > {
 >   "image": File,
 >   "property_id": "d8f52557-5cae-480a-8571-0756516f20a6",
@@ -647,35 +646,14 @@ Rota para a criação, listagem, atualização e deleção de propriedades.
 `Get /image/:propety_id - Retorna todas as imagens de uma propriedade - FORMATO DA RESPOSTA`
 
 > ```json
->
 > {
-> 	"id": "84bbc9c7-3cfd-4318-aa89-29604d80ab26",
-> 	"img_url": "https://storage.googleapis.com/capstone-m4-9d18d.appspot.com/1653415804080.jpg",
-> 	"createdAt": "2022-05-24T18:10:04.175Z",
-> 	"updatedAt": "2022-05-24T18:10:04.175Z"
-> },
+>   "id": "84bbc9c7-3cfd-4318-aa89-29604d80ab26",
+>   "img_url": "https://storage.googleapis.com/capstone-m4-9d18d.appspot.com/1653415804080.jpg",
+>   "createdAt": "2022-05-24T18:10:04.175Z",
+>   "updatedAt": "2022-05-24T18:10:04.175Z"
+> }
 > ```
 
 `DELETE /image/:image_id - Deleta imagem - REPOSTA STATUS 204`
-
-<h2 align="center"> Desenvolvido com:</h2>
-<div align="center" style="display: inline_block">
-  <img align="center" alt="Typescript" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-plain.svg">
-  <img align="center" alt="Node" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/nodejs/nodejs-original.svg">
-  <img align="center" alt="postgresql" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/postgresql/postgresql-original.svg">
-  <img align="center" alt="docker" height="30" width="40" src="https://github.com/devicons/devicon/blob/master/icons/docker/docker-original-wordmark.svg">
- </div>
- 
-   -------
-
-<div align="center" style="display: inline_block" height="100">Desenvolvedores:</div>
-      <div align="center">
-      <h6> Christian Brandolini Chequetto Resende - DEV</h6>
-      <h6>Daniele Calixto Barros - DEV</h6>
-      <h6>Fábio Almeida - TL</h6>
-      <h6>Guilherme Lopreti Silva - PO</h6>
-      <h6>Igo Santana de Lima - SM</h6>
-      <h6>João Henrique Pereira Neto - DEV</h6></div>
-</div>
 
 </div>
