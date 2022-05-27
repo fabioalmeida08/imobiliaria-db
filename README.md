@@ -5,6 +5,7 @@
    Essa aplicação é com intuito educativo, uma forma de efetiva o conhecimento adiquirido, na estapa do modulo 4 na Kenzie Academy Brasil. Projeto modulado para       desenvolver o Back-end de uma corretora de imóveis, visando implementar as ferramentas normalmente utilizadas e acrescentar um espaço de coleção de dados do cliente.
    Existem diversos aplicativos de imobiliárias com bom funcionamento, mas sempre há problemas por falta de uma interface mais amigável que possa melhorar as relações entre imobiliária, corretores e cliente.
    Por isso, o objetivo deste projeto é disponibilizar uma API segura e assertiva que melhore a administração de imobiliárias.
+    [Imobiliaria Kz](https://imobiliariakz.herokuapp.com/)
     
 ##
 
