@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  app:
+    container_name: imobiliariaNode
+    build: .
+    ports:
+      - 3001:3001
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .dockerapp.env
+    volumes:
+      - type: bind
+        source: ./
+        target: /app
+  db:
+    container_name: postgres
+    image: postgres:14.2
+    ports:
+      - 5433:5432
+    env_file:
+      - .dockerpsql.env
+    healthcheck:
+      test: psql -U #POSTGRES_USER POSTGRES_DB || exit 1
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s

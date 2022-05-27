@@ -1,0 +1,6 @@
+node_modules
+.env
+.dockerpsql.env
+docker-compose.yml
+.dockerapp.env
+dist
